@@ -1,0 +1,11 @@
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+prebuilt_hidl_interfaces {
+    name: "klimt_hidl_interfaces",
+    interfaces: [
+        "vendor.mediatek.hardware.aee@1.0::IAee",
+        "vendor.mediatek.hardware.aee@1.1::IAee",
+    ],
+}

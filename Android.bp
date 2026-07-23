@@ -1,0 +1,15 @@
+//
+// SPDX-FileCopyrightText: The LineageOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+soong_namespace {
+}
+
+phony {
+    name: "klimt_hidl_impls",
+    required: [
+        "android.hardware.boot@1.2-impl",
+        "android.hardware.health@2.1-impl",
+    ],
+}

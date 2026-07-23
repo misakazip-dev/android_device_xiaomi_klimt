@@ -1,0 +1,1367 @@
+<compatibility-matrix version="1.0" type="framework">
+    <hal format="aidl">
+        <name>android.hardware.audio.effect</name>
+        <version>2</version>
+        <interface>
+            <name>IFactory</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.biometrics.face</name>
+        <version>4</version>
+        <interface>
+            <name>IFace</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.biometrics.fingerprint</name>
+        <version>4</version>
+        <interface>
+            <name>IFingerprint</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.bluetooth</name>
+        <interface>
+            <name>IBluetoothHci</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.boot</name>
+        <interface>
+            <name>IBootControl</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>android.hardware.boot</name>
+        <version>1.2</version>
+        <interface>
+            <name>IBootControl</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.camera.provider</name>
+        <version>2</version>
+        <interface>
+            <name>ICameraProvider</name>
+            <instance>internal/0</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.contexthub</name>
+        <version>3</version>
+        <interface>
+            <name>IContextHub</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.dumpstate</name>
+        <interface>
+            <name>IDumpstateDevice</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.gatekeeper</name>
+        <interface>
+            <name>IGatekeeper</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.graphics.allocator</name>
+        <version>2</version>
+        <interface>
+            <name>IAllocator</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.graphics.composer3</name>
+        <version>3</version>
+        <interface>
+            <name>IComposer</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>android.hardware.health</name>
+        <version>2.1</version>
+        <interface>
+            <name>IHealth</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.identity</name>
+        <version>5</version>
+        <interface>
+            <name>IIdentityCredentialStore</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.light</name>
+        <version>2</version>
+        <interface>
+            <name>ILights</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.media.c2</name>
+        <interface>
+            <name>IComponentStore</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.media.c2</name>
+        <interface>
+            <name>IComponentStore</name>
+            <instance>dolby</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.media.c2</name>
+        <interface>
+            <name>IComponentStore</name>
+            <instance>default9</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.memtrack</name>
+        <interface>
+            <name>IMemtrack</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.neuralnetworks</name>
+        <version>4</version>
+        <interface>
+            <name>IDevice</name>
+            <instance>mtk-dsp_shim</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.neuralnetworks</name>
+        <version>4</version>
+        <interface>
+            <name>IDevice</name>
+            <instance>mtk-mdla_shim</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.neuralnetworks</name>
+        <version>4</version>
+        <interface>
+            <name>IDevice</name>
+            <instance>mtk-neuron_shim</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.nfc</name>
+        <interface>
+            <name>INfc</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.power</name>
+        <version>5</version>
+        <interface>
+            <name>IPower</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.radio.config</name>
+        <interface>
+            <name>IRadioConfig</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.radio.data</name>
+        <interface>
+            <name>IRadioData</name>
+            <instance>slot1</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.radio.data</name>
+        <interface>
+            <name>IRadioData</name>
+            <instance>slot2</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.radio.ims</name>
+        <interface>
+            <name>IRadioIms</name>
+            <instance>slot1</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.radio.ims</name>
+        <interface>
+            <name>IRadioIms</name>
+            <instance>slot2</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.radio.messaging</name>
+        <interface>
+            <name>IRadioMessaging</name>
+            <instance>slot1</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.radio.messaging</name>
+        <interface>
+            <name>IRadioMessaging</name>
+            <instance>slot2</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.radio.modem</name>
+        <interface>
+            <name>IRadioModem</name>
+            <instance>imsSlot1</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.radio.modem</name>
+        <interface>
+            <name>IRadioModem</name>
+            <instance>imsSlot2</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.radio.modem</name>
+        <interface>
+            <name>IRadioModem</name>
+            <instance>se1</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.radio.modem</name>
+        <interface>
+            <name>IRadioModem</name>
+            <instance>se2</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.radio.modem</name>
+        <interface>
+            <name>IRadioModem</name>
+            <instance>slot1</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.radio.modem</name>
+        <interface>
+            <name>IRadioModem</name>
+            <instance>slot2</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.radio.network</name>
+        <interface>
+            <name>IRadioNetwork</name>
+            <instance>imsSlot1</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.radio.network</name>
+        <interface>
+            <name>IRadioNetwork</name>
+            <instance>imsSlot2</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.radio.network</name>
+        <interface>
+            <name>IRadioNetwork</name>
+            <instance>slot1</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.radio.network</name>
+        <interface>
+            <name>IRadioNetwork</name>
+            <instance>slot2</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.radio.sap</name>
+        <interface>
+            <name>ISap</name>
+            <instance>slot1</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.radio.sap</name>
+        <interface>
+            <name>ISap</name>
+            <instance>slot2</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.radio.sim</name>
+        <interface>
+            <name>IRadioSim</name>
+            <instance>imsSlot1</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.radio.sim</name>
+        <interface>
+            <name>IRadioSim</name>
+            <instance>imsSlot2</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.radio.sim</name>
+        <interface>
+            <name>IRadioSim</name>
+            <instance>se1</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.radio.sim</name>
+        <interface>
+            <name>IRadioSim</name>
+            <instance>se2</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.radio.sim</name>
+        <interface>
+            <name>IRadioSim</name>
+            <instance>slot1</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.radio.sim</name>
+        <interface>
+            <name>IRadioSim</name>
+            <instance>slot2</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.radio.voice</name>
+        <interface>
+            <name>IRadioVoice</name>
+            <instance>imsSlot1</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.radio.voice</name>
+        <interface>
+            <name>IRadioVoice</name>
+            <instance>imsSlot2</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.radio.voice</name>
+        <interface>
+            <name>IRadioVoice</name>
+            <instance>slot1</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.radio.voice</name>
+        <interface>
+            <name>IRadioVoice</name>
+            <instance>slot2</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.secure_element</name>
+        <interface>
+            <name>ISecureElement</name>
+            <instance>SIM1</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.secure_element</name>
+        <interface>
+            <name>ISecureElement</name>
+            <instance>SIM2</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.secure_element</name>
+        <interface>
+            <name>ISecureElement</name>
+            <instance>eSE1</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.security.keymint</name>
+        <version>3</version>
+        <interface>
+            <name>IKeyMintDevice</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.security.keymint</name>
+        <version>3</version>
+        <interface>
+            <name>IRemotelyProvisionedComponent</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.security.keymint</name>
+        <version>3</version>
+        <interface>
+            <name>IKeyMintDevice</name>
+            <instance>strongbox</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.security.keymint</name>
+        <version>3</version>
+        <interface>
+            <name>IRemotelyProvisionedComponent</name>
+            <instance>strongbox</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.security.secureclock</name>
+        <interface>
+            <name>ISecureClock</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.security.sharedsecret</name>
+        <interface>
+            <name>ISharedSecret</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.security.sharedsecret</name>
+        <interface>
+            <name>ISharedSecret</name>
+            <instance>strongbox</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.soundtrigger3</name>
+        <interface>
+            <name>ISoundTriggerHw</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.tetheroffload</name>
+        <interface>
+            <name>IOffload</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.thermal</name>
+        <version>2</version>
+        <interface>
+            <name>IThermal</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.usb</name>
+        <interface>
+            <name>IUsb</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.usb.gadget</name>
+        <interface>
+            <name>IUsbGadget</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.vibrator</name>
+        <interface>
+            <name>IVibrator</name>
+            <instance>vibratorfeature</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.weaver</name>
+        <version>2</version>
+        <interface>
+            <name>IWeaver</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>android.se.omapi</name>
+        <interface>
+            <name>ISecureElementService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>com.fingerprints.extension3</name>
+        <interface>
+            <name>IFingerprintSensorTest</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>com.fingerprints.extension3</name>
+        <interface>
+            <name>IFingerprintNavigation</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="native">
+        <name>mapper</name>
+        <version>5.0</version>
+        <interface>
+            <instance>mediatek</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.dolby.dms</name>
+        <interface>
+            <name>IDms</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.aee</name>
+        <interface>
+            <name>IAee</name>
+            <instance>AEE</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.apmonitor</name>
+        <interface>
+            <name>IApmService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.apuware.apusys</name>
+        <version>5</version>
+        <interface>
+            <name>INeuronApusys</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.apuware.utils</name>
+        <interface>
+            <name>IApuwareUtils</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.atci</name>
+        <interface>
+            <name>IAtcid</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.audio</name>
+        <interface>
+            <name>IMtkAudio</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.camera.aovservice</name>
+        <version>3</version>
+        <interface>
+            <name>IAovService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.camera.atms</name>
+        <interface>
+            <name>IATMs</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.camera.bgservice</name>
+        <interface>
+            <name>IBGService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.camera.isphal</name>
+        <interface>
+            <name>IISPModule</name>
+            <instance>internal/1</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.camera.uievent</name>
+        <interface>
+            <name>IUIEvent</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.composer_ext</name>
+        <interface>
+            <name>IComposerExt</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.dmc</name>
+        <interface>
+            <name>IDmcService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.engineermode</name>
+        <version>2</version>
+        <interface>
+            <name>IEmds</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.gnss</name>
+        <version>3</version>
+        <interface>
+            <name>IMtkGnss</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.gnss.batching</name>
+        <interface>
+            <name>IMtkGnssBatching</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.gpuserv</name>
+        <version>2</version>
+        <interface>
+            <name>IGpuService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.lbs</name>
+        <interface>
+            <name>ILbs</name>
+            <instance>AgpsDebugInterface</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.lbs</name>
+        <interface>
+            <name>ILbs</name>
+            <instance>AgpsInterface</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.lbs</name>
+        <interface>
+            <name>ILbs</name>
+            <instance>mtk_agps2framework</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.lbs</name>
+        <interface>
+            <name>ILbs</name>
+            <instance>mtk_agps2gnssAidl</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.lbs</name>
+        <interface>
+            <name>ILbs</name>
+            <instance>mtk_agpsd2debugService</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.lbs</name>
+        <interface>
+            <name>ILbs</name>
+            <instance>mtk_debugService2agpsd</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.lbs</name>
+        <interface>
+            <name>ILbs</name>
+            <instance>mtk_debugService2mnld</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.lbs</name>
+        <interface>
+            <name>ILbs</name>
+            <instance>mtk_framework2agps</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.lbs</name>
+        <interface>
+            <name>ILbs</name>
+            <instance>mtk_gnssAidl2agps</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.lbs</name>
+        <interface>
+            <name>ILbs</name>
+            <instance>mtk_jam2mnl</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.lbs</name>
+        <interface>
+            <name>ILbs</name>
+            <instance>mtk_lbs_log_v2s</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.lbs</name>
+        <interface>
+            <name>ILbs</name>
+            <instance>mtk_lppe_socket_agps</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.lbs</name>
+        <interface>
+            <name>ILbs</name>
+            <instance>mtk_lppe_socket_bt</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.lbs</name>
+        <interface>
+            <name>ILbs</name>
+            <instance>mtk_lppe_socket_ipaddr</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.lbs</name>
+        <interface>
+            <name>ILbs</name>
+            <instance>mtk_lppe_socket_lbs</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.lbs</name>
+        <interface>
+            <name>ILbs</name>
+            <instance>mtk_lppe_socket_network</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.lbs</name>
+        <interface>
+            <name>ILbs</name>
+            <instance>mtk_lppe_socket_sensor</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.lbs</name>
+        <interface>
+            <name>ILbs</name>
+            <instance>mtk_lppe_socket_wlan</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.lbs</name>
+        <interface>
+            <name>ILbs</name>
+            <instance>mtk_meta2mnld</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.lbs</name>
+        <interface>
+            <name>ILbs</name>
+            <instance>mtk_mnl2jam</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.lbs</name>
+        <interface>
+            <name>ILbs</name>
+            <instance>mtk_mnld2debugService</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.lbs</name>
+        <interface>
+            <name>ILbs</name>
+            <instance>mtk_mnld2mtklogger</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.lbs</name>
+        <interface>
+            <name>ILbs</name>
+            <instance>mtk_mnld2nlputils</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.lbs</name>
+        <interface>
+            <name>ILbs</name>
+            <instance>mtk_mtklogger2mnld</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.log</name>
+        <interface>
+            <name>ILog</name>
+            <instance>ATMWiFiHidlServer</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.log</name>
+        <interface>
+            <name>ILog</name>
+            <instance>ConnsysFWHidlServer</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.log</name>
+        <interface>
+            <name>ILog</name>
+            <instance>LoggerHidlServer</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.log</name>
+        <interface>
+            <name>ILog</name>
+            <instance>MobileLogHidlServer</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.log</name>
+        <interface>
+            <name>ILog</name>
+            <instance>ModemLogHidlServer</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.mdmonitor</name>
+        <interface>
+            <name>IMDMonitorService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.mmagent</name>
+        <interface>
+            <name>IMMAgent</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.mmlpq</name>
+        <version>3</version>
+        <interface>
+            <name>IMmlpq</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.mms</name>
+        <interface>
+            <name>IMms</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.mtkpower</name>
+        <version>2</version>
+        <interface>
+            <name>IMtkPowerService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.mtkpower_applist</name>
+        <version>2</version>
+        <interface>
+            <name>IMtkpower_applist</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.mtkradioex.data</name>
+        <interface>
+            <name>IMtkRadioExData</name>
+            <instance>slot1</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.mtkradioex.data</name>
+        <interface>
+            <name>IMtkRadioExData</name>
+            <instance>slot2</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.mtkradioex.dch</name>
+        <interface>
+            <name>IMtkRadioExDc</name>
+            <instance>slot1</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.mtkradioex.dch</name>
+        <interface>
+            <name>IMtkRadioExDc</name>
+            <instance>slot2</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.mtkradioex.ims</name>
+        <interface>
+            <name>IMtkRadioExIms</name>
+            <instance>slot1</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.mtkradioex.ims</name>
+        <interface>
+            <name>IMtkRadioExIms</name>
+            <instance>slot2</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.mtkradioex.messaging</name>
+        <interface>
+            <name>IMtkRadioExMessaging</name>
+            <instance>slot1</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.mtkradioex.messaging</name>
+        <interface>
+            <name>IMtkRadioExMessaging</name>
+            <instance>slot2</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.mtkradioex.modem</name>
+        <interface>
+            <name>IMtkRadioExModem</name>
+            <instance>slot1</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.mtkradioex.modem</name>
+        <interface>
+            <name>IMtkRadioExModem</name>
+            <instance>slot2</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.mtkradioex.network</name>
+        <interface>
+            <name>IMtkRadioExNetwork</name>
+            <instance>slot1</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.mtkradioex.network</name>
+        <interface>
+            <name>IMtkRadioExNetwork</name>
+            <instance>slot2</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.mtkradioex.rcs</name>
+        <interface>
+            <name>IMtkRadioExRcs</name>
+            <instance>slot1</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.mtkradioex.rcs</name>
+        <interface>
+            <name>IMtkRadioExRcs</name>
+            <instance>slot2</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.mtkradioex.sim</name>
+        <interface>
+            <name>IMtkRadioExSim</name>
+            <instance>slot1</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.mtkradioex.sim</name>
+        <interface>
+            <name>IMtkRadioExSim</name>
+            <instance>slot2</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.mtkradioex.voice</name>
+        <interface>
+            <name>IMtkRadioExVoice</name>
+            <instance>slot1</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.mtkradioex.voice</name>
+        <interface>
+            <name>IMtkRadioExVoice</name>
+            <instance>slot2</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.netdagent</name>
+        <interface>
+            <name>INetdagents</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.nps.nos.fastswitch</name>
+        <interface>
+            <name>INativeFastSwitch</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.nvram</name>
+        <interface>
+            <name>INvram</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.nwk_opt_new</name>
+        <interface>
+            <name>INwkOptNew</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.pq_aidl</name>
+        <interface>
+            <name>IPictureQuality_AIDL</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.videotelephony</name>
+        <interface>
+            <name>IVideoTelephony</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.nxp.nxpnfc_aidl</name>
+        <interface>
+            <name>INxpNfc</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.qti.sla.service</name>
+        <interface>
+            <name>ISlaAIDLService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.xiaomi.aidl.minet</name>
+        <interface>
+            <name>IMiNetAIDLService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.xiaomi.aidl.miwill</name>
+        <interface>
+            <name>IMiwillAIDLService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.xiaomi.hardware.aidl.mtdservice</name>
+        <interface>
+            <name>IMTService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.xiaomi.hardware.aidlbgservice</name>
+        <interface>
+            <name>IBGService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.xiaomi.hardware.batteryantiaging</name>
+        <interface>
+            <name>IBatteryAntiAging</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.xiaomi.hardware.camera.synthetic</name>
+        <interface>
+            <name>IVirtualCameraRegistrar</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.xiaomi.hardware.cld_aidl</name>
+        <interface>
+            <name>ICld</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.xiaomi.hardware.display.mihwcextension</name>
+        <interface>
+            <name>IMiHwcExtension</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.xiaomi.hardware.displayfeature_aidl</name>
+        <version>2</version>
+        <interface>
+            <name>IDisplayFeature</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.xiaomi.hardware.fbo</name>
+        <interface>
+            <name>IFbo</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.xiaomi.hardware.fingerprintextension</name>
+        <interface>
+            <name>IXiaomiFingerprint</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.xiaomi.hardware.framemaster</name>
+        <interface>
+            <name>IFrameMaster</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.xiaomi.hardware.fx.tunnel</name>
+        <interface>
+            <name>IMiFxTunnel</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.xiaomi.hardware.idmanager</name>
+        <interface>
+            <name>IIdManagerService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.xiaomi.hardware.idmanager</name>
+        <interface>
+            <name>ISecidService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.xiaomi.hardware.mediaeventgatherservice</name>
+        <interface>
+            <name>IMediaGather</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.xiaomi.hardware.micharge</name>
+        <version>2</version>
+        <interface>
+            <name>IMiCharge</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.xiaomi.hardware.mimd2</name>
+        <interface>
+            <name>IMimd</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.xiaomi.hardware.miperf2</name>
+        <interface>
+            <name>IMiPerf</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.xiaomi.hardware.misauth</name>
+        <interface>
+            <name>IMiSharedAuth</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.xiaomi.hardware.misys.common</name>
+        <version>3</version>
+        <interface>
+            <name>IHypSysIntl</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.xiaomi.hardware.misys.common</name>
+        <version>3</version>
+        <interface>
+            <name>IMiSysImpl</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.xiaomi.hardware.misys.core</name>
+        <interface>
+            <name>IMiSysCore</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.xiaomi.hardware.miteetui</name>
+        <interface>
+            <name>IMiTuiService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.xiaomi.hardware.mitrustedui</name>
+        <interface>
+            <name>IMiTrustedUIService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.xiaomi.hardware.mlipay</name>
+        <interface>
+            <name>IMlipayService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.xiaomi.hardware.mpayjoyca</name>
+        <interface>
+            <name>IPayjoyService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.xiaomi.hardware.mrm</name>
+        <interface>
+            <name>IMrm</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.xiaomi.hardware.mrm</name>
+        <interface>
+            <name>IMiCertificate</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.xiaomi.hardware.mrm</name>
+        <interface>
+            <name>IMrmRemoteAuth</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.xiaomi.hardware.mtkblackbox</name>
+        <version>2</version>
+        <interface>
+            <name>IMtkblackboxImpl</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.xiaomi.hardware.seaaudio</name>
+        <interface>
+            <name>ISeaAudio</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.xiaomi.hardware.soterservice</name>
+        <interface>
+            <name>ISoter</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.xiaomi.hardware.swap</name>
+        <interface>
+            <name>ISwap</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.xiaomi.hardware.videoservice</name>
+        <version>5</version>
+        <interface>
+            <name>IVideoService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.xiaomi.hw.touchfeature</name>
+        <interface>
+            <name>ITouchFeature</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.xiaomi.sensor.citsensorservice</name>
+        <interface>
+            <name>ICitSensorService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+</compatibility-matrix>
