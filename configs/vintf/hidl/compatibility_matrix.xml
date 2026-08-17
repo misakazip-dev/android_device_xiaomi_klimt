@@ -1,13 +1,31 @@
-<compatibility-matrix version="1.0" type="device">
-    <hal format="hidl" optional="false">
-        <name>vendor.mediatek.hardware.aee</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <version>1.1</version>
+<!--
+    Input:
+        device/mediatek/vendor/common/compatibility_matrix.xml
+-->
+<compatibility-matrix version="8.0" type="device">
+    <hal format="aidl" optional="false">
+        <name>android.frameworks.sensorservice</name>
         <interface>
-            <name>IAee</name>
-            <instance>AEE</instance>
+            <name>ISensorManager</name>
             <instance>default</instance>
         </interface>
     </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.mediatek.framework.mtksf_ext</name>
+        <version>2</version>
+        <interface>
+            <name>IMtkSF_ext</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.mediatek.hardware.mbrainj</name>
+        <interface>
+            <name>IMBrainJava</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <system-sdk>
+        <version>35</version>
+    </system-sdk>
 </compatibility-matrix>

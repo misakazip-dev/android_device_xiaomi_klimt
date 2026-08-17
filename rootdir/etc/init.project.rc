@@ -11,9 +11,16 @@ service klimt_bootdebug /vendor/bin/init.bootdebug.sh
     user root
     group root system log
     disabled
+    oneshot
+
+on early-init
+    start klimt_bootdebug
 
 on post-fs
     start klimt_bootdebug
+
+on property:sys.boot_completed=1
+    stop klimt_bootdebug
 
 # Modem
 # import /vendor/etc/init/hw/init.modem_factory_err.rc

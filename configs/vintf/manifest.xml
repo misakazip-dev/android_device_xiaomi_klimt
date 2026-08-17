@@ -1,29 +1,34 @@
-<manifest version="8.0" type="device" target-level="7">
+<manifest version="8.0" type="device" target-level="202404">
     <hal format="aidl">
         <name>android.hardware.nfc</name>
         <fqname>INfc/default</fqname>
     </hal>
     <hal format="aidl">
         <name>android.hardware.radio.config</name>
+        <version>3</version>
         <fqname>IRadioConfig/default</fqname>
     </hal>
     <hal format="aidl">
         <name>android.hardware.radio.data</name>
+        <version>3</version>
         <fqname>IRadioData/slot1</fqname>
         <fqname>IRadioData/slot2</fqname>
     </hal>
     <hal format="aidl">
         <name>android.hardware.radio.ims</name>
+        <version>2</version>
         <fqname>IRadioIms/slot1</fqname>
         <fqname>IRadioIms/slot2</fqname>
     </hal>
     <hal format="aidl">
         <name>android.hardware.radio.messaging</name>
+        <version>3</version>
         <fqname>IRadioMessaging/slot1</fqname>
         <fqname>IRadioMessaging/slot2</fqname>
     </hal>
     <hal format="aidl">
         <name>android.hardware.radio.modem</name>
+        <version>3</version>
         <fqname>IRadioModem/imsSlot1</fqname>
         <fqname>IRadioModem/imsSlot2</fqname>
         <fqname>IRadioModem/se1</fqname>
@@ -33,6 +38,7 @@
     </hal>
     <hal format="aidl">
         <name>android.hardware.radio.network</name>
+        <version>3</version>
         <fqname>IRadioNetwork/imsSlot1</fqname>
         <fqname>IRadioNetwork/imsSlot2</fqname>
         <fqname>IRadioNetwork/slot1</fqname>
@@ -45,6 +51,7 @@
     </hal>
     <hal format="aidl">
         <name>android.hardware.radio.sim</name>
+        <version>3</version>
         <fqname>IRadioSim/imsSlot1</fqname>
         <fqname>IRadioSim/imsSlot2</fqname>
         <fqname>IRadioSim/se1</fqname>
@@ -54,6 +61,7 @@
     </hal>
     <hal format="aidl">
         <name>android.hardware.radio.voice</name>
+        <version>3</version>
         <fqname>IRadioVoice/imsSlot1</fqname>
         <fqname>IRadioVoice/imsSlot2</fqname>
         <fqname>IRadioVoice/slot1</fqname>
@@ -67,6 +75,7 @@
     </hal>
     <hal format="aidl">
         <name>android.hardware.soundtrigger3</name>
+        <version>2</version>
         <fqname>ISoundTriggerHw/default</fqname>
     </hal>
     <hal format="aidl">
@@ -127,16 +136,19 @@
     </hal>
     <hal format="aidl">
         <name>vendor.mediatek.hardware.mtkradioex.data</name>
+        <version>3</version>
         <fqname>IMtkRadioExData/slot1</fqname>
         <fqname>IMtkRadioExData/slot2</fqname>
     </hal>
     <hal format="aidl">
         <name>vendor.mediatek.hardware.mtkradioex.dch</name>
+        <version>2</version>
         <fqname>IMtkRadioExDc/slot1</fqname>
         <fqname>IMtkRadioExDc/slot2</fqname>
     </hal>
     <hal format="aidl">
         <name>vendor.mediatek.hardware.mtkradioex.ims</name>
+        <version>2</version>
         <fqname>IMtkRadioExIms/slot1</fqname>
         <fqname>IMtkRadioExIms/slot2</fqname>
     </hal>
@@ -147,6 +159,7 @@
     </hal>
     <hal format="aidl">
         <name>vendor.mediatek.hardware.mtkradioex.modem</name>
+        <version>3</version>
         <fqname>IMtkRadioExModem/slot1</fqname>
         <fqname>IMtkRadioExModem/slot2</fqname>
     </hal>
@@ -157,11 +170,13 @@
     </hal>
     <hal format="aidl">
         <name>vendor.mediatek.hardware.mtkradioex.rcs</name>
+        <version>2</version>
         <fqname>IMtkRadioExRcs/slot1</fqname>
         <fqname>IMtkRadioExRcs/slot2</fqname>
     </hal>
     <hal format="aidl">
         <name>vendor.mediatek.hardware.mtkradioex.sim</name>
+        <version>2</version>
         <fqname>IMtkRadioExSim/slot1</fqname>
         <fqname>IMtkRadioExSim/slot2</fqname>
     </hal>
@@ -180,6 +195,7 @@
     </hal>
     <hal format="aidl">
         <name>vendor.mediatek.hardware.pq_aidl</name>
+        <version>7</version>
         <fqname>IPictureQuality_AIDL/default</fqname>
     </hal>
     <hal format="aidl">
@@ -202,4 +218,7 @@
         <name>vendor.xiaomi.aidl.miwill</name>
         <fqname>IMiwillAIDLService/default</fqname>
     </hal>
+    <sepolicy>
+        <version>202404</version>
+    </sepolicy>
 </manifest>
