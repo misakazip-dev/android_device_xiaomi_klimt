@@ -72,6 +72,8 @@ BOARD_VENDOR_RAMDISK_KERNEL_MODULES := \
 BOARD_DO_NOT_STRIP_VENDOR_RAMDISK_MODULES := true
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := \
     $(strip $(shell cat $(DEVICE_PATH)/modules.load.vendor_boot))
+BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := \
+    $(strip $(shell cat $(DEVICE_PATH)/modules.load.recovery))
 
 # Modules loaded after vendor_dlkm is mounted
 BOARD_VENDOR_KERNEL_MODULES := \
