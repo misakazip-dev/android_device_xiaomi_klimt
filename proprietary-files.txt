@@ -49,7 +49,7 @@ vendor/lib64/libaudioprimarydevicehalifclient.so
 vendor/lib64/libdlbpreg.so
 vendor/lib64/libdmshal.so
 vendor/lib64/libmis6.so
-vendor/lib64/libmisoundfx_mtk_aidl_ext.so
+vendor/lib64/libmisoundfx_mtk_aidl_ext.so;SYMLINK=vendor/lib64/soundfx/libmisoundfx_mtk_aidl.so
 vendor/lib64/libmisoundsa.so
 vendor/lib64/libspatializerparamstorage.so
 vendor/lib64/libswspatializer_mtk_aidl_ext.so
@@ -1638,7 +1638,7 @@ system_ext/lib64/vendor.mediatek.hardware.pq@2.7.so;MODULE_SUFFIX=_system_ext
 system_ext/lib64/vendor.mediatek.hardware.pq@2.8.so;MODULE_SUFFIX=_system_ext
 system_ext/lib64/vendor.mediatek.hardware.pq@2.9.so;MODULE_SUFFIX=_system_ext
 system_ext/lib64/vendor.xiaomi.hardware.displayfeature@1.0.so;MODULE_SUFFIX=_system_ext
-vendor/bin/hw/mt6991/android.hardware.graphics.allocator-V2-service-mediatek.mt6991;SYMLINK=vendor/bin/hw/android.hardware.graphics.allocator-V2-service-mediatek
+vendor/bin/hw/mt6991/android.hardware.graphics.allocator-V2-service-mediatek.mt6991;SYMLINK=vendor/bin/hw/android.hardware.graphics.allocator-V2-service-mediatek,vendor/bin/hw/android.hardware.graphics.allocator-V2-service-mediatek.mt6991
 vendor/bin/hw/android.hardware.graphics.composer@3.2-service
 vendor/bin/hw/android.hardware.graphics.composer@3.3-service
 vendor/bin/hw/android.hardware.memtrack-service.mediatek

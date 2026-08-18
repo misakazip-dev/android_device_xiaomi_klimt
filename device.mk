@@ -173,7 +173,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     init.bootdebug.sh \
     init.insmod.sh \
-    init.pstore_blk.sh
+    init.pstore_blk.sh \
+    vendor_mdota_symlink
 
 PRODUCT_PACKAGES += \
     fstab.mt6991 \
