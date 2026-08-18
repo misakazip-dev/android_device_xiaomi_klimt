@@ -2806,7 +2806,6 @@ vendor/etc/init/hypsys_vendor.rc
 vendor/etc/init/init.bip_ap.rc
 vendor/etc/init/init.btmtk_uart.rc
 vendor/etc/init/init.connfem.rc
-vendor/etc/init/init.factory.rc
 vendor/etc/init/init.fpsgo.rc
 vendor/etc/init/init.frs.rc
 vendor/etc/init/init.gps_pwr.rc
