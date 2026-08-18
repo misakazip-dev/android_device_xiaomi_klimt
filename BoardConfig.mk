@@ -148,6 +148,8 @@ VENDOR_SECURITY_PATCH := 2026-02-01
 BOOT_SECURITY_PATCH := $(VENDOR_SECURITY_PATCH)
 
 # SELinux
+include device/mediatek/sepolicy_vndr/SEPolicy.mk
+
 BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
 
 # Verified Boot
