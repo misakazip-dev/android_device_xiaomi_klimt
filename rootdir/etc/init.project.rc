@@ -21,7 +21,15 @@ service klimt_felica /vendor/bin/init.felica.sh
     disabled
     oneshot
 
+service klimt_esim /vendor/bin/init.esim.sh
+    class late_start
+    user system
+    group system
+    disabled
+    oneshot
+
 on property:sys.boot_completed=1
+    start klimt_esim
     start klimt_felica
 
 # Modem

@@ -6,6 +6,12 @@
 
 // Init scripts
 sh_binary {
+    name: "init.esim.sh",
+    src: "bin/init.esim.sh",
+    vendor: true,
+}
+
+sh_binary {
     name: "init.felica.sh",
     src: "bin/init.felica.sh",
     vendor: true,

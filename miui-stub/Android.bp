@@ -1,0 +1,16 @@
+//
+// SPDX-FileCopyrightText: WitAqua
+// SPDX-FileCopyrightText: The LineageOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+// Minimal stand ins for the MIUI framework classes the stock LPA links against.
+java_library {
+    name: "miui-framework-stub",
+    installable: true,
+    sdk_version: "core_platform",
+    libs: [
+        "framework",
+    ],
+    srcs: ["java/**/*.java"],
+}

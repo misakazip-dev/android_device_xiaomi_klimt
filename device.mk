@@ -59,6 +59,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/permissions/privapp-permissions-com.miui.euicc.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-com.miui.euicc.xml
 
+PRODUCT_BOOT_JARS_EXTRA += \
+    miui-framework-stub
+
+PRODUCT_PACKAGES += \
+    miui-framework-stub
+
 # fastbootd
 PRODUCT_PACKAGES += \
     android.hardware.fastboot-service.example_recovery \
@@ -116,6 +122,7 @@ PRODUCT_COPY_FILES += \
     device/xiaomi/klimt/rootdir/etc/init.recovery.mt6991.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.mt6991.rc
 
 PRODUCT_PACKAGES += \
+    init.esim.sh \
     init.felica.sh \
     init.insmod.sh \
     init.pstore_blk.sh \
