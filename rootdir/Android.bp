@@ -6,12 +6,6 @@
 
 // Init scripts
 sh_binary {
-    name: "init.bootdebug.sh",
-    src: "bin/init.bootdebug.sh",
-    vendor: true,
-}
-
-sh_binary {
     name: "init.felica.sh",
     src: "bin/init.felica.sh",
     vendor: true,

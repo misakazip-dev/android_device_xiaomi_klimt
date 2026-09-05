@@ -6,24 +6,13 @@ import /vendor/etc/init/hw/init.slt.rc
 
 # MTK project .rc configure
 
-service klimt_bootdebug /vendor/bin/init.bootdebug.sh
-    class core
-    user root
-    group root system log
-    disabled
-    oneshot
-
 on early-init
-    start klimt_bootdebug
     # Stock ships no generic rild, only mtkfusionrild. The AOSP rild that
     # telephony_vendor.mk pulls into PRODUCT_PACKAGES loads libmtk-ril.so,
     # null derefs in RmcRadioRequestHandler::queryMainProtocol() every 5s, and
     # fights mtkfusionrild for the same AIDL service name. stop sets
     # SVC_DISABLED, so class_start main leaves it alone.
     stop vendor.ril-daemon
-
-on post-fs
-    start klimt_bootdebug
 
 service klimt_felica /vendor/bin/init.felica.sh
     class late_start
@@ -33,7 +22,6 @@ service klimt_felica /vendor/bin/init.felica.sh
     oneshot
 
 on property:sys.boot_completed=1
-    stop klimt_bootdebug
     start klimt_felica
 
 # Modem

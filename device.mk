@@ -116,7 +116,6 @@ PRODUCT_COPY_FILES += \
     device/xiaomi/klimt/rootdir/etc/init.recovery.mt6991.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.mt6991.rc
 
 PRODUCT_PACKAGES += \
-    init.bootdebug.sh \
     init.felica.sh \
     init.insmod.sh \
     init.pstore_blk.sh \
