@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: WitAqua
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- The panel reports 60, 90, 120 and 144 Hz and prefers 144. AOSP defaults
+         config_defaultRefreshRate to 60, which votes a render frame rate cap of
+         60 Hz and pins the display to the slowest mode. Drop the cap and let the
+         peak setting decide instead. -->
+    <integer name="config_defaultRefreshRate">0</integer>
+    <integer name="config_defaultPeakRefreshRate">144</integer>
+</resources>
