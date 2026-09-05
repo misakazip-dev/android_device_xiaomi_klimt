@@ -1734,7 +1734,7 @@ vendor/bin/hw/android.hardware.dumpstate-service.xiaomi
 vendor/lib64/vendor.xiaomi.hardware.blackbox-V1-ndk.so
 
 # eSIM
-mi_ext/product/priv-app/MIUIEsimLPA/MIUIEsimLPA.apk:product/priv-app/MIUIEsimLPA/MIUIEsimLPA.apk;PRESIGNED
+mi_ext/product/priv-app/MIUIEsimLPA/MIUIEsimLPA.apk:product/priv-app/MIUIEsimLPA/MIUIEsimLPA.apk;PRESIGNED;SKIPAPKCHECKS
 
 # Face
 odm/etc/vintf/manifest/android.hardware.biometrics.face-v4.xml
