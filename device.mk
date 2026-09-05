@@ -94,9 +94,9 @@ PRODUCT_ENABLE_UFFD_GC := true
 
 # Keymint
 PRODUCT_PACKAGES += \
-    libkeymaster4support \
-    libkeymint_remote_prov_support \
-    libkeymint_support
+    libkeymaster4support.vendor \
+    libkeymint_remote_prov_support.vendor \
+    libkeymint_support.vendor
 
 # NFC
 PRODUCT_COPY_FILES += \
