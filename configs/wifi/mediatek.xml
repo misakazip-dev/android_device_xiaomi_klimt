@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+     SPDX-FileCopyrightText: WitAqua
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<WifiVendorHal version="1">
+    <path>/vendor/lib64/libwifi-hal-mtk-shim.so</path>
+    <primary>1</primary>
+</WifiVendorHal>

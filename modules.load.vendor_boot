@@ -246,3 +246,7 @@ chipreg.ko
 mtdblock.ko
 mtd.ko
 crash_module.ko
+mtk_mbraink_bridge.ko
+rps_perf.ko
+mtk_mdpm.ko
+load_track.ko

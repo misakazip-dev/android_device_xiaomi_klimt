@@ -218,7 +218,4 @@
         <name>vendor.xiaomi.aidl.miwill</name>
         <fqname>IMiwillAIDLService/default</fqname>
     </hal>
-    <sepolicy>
-        <version>202404</version>
-    </sepolicy>
 </manifest>

@@ -1,0 +1,17 @@
+//
+// SPDX-FileCopyrightText: WitAqua
+// SPDX-FileCopyrightText: The LineageOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+cc_library_shared {
+    name: "libwifi-hal-mtk-shim",
+    owner: "xiaomi",
+    vendor: true,
+    srcs: ["wifi_hal_shim.cpp"],
+    header_libs: ["wifi_legacy_headers"],
+    cflags: [
+        "-Wall",
+        "-Werror",
+    ],
+}

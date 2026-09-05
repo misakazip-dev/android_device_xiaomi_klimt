@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: WitAqua
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Rear camera 0 is a logical multi camera over physical ids 2, 3 and 4,
+         with a zoom ratio range of 0.6 to 10. Aperture only offers a lens
+         button per entry listed here, so without this it stays on 1x and the
+         other two sensors are never selected. Triples are camera id, the label
+         to show and the zoom ratio to request.
+
+         Ratios below are the sensors' native ones, from
+         (focal / sensor width) relative to the main camera:
+           id 2 main        6.45mm  / 9.806mm = 0.658 -> 1.0x
+           id 3 ultra wide  1.906mm / 4.480mm = 0.425 -> 0.65x, floored to the
+                                                        HAL minimum of 0.6
+           id 4 telephoto  17.27mm  / 5.242mm = 3.294 -> 5.0x -->
+    <string-array name="config_logicalZoomRatios">
+        <item>0</item> <item>0.6</item> <item>0.6</item>
+        <item>0</item> <item>5.0</item> <item>5.0</item>
+    </string-array>
+</resources>

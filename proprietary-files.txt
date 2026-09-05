@@ -1,4 +1,4 @@
-# Unpinned blobs from missi-user 16 BP2A.250605.031.A3 16OS3.1.260420.011757416.MTPEGL.S release-keys
+# Unpinned blobs from klimt_global-user 15 AP3A.240905.015.A2 OS3.0.335.0.XOSMIXM release-keys
 
 # ADSP modules
 odm/lib/rfsa/adsp/libaisupernight_ellc_cdsp_skel.so
@@ -9,7 +9,6 @@ system_ext/etc/init/android.hardware.audio.parameter_parser.service.rc
 vendor/bin/hw/android.hardware.audio.service-aidl.mediatek
 vendor/etc/init/android.hardware.audio.service-aidl.mediatek.rc
 vendor/etc/vintf/manifest/android.hardware.audio.effect.service-aidl.xml
-vendor/etc/vintf/manifest/android.hardware.audio.service-aidl.xml
 vendor/lib64/android.hardware.audio.core-impl-mediatek.so
 vendor/lib64/android.hardware.bluetooth.audio-impl-mediatek.so
 vendor/lib64/hw/android.hardware.audio.effect.aidl-impl-mediatek.so
@@ -31,11 +30,22 @@ vendor/lib64/libmispowerop.so
 vendor/lib64/libxlog.so
 vendor/lib64/vendor.mediatek.hardware.audio-V1-ndk.so
 
+# Audio (frozen AIDL libs the A15 blobs were built against)
+vendor/lib64/android.hardware.audio.common-V3-ndk.so:vendor/lib64/android.hardware.audio.common_v3_vendor.so
+vendor/lib64/android.hardware.audio.core-V2-ndk.so:vendor/lib64/android.hardware.audio.core_v2_vendor.so
+vendor/lib64/android.hardware.audio.core.sounddose-V2-ndk.so:vendor/lib64/android.hardware.audio.core.sounddose_v2_vendor.so
+vendor/lib64/android.hardware.audio.effect-V2-ndk.so:vendor/lib64/android.hardware.audio.effect_v2_vendor.so
+vendor/lib64/android.hardware.bluetooth.audio-V4-ndk.so:vendor/lib64/android.hardware.bluetooth.audio_v4_vendor.so
+vendor/lib64/android.media.audio.common.types-V3-ndk.so:vendor/lib64/android.media.audio.common.types_v3_vendor.so
+vendor/lib64/android.media.audio.common.types-V5-ndk.so:vendor/lib64/android.media.audio.common.types_v5_vendor.so
+vendor/lib64/libaudio_aidl_conversion_common_ndk.so:vendor/lib64/libaudio_aidl_conversion_common_ndk_vendor.so
+
 # Audio (FX modules)
 vendor/lib64/soundfx/libaecsw_mtk.so
 vendor/lib64/soundfx/libagc1sw_mtk.so
 vendor/lib64/soundfx/libagc2sw_mtk.so
 vendor/lib64/soundfx/libdlbvolaidl.so
+vendor/lib64/soundfx/libenvreverbsw.so
 vendor/lib64/soundfx/libdynproc.so
 vendor/lib64/soundfx/libhapticgenerator.so
 vendor/lib64/soundfx/libhwdapaidl.so
@@ -53,42 +63,6 @@ vendor/lib64/libmisoundfx_mtk_aidl_ext.so;SYMLINK=vendor/lib64/soundfx/libmisoun
 vendor/lib64/libmisoundsa.so
 vendor/lib64/libspatializerparamstorage.so
 vendor/lib64/libswspatializer_mtk_aidl_ext.so
-
-# Audio configs
-odm/etc/audio/misoundsa_spk_config.bin
-system_ext/etc/a2dp_audio_policy_configuration.xml
-system_ext/etc/a2dp_in_audio_policy_configuration.xml
-system_ext/etc/audio_policy_configuration.xml
-system_ext/etc/audio_policy_configuration_bluetooth_legacy_hal.xml
-system_ext/etc/audio_policy_configuration_stub.xml
-system_ext/etc/audio_policy_engine_configuration.xml
-system_ext/etc/audio_policy_engine_default_stream_volumes.xml
-system_ext/etc/audio_policy_engine_product_strategies.xml
-system_ext/etc/audio_policy_engine_stream_volumes.xml
-system_ext/etc/audio_policy_volumes.xml
-system_ext/etc/bluetooth_audio_policy_configuration.xml
-system_ext/etc/default_volume_tables.xml
-system_ext/etc/hearing_aid_audio_policy_configuration.xml
-system_ext/etc/r_submix_audio_policy_configuration.xml
-system_ext/etc/usb_audio_policy_configuration.xml
-vendor/etc/a2dp_audio_policy_configuration.xml
-vendor/etc/a2dp_in_audio_policy_configuration.xml
-vendor/etc/audio_effects.xml
-vendor/etc/audio_effects_config.xml
-vendor/etc/audio_policy_configuration.xml
-vendor/etc/audio_policy_configuration_a2dp_offload_disabled.xml
-vendor/etc/audio_policy_configuration_a2dp_offload_disabled_cg_enabled.xml
-vendor/etc/audio_policy_configuration_a2dp_offload_enable_cg_enable.xml
-vendor/etc/audio_policy_configuration_a2dp_offload_enable_cg_enable_cts.xml
-vendor/etc/audio_policy_configuration_bluetooth_legacy_hal.xml
-vendor/etc/audio_policy_volumes.xml
-vendor/etc/bluetooth_a2dp_offload_ums_offload_audio_policy_configuration.xml
-vendor/etc/bluetooth_audio_policy_configuration.xml
-vendor/etc/bluetooth_offload_audio_policy_configuration.xml
-vendor/etc/bluetooth_ums_offload_audio_policy_configuration.xml
-vendor/etc/default_volume_tables.xml
-vendor/etc/r_submix_audio_policy_configuration.xml
-vendor/etc/usb_audio_policy_configuration.xml
 
 # Audio calibration
 vendor/etc/audio_param/AudioParamOptions_mgvi.xml
@@ -223,12 +197,49 @@ vendor/etc/audio_param/mis_head.bin
 vendor/etc/audio_param/mis_spk.bin
 vendor/etc/audio_param/mis_spk_alt1.bin
 
+# Audio configs
+odm/etc/audio/misoundsa_spk_config.bin
+system_ext/etc/a2dp_audio_policy_configuration.xml
+system_ext/etc/a2dp_in_audio_policy_configuration.xml
+system_ext/etc/audio_policy_configuration.xml
+system_ext/etc/audio_policy_configuration_bluetooth_legacy_hal.xml
+system_ext/etc/audio_policy_configuration_stub.xml
+system_ext/etc/audio_policy_engine_configuration.xml
+system_ext/etc/audio_policy_engine_default_stream_volumes.xml
+system_ext/etc/audio_policy_engine_product_strategies.xml
+system_ext/etc/audio_policy_engine_stream_volumes.xml
+system_ext/etc/audio_policy_volumes.xml
+system_ext/etc/bluetooth_audio_policy_configuration.xml
+system_ext/etc/default_volume_tables.xml
+system_ext/etc/hearing_aid_audio_policy_configuration.xml
+system_ext/etc/r_submix_audio_policy_configuration.xml
+system_ext/etc/usb_audio_policy_configuration.xml
+vendor/etc/a2dp_audio_policy_configuration.xml
+vendor/etc/a2dp_in_audio_policy_configuration.xml
+vendor/etc/audio_effects.xml
+vendor/etc/audio_effects_config.xml
+vendor/etc/audio_policy_configuration.xml
+vendor/etc/audio_policy_configuration_a2dp_offload_disabled.xml
+vendor/etc/audio_policy_configuration_a2dp_offload_disabled_cg_enabled.xml
+vendor/etc/audio_policy_configuration_a2dp_offload_enable_cg_enable.xml
+vendor/etc/audio_policy_configuration_a2dp_offload_enable_cg_enable_cts.xml
+vendor/etc/audio_policy_configuration_bluetooth_legacy_hal.xml
+vendor/etc/audio_policy_volumes.xml
+vendor/etc/bluetooth_a2dp_offload_ums_offload_audio_policy_configuration.xml
+vendor/etc/bluetooth_audio_policy_configuration.xml
+vendor/etc/bluetooth_offload_audio_policy_configuration.xml
+vendor/etc/bluetooth_ums_offload_audio_policy_configuration.xml
+vendor/etc/default_volume_tables.xml
+vendor/etc/r_submix_audio_policy_configuration.xml
+vendor/etc/usb_audio_policy_configuration.xml
+
 # Bluetooth
 vendor/bin/hw/android.hardware.bluetooth-service-mediatek
 vendor/bin/hw/android.hardware.bluetooth.finder-service-mediatek
 vendor/etc/init/android.hardware.bluetooth-service-mediatek.rc
 vendor/etc/vintf/manifest/android.hardware.bluetooth-service-mediatek.xml
-vendor/etc/vintf/manifest/bluetooth-finder-service-default.xml
+# Renamed: AOSP installs a fragment with the same name
+vendor/etc/vintf/manifest/bluetooth-finder-service-default.xml:vendor/etc/vintf/manifest/bluetooth-finder-service-mediatek.xml
 vendor/lib64/libbluetooth_mtk.so
 vendor/lib64/libbt-vendor.so
 vendor/lib64/libconnfem.so
@@ -348,7 +359,6 @@ odm/lib64/libarcsoft_turbo_hdr_grf.so
 odm/lib64/libarcsoft_turbo_hdr_raw.so
 odm/lib64/libarcsoft_turbo_hdr_raw_portrait.so
 odm/lib64/libarcsoft_turbo_sr_detection.so
-odm/lib64/libcamera_scene.so
 odm/lib64/libcom.xiaomi.metautils.so
 odm/lib64/libdeflicker.so
 odm/lib64/libdlrmsc.so
@@ -1548,12 +1558,6 @@ vendor/etc/camera/mimotion_f5w.bin
 vendor/firmware/lib3a.ccu
 vendor/firmware/lib3a.ccu_dummy
 
-# Context hub
-vendor/etc/init/android.hardware.contexthub-service.tinysys.rc
-vendor/etc/vintf/manifest/android.hardware.contexthub-service.tinysys.xml
-vendor/lib64/chre_atoms_log.so
-vendor/lib64/chremetrics-cpp.so
-
 # Display
 odm/lib64/hw/displayfeature.default.so
 odm/lib64/libMiDispDevManager.so
@@ -1729,6 +1733,9 @@ vendor/lib64/libteecli.so
 vendor/bin/hw/android.hardware.dumpstate-service.xiaomi
 vendor/lib64/vendor.xiaomi.hardware.blackbox-V1-ndk.so
 
+# eSIM
+mi_ext/product/priv-app/MIUIEsimLPA/MIUIEsimLPA.apk:product/priv-app/MIUIEsimLPA/MIUIEsimLPA.apk;PRESIGNED
+
 # Face
 odm/etc/vintf/manifest/android.hardware.biometrics.face-v4.xml
 
@@ -1752,7 +1759,6 @@ vendor/bin/mnld
 vendor/bin/mtk_agpsd
 vendor/etc/init/android.hardware.gnss-service.mediatek.rc
 vendor/etc/init/mtk_agpsd_p.rc
-vendor/etc/vintf/manifest/gnss-default.xml
 vendor/lib64/hw/android.hardware.gnss-impl-mediatek.so
 vendor/lib64/hw/gps.default.so
 vendor/lib64/hw/vendor.mediatek.hardware.gnss-impl.so
@@ -1819,11 +1825,13 @@ system_ext/lib/libgralloc_extra_sys.so
 system_ext/lib/libsf_cpupolicy.so
 system_ext/lib/libstagefright_mbrain.so
 system_ext/lib/libstagefright_wfd_mtk.so
+system_ext/lib/vendor.mediatek.hardware.graphics-V1-ndk.so
 system_ext/lib64/libged_sys.so
 system_ext/lib64/libgralloc_extra_sys.so
 system_ext/lib64/libsf_cpupolicy.so
 system_ext/lib64/libstagefright_mbrain.so
 system_ext/lib64/libstagefright_wfd_mtk.so
+system_ext/lib64/vendor.mediatek.hardware.graphics-V1-ndk.so
 vendor/bin/hw/android.hardware.media.c2-mediatek-64b
 vendor/bin/hw/android.hardware.media.c2@1.2-mediatek-64b
 vendor/etc/init/android.hardware.media.c2-mediatek-64b.rc
@@ -1892,19 +1900,6 @@ vendor/lib64/vendor.mediatek.hardware.mmagent-V1-ndk.so
 vendor/lib64/vendor.mediatek.hardware.mmagent@1.0.so
 vendor/lib64/vendor.mediatek.hardware.mmagent@1.1.so
 
-# Overlays
-vendor/overlay/CellbroadcastUIResOverlay/CellbroadcastUIResOverlay.apk
-vendor/overlay/FrameworkResOverlay/FrameworkResOverlay.apk
-vendor/overlay/FrameworkResOverlayExt/FrameworkResOverlayExt.apk
-vendor/overlay/FrameworkResOverlay_klimt.apk
-vendor/overlay/MtkSettingsResOverlay/MtkSettingsResOverlay.apk
-vendor/overlay/MtkTelephonyServiceResOverlay/MtkTelephonyServiceResOverlay.apk
-vendor/overlay/NewCallDcOverlay/NewCallDcOverlay.apk
-vendor/overlay/SecureElementResOverlay/SecureElementResOverlay.apk
-vendor/overlay/SettingsProviderResOverlay/SettingsProviderResOverlay.apk
-vendor/overlay/WifiResMainlineOverlay/WifiResMainlineOverlay.apk
-vendor/overlay/WifiResOverlay/WifiResOverlay.apk
-
 # NFC
 vendor/lib64/vendor.nxp.hardware.nfc@2.0.so
 
@@ -1946,6 +1941,19 @@ vendor/lib64/libfile_op.so
 vendor/lib64/libhwm.so
 vendor/lib64/vendor.mediatek.hardware.nvram-V1-ndk.so
 
+# Overlays
+vendor/overlay/CellbroadcastUIResOverlay/CellbroadcastUIResOverlay.apk:vendor/app/CellbroadcastUIResOverlay/CellbroadcastUIResOverlay.apk;PRESIGNED
+vendor/overlay/FrameworkResOverlay/FrameworkResOverlay.apk:vendor/app/FrameworkResOverlay/FrameworkResOverlay.apk;PRESIGNED
+vendor/overlay/FrameworkResOverlayExt/FrameworkResOverlayExt.apk:vendor/app/FrameworkResOverlayExt/FrameworkResOverlayExt.apk;PRESIGNED
+vendor/overlay/FrameworkResOverlay_klimt.apk:vendor/app/FrameworkResOverlay_klimt/FrameworkResOverlay_klimt.apk;PRESIGNED
+vendor/overlay/MtkSettingsResOverlay/MtkSettingsResOverlay.apk:vendor/app/MtkSettingsResOverlay/MtkSettingsResOverlay.apk;PRESIGNED
+vendor/overlay/MtkTelephonyServiceResOverlay/MtkTelephonyServiceResOverlay.apk:vendor/app/MtkTelephonyServiceResOverlay/MtkTelephonyServiceResOverlay.apk;PRESIGNED
+vendor/overlay/NewCallDcOverlay/NewCallDcOverlay.apk:vendor/app/NewCallDcOverlay/NewCallDcOverlay.apk;PRESIGNED
+vendor/overlay/SecureElementResOverlay/SecureElementResOverlay.apk:vendor/app/SecureElementResOverlay/SecureElementResOverlay.apk;PRESIGNED
+vendor/overlay/SettingsProviderResOverlay/SettingsProviderResOverlay.apk:vendor/app/SettingsProviderResOverlay/SettingsProviderResOverlay.apk;PRESIGNED
+vendor/overlay/WifiResMainlineOverlay/WifiResMainlineOverlay.apk:vendor/app/WifiResMainlineOverlay/WifiResMainlineOverlay.apk;PRESIGNED
+vendor/overlay/WifiResOverlay/WifiResOverlay.apk:vendor/app/WifiResOverlay/WifiResOverlay.apk;PRESIGNED
+
 # Payment (Xiaomi)
 odm/etc/init/vendor.xiaomi.hardware.mlipay-miteeservice.rc
 odm/etc/vintf/manifest/manifest_vendor.xiaomi.hardware.mlipay.xml
@@ -1954,13 +1962,11 @@ vendor/lib64/vendor.xiaomi.hardware.mlipay-V1-ndk.so
 # Permissions
 odm/etc/permissions/com.android.se.xml
 odm/etc/permissions/vendor.hardware.vibratorfeature-permission.xml
-vendor/etc/permissions/android.hardware.hardware_keystore.jc-strongbox-keymint.nxp.xml
 vendor/etc/permissions/android.hardware.identity_credential.mitee.xml
 vendor/etc/permissions/camera_extensions.xml
 vendor/etc/permissions/com.mediatek.hardware.vow.gva.tflite.xml
 vendor/etc/permissions/com.mediatek.hardware.vow_dsp.xml
 vendor/etc/permissions/com.xiaomi.sensor.xml
-vendor/etc/permissions/features_com.android.virt.xml
 
 # Power
 system_ext/lib/vendor.mediatek.hardware.mtkpower-V2-ndk.so;MODULE_SUFFIX=_system_ext
@@ -2062,16 +2068,11 @@ vendor/etc/init/android.hardware.secure_element@1.2-service-mediatek.rc
 vendor/lib64/vendor.mediatek.hardware.mtkradioex.sim-V1-ndk.so
 
 # Security
-vendor/bin/hw/android.hardware.security.keymint-service.strongbox.nxp;MODULE_SUFFIX=_vendor
 vendor/bin/hw/android.hardware.security.keymint@3.0-service.mitee
-vendor/etc/init/android.hardware.security.keymint-service.strongbox.nxp.rc
 vendor/etc/init/android.hardware.security.keymint.mitee@3.0-service.rc
 vendor/etc/vintf/manifest/android.hardware.security.keymint-service.mitee.xml
-vendor/etc/vintf/manifest/android.hardware.security.keymint-service.strongbox.nxp.xml
 vendor/etc/vintf/manifest/android.hardware.security.secureclock-service.mitee.xml
 vendor/etc/vintf/manifest/android.hardware.security.sharedsecret-service.mitee.xml
-vendor/etc/vintf/manifest/android.hardware.security.sharedsecret-service.strongbox.nxp.xml
-vendor/lib64/libjc_keymint.nxp.so;DISABLE_DEPS
 vendor/lib64/libjc_keymint_transport.nxp.so
 
 # Sensors
@@ -2397,9 +2398,8 @@ vendor/bin/wmt_loader
 vendor/etc/init/android.hardware.wifi.supplicant-service.rc
 vendor/etc/init/init.wlan_drv.rc
 vendor/etc/init/wlan_assistant.rc
-vendor/etc/vintf/manifest/android.hardware.wifi.hostapd.xml
 vendor/lib64/libkeystore-engine-wifi-hidl.so
-vendor/lib64/libwifi-hal.so
+vendor/lib64/libwifi-hal.so:vendor/lib64/libwifi-hal-mtk.so
 vendor/lib64/vendor.xiaomi.hardware.wifi.hostapd-V1-ndk.so
 vendor/lib64/vendor.xiaomi.hardware.wifi.supplicant-V1-ndk.so
 
@@ -2600,7 +2600,6 @@ odm/firmware/water_check.tflite
 odm/lib64/libMiStereoFactoryCalibAnalyzeBin.so
 odm/lib64/libaachaptics.so
 odm/lib64/libabnormal_img_dectect.so
-odm/lib64/libalCFR.so
 odm/lib64/libanc_dc_plugin_xiaomi_v3_mtk.so
 odm/lib64/libarc_aisp_plugin.so
 odm/lib64/libarc_htp_driver_skel.so
@@ -2649,7 +2648,7 @@ vendor/app/TetheringGoogleResOverlay/TetheringGoogleResOverlay.apk
 vendor/app/TetheringResOverlay/TetheringResOverlay.apk
 vendor/bin/crossbuild/DataSet/SQLiteModule/db/port_select.db
 vendor/bin/hw/android.hardware.nqnfc-service.nxp
-vendor/etc/init/nfc-service-nxp.rc
+vendor/etc/init/nfc-service-nxp.rc:vendor/etc/init/nfc-service-nqnfc.rc
 vendor/bin/hw/vendor.mediatek.hardware.aee@1.1-service
 vendor/bin/hw/vendor.mediatek.hardware.aee@V1-service
 vendor/bin/hw/vendor.mediatek.hardware.gnss-service
@@ -2728,7 +2727,6 @@ vendor/bin/minetd
 vendor/bin/miteelog
 vendor/bin/mrdump_tool
 vendor/bin/mt6379_nv_icc
-vendor/bin/mt6660_calibration
 vendor/bin/mtk_lbs_service
 vendor/bin/mtk_pkm_service
 vendor/bin/mtk_plpath_utils_ota
@@ -2739,7 +2737,6 @@ vendor/bin/netdagent
 vendor/bin/netdc
 vendor/bin/ois_cal
 vendor/bin/pnscr
-vendor/bin/rt5512_calibration
 vendor/bin/rttv_v2
 vendor/bin/slad
 vendor/bin/smartpa_nvtest
@@ -2773,9 +2770,6 @@ vendor/etc/aurisys_param/sixth_param_phonecall.txt
 vendor/etc/aurisys_param/sixth_param_ringtone.txt
 vendor/etc/aurisys_param/sixth_param_voip.txt
 vendor/etc/aurisys_param/sixth_wrapper_cfg.xml
-vendor/etc/chre/nearby.napp_header
-vendor/etc/chre/nearby.so
-vendor/etc/chre/preloaded_nanoapps.json
 vendor/etc/displayconfig/display_id_4627039422300187648.xml
 vendor/etc/gralloc/cam.xml
 vendor/etc/gralloc/dpu.xml
@@ -4364,9 +4358,6 @@ vendor/lib64/mt6991/lib3a.af.assist.models2d.so;SYMLINK=vendor/lib64/lib3a.af.as
 vendor/lib64/mt6991/libaal_cust_func.so;SYMLINK=vendor/lib64/libaal_cust_func.so
 vendor/lib64/mt6991/libacdk.so;SYMLINK=vendor/lib64/libacdk.so
 vendor/lib64/mt6991/libaiawb_moon_model.so;SYMLINK=vendor/lib64/libaiawb_moon_model.so
-vendor/lib64/mt6991/libaibc_tuning.so;SYMLINK=vendor/lib64/libaibc_tuning.so
-vendor/lib64/mt6991/libaibc_tuning_p2.so;SYMLINK=vendor/lib64/libaibc_tuning_p2.so
-vendor/lib64/mt6991/libaibc_tuning_p3.so;SYMLINK=vendor/lib64/libaibc_tuning_p3.so
 vendor/lib64/mt6991/libaibc_tuning_p4.so;SYMLINK=vendor/lib64/libaibc_tuning_p4.so
 vendor/lib64/mt6991/libaidepth_tuning.so;SYMLINK=vendor/lib64/libaidepth_tuning.so
 vendor/lib64/mt6991/libaiseg_model.so;SYMLINK=vendor/lib64/libaiseg_model.so
@@ -4374,7 +4365,6 @@ vendor/lib64/mt6991/libarm_egl_properties_sysprop.so;SYMLINK=vendor/lib64/libarm
 vendor/lib64/mt6991/libarm_gralloc_properties_sysprop.so;SYMLINK=vendor/lib64/libarm_gralloc_properties_sysprop.so
 vendor/lib64/mt6991/libarm_mali_config_sysprops.so;SYMLINK=vendor/lib64/libarm_mali_config_sysprops.so
 vendor/lib64/mt6991/libcam.hal3a.cctsvr.v4l2.so;SYMLINK=vendor/lib64/libcam.hal3a.cctsvr.v4l2.so
-vendor/lib64/mt6991/libcameracustom.plugin.so;SYMLINK=vendor/lib64/libcameracustom.plugin.so
 vendor/lib64/mt6991/libccd.so;SYMLINK=vendor/lib64/libccd.so
 vendor/lib64/mt6991/libdre.so;SYMLINK=vendor/lib64/libdre.so
 vendor/lib64/mt6991/libgpudataproducer.so;SYMLINK=vendor/lib64/libgpudataproducer.so
@@ -4402,7 +4392,6 @@ vendor/lib64/mt6991/libmtkcam_aov_license.so;SYMLINK=vendor/lib64/libmtkcam_aov_
 vendor/lib64/mt6991/libmtkcam_modulefactory_custom.so;SYMLINK=vendor/lib64/libmtkcam_modulefactory_custom.so
 vendor/lib64/mt6991/libmtkcam_modulefactory_utils.so;SYMLINK=vendor/lib64/libmtkcam_modulefactory_utils.so
 vendor/lib64/mt6991/libmtkcam_salmgr.so;SYMLINK=vendor/lib64/libmtkcam_salmgr.so
-vendor/lib64/mt6991/libn3d_tuning.so;SYMLINK=vendor/lib64/libn3d_tuning.so
 vendor/lib64/mt6991/libneuron_adapter_mgvi.so;DISABLE_CHECKELF;SYMLINK=vendor/lib64/libneuron_adapter_mgvi.so
 vendor/lib64/mt6991/libneuron_runtime.so;SYMLINK=vendor/lib64/libneuron_runtime.so
 vendor/lib64/mt6991/libnir_neon_driver.so;SYMLINK=vendor/lib64/libnir_neon_driver.so
@@ -4430,7 +4419,6 @@ vendor/lib64/immunesystem.db.sqlite3.so
 vendor/lib64/lib3a.ae.pipe.so
 vendor/lib64/libADCSwitch.so
 vendor/lib64/libANS.so
-vendor/lib64/libHEVCdec_sa.ca7.android.so
 vendor/lib64/libMiPhotoFilter.so;DISABLE_CHECKELF
 vendor/lib64/libMtkSpeechEnh.so
 vendor/lib64/libMtkSpeechEnh_swb.so
@@ -4500,11 +4488,6 @@ vendor/lib64/libgpu_aux.so
 vendor/lib64/libgwsdv2-ril.so
 vendor/lib64/libgwsdv3-ril.so
 vendor/lib64/libgz_gp_client.so
-vendor/lib64/libh264dec_customize.so
-vendor/lib64/libh264dec_sa.ca7.so
-vendor/lib64/libh264dec_sd.ca7.so
-vendor/lib64/libh264dec_se.ca7.so
-vendor/lib64/libhevce_sb.ca7.android.so
 vendor/lib64/libhfmanagerwrapper.so
 vendor/lib64/libicd_decoder.so
 vendor/lib64/libimgsys_osal.so
@@ -4513,7 +4496,6 @@ vendor/lib64/libkeystore-wifi-hidl.so
 vendor/lib64/libmbrainSDKv.so
 vendor/lib64/libmcve.so;DISABLE_CHECKELF
 vendor/lib64/libmialgo_ai_vision.so
-vendor/lib64/libmibokeh_mt6873.so
 vendor/lib64/libmigpese@2.0.so
 vendor/lib64/libminikin.xiaomi.so
 vendor/lib64/libminiui.so
@@ -4582,6 +4564,7 @@ vendor/lib64/libnwk_opt_halwrap_vendor.so
 vendor/lib64/libnxp_extamp_intf.so
 vendor/lib64/liboem_specific.so
 vendor/lib64/libaudioutils.so:vendor/lib64/libaudioutils_vendor.so
+vendor/lib64/libtinyxml2.so:vendor/lib64/libtinyxml2_vendor.so
 vendor/lib64/libjpegdecoder.so:vendor/lib64/libjpegdecoder_vendor.so
 vendor/lib64/libjpegencoder.so:vendor/lib64/libjpegencoder_vendor.so
 vendor/lib64/libgui.so:vendor/lib64/libgui_vendor.so
@@ -4592,7 +4575,6 @@ vendor/lib64/libpkm.so
 vendor/lib64/libpixelflinger.so
 vendor/lib64/libpowerhal.so
 vendor/lib64/libpowerhalwrap_vendor.so
-vendor/lib64/libremosaic_wrapper.so
 vendor/lib64/librgbwlightsensor.so
 vendor/lib64/librt_extamp_intf.so
 vendor/lib64/libshadowhook.so
@@ -4605,7 +4587,6 @@ vendor/lib64/libspeech_enh_lib.so;DISABLE_CHECKELF
 vendor/lib64/libspeechparser_vendor.so
 vendor/lib64/libswtcc.so
 vendor/lib64/libtflite_mtk.so
-vendor/lib64/libthha.so
 vendor/lib64/libtranslator_mapi_v3.0.so
 vendor/lib64/libtranslator_mdmi_v2.8.2.so
 vendor/lib64/libtranslator_utils.so
@@ -4633,7 +4614,6 @@ vendor/lib64/libvow_ap_test_vaca_ha.so
 vendor/lib64/libvow_ap_test_vaca_hh.so
 vendor/lib64/libvow_ap_test_vaca_nn.so
 vendor/lib64/libvp8dec_sa.ca7.so
-vendor/lib64/libvp9dec_sa.ca7.so
 vendor/lib64/libvpu5.so
 vendor/lib64/libwapi.so
 vendor/lib64/libwifical.so

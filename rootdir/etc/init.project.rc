@@ -15,6 +15,12 @@ service klimt_bootdebug /vendor/bin/init.bootdebug.sh
 
 on early-init
     start klimt_bootdebug
+    # Stock ships no generic rild, only mtkfusionrild. The AOSP rild that
+    # telephony_vendor.mk pulls into PRODUCT_PACKAGES loads libmtk-ril.so,
+    # null derefs in RmcRadioRequestHandler::queryMainProtocol() every 5s, and
+    # fights mtkfusionrild for the same AIDL service name. stop sets
+    # SVC_DISABLED, so class_start main leaves it alone.
+    stop vendor.ril-daemon
 
 on post-fs
     start klimt_bootdebug
