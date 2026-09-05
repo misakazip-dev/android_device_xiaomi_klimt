@@ -117,6 +117,7 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     init.bootdebug.sh \
+    init.felica.sh \
     init.insmod.sh \
     init.pstore_blk.sh \
     vendor_mdota_symlink

@@ -12,6 +12,12 @@ sh_binary {
 }
 
 sh_binary {
+    name: "init.felica.sh",
+    src: "bin/init.felica.sh",
+    vendor: true,
+}
+
+sh_binary {
     name: "init.insmod.sh",
     src: "bin/init.insmod.sh",
     vendor: true,

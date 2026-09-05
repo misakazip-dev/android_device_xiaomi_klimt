@@ -1739,6 +1739,16 @@ mi_ext/product/priv-app/MIUIEsimLPA/MIUIEsimLPA.apk:product/priv-app/MIUIEsimLPA
 # Face
 odm/etc/vintf/manifest/android.hardware.biometrics.face-v4.xml
 
+# FeliCa
+# From the JP build (klimt_jp OS3.0.302.0.WOSJPXM)
+mi_ext/product/app/MobileFeliCaClient/MobileFeliCaClient.apk:product/app/MobileFeliCaClient/MobileFeliCaClient.apk;PRESIGNED
+mi_ext/product/app/MobileFeliCaMenuMainApp/MobileFeliCaMenuMainApp.apk:product/app/MobileFeliCaMenuMainApp/MobileFeliCaMenuMainApp.apk;PRESIGNED
+mi_ext/product/app/MobileFeliCaSettingApp/MobileFeliCaSettingApp.apk:product/app/MobileFeliCaSettingApp/MobileFeliCaSettingApp.apk;PRESIGNED
+mi_ext/product/app/MobileFeliCaWebPluginBoot/MobileFeliCaWebPluginBoot.apk:product/app/MobileFeliCaWebPluginBoot/MobileFeliCaWebPluginBoot.apk;PRESIGNED
+product/etc/felica/common.cfg
+product/etc/felica/mfm.cfg
+product/etc/felica/mfs.cfg
+
 # Fingerprint
 odm/lib64/hw/fingerprint.goodix_fod.so
 odm/lib64/libgf_hal.so

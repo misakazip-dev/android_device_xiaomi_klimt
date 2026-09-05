@@ -25,8 +25,16 @@ on early-init
 on post-fs
     start klimt_bootdebug
 
+service klimt_felica /vendor/bin/init.felica.sh
+    class late_start
+    user system
+    group system
+    disabled
+    oneshot
+
 on property:sys.boot_completed=1
     stop klimt_bootdebug
+    start klimt_felica
 
 # Modem
 # import /vendor/etc/init/hw/init.modem_factory_err.rc
