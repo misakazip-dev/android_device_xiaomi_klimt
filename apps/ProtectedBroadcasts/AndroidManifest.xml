@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: WitAqua
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.lineageos.klimt.protectedbroadcasts">
+
+    <protected-broadcast android:name="com.mediatek.common.carrierexpress.operator_config_changed" />
+
+    <application
+        android:hasCode="false"
+        android:label="Klimt Protected Broadcasts" />
+</manifest>

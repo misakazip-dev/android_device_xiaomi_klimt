@@ -26,6 +26,7 @@ lib_fixups = {
     **lib_fixups,
     'libformatter': lambda *_: 'libformatter_vendor',
     'libmnl': lambda *_: 'libmnl_mt6991',
+    'libsink': lambda *_: 'libsink_system_ext',
 }
 
 namespace_imports = [

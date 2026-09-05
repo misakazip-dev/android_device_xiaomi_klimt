@@ -1,0 +1,16 @@
+//
+// SPDX-FileCopyrightText: WitAqua
+// SPDX-FileCopyrightText: The LineageOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+android_app {
+    name: "KlimtProtectedBroadcasts",
+    certificate: "platform",
+    manifest: "AndroidManifest.xml",
+    sdk_version: "current",
+    system_ext_specific: true,
+    optimize: {
+        enabled: false,
+    },
+}
