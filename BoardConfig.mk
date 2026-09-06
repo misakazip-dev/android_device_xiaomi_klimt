@@ -54,9 +54,6 @@ BOARD_KERNEL_PAGESIZE := 4096
 BOARD_RAMDISK_USE_LZ4 := true
 BOARD_USES_GENERIC_KERNEL_IMAGE := true
 
-# TODO: Fix SELinux
-BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
-
 BOARD_MKBOOTIMG_ARGS := --header_version $(BOARD_BOOT_HEADER_VERSION)
 BOARD_MKBOOTIMG_ARGS += --kernel_offset 0x80000000
 BOARD_MKBOOTIMG_ARGS += --ramdisk_offset 0xa6f00000
@@ -157,6 +154,8 @@ BOOT_SECURITY_PATCH := $(VENDOR_SECURITY_PATCH)
 
 # SELinux
 include device/mediatek/sepolicy_vndr/SEPolicy.mk
+
+BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
 
 # Shipping API level
 BOARD_SHIPPING_API_LEVEL := 202404

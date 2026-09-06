@@ -1,0 +1,25 @@
+#
+# SPDX-FileCopyrightText: WitAqua
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+# The MediaTek audio HAL reads its tuning from /mnt/vendor/persist and follows
+# the battery state to cap speaker output.
+allow hal_audio_default persist_data_file:dir search;
+allow hal_audio_default persist_data_file:file r_file_perms;
+r_dir_file(hal_audio_default, sysfs_batteryinfo)
+
+allow hal_audio_default hf_manager_device:chr_file { open read write };
+allow hal_audio_default sipa_device:chr_file { ioctl open read write };
+allow hal_audio_default vendor_data_file:dir { add_name write };
+allow hal_audio_default vendor_data_file:file { create getattr ioctl lock open read setattr write };
+allow hal_audio_default mediaeventgather_service:service_manager find;
+set_prop(hal_audio_default, log_tag_prop)
+allow hal_audio_default sysfs_therm:dir { search };
+allow hal_audio_default sysfs_therm:file r_file_perms;
+allow hal_audio_default sysfs_vibrator:dir { search };
+allow hal_audio_default sysfs_vibrator:file { open read };
+allow hal_audio_default hal_dolby_dms_service:service_manager find;
+allow hal_audio_default audio_hw_socket:sock_file write;
+binder_call(hal_audio_default, hal_dolby_dms)

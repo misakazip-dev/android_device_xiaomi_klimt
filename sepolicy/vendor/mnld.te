@@ -1,0 +1,12 @@
+#
+# SPDX-FileCopyrightText: WitAqua
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+allow mnld gpsmdl_device:chr_file rw_file_perms;
+allow mnld sipa_device:chr_file rw_file_perms;
+allow mnld fwk_sensor_service:service_manager find;
+
+allow mnld hf_manager_device:chr_file { ioctl open read write };
+binder_use(mnld)

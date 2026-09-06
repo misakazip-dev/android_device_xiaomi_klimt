@@ -1,0 +1,11 @@
+#
+# SPDX-FileCopyrightText: WitAqua
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+allow vendor_init xiaomi_misys_device:chr_file { getattr };
+allow vendor_init xiaomi_touch_device:chr_file { getattr };
+set_prop(vendor_init, audio_prop)
+set_prop(vendor_init, vendor_mtk_emcamera_prop)
+set_prop(vendor_init, vendor_mtk_mdp_debug_log_prop)

@@ -1,0 +1,8 @@
+#
+# SPDX-FileCopyrightText: WitAqua
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+# The MediaTek supplicant drops to the wifi uid after opening its sockets.
+allow hal_wifi_supplicant_default self:capability { setgid setuid };

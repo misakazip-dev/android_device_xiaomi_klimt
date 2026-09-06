@@ -1,0 +1,15 @@
+#
+# SPDX-FileCopyrightText: WitAqua
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+allow hal_bluetooth_default mnt_vendor_file:dir { search };
+allow hal_bluetooth_default nvdata_file:dir { search };
+allow hal_bluetooth_default nvdata_file:file { getattr open read };
+allow hal_bluetooth_default proc_cmdline:file { getattr open read };
+allow hal_bluetooth_default proc_stpbt:file { getattr open read };
+allow hal_bluetooth_default stpbt_device:chr_file { ioctl open read write };
+set_prop(hal_bluetooth_default, vendor_mtk_wmt_prop)
+allow hal_bluetooth_default gsi_metadata_file:dir { search };
+allow hal_bluetooth_default proc_stpbt:dir { search };

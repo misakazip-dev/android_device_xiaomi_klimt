@@ -1,0 +1,8 @@
+#
+# SPDX-FileCopyrightText: WitAqua
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+allow ccci_mdinit sysfs_ufs:file { getattr open read };
+allow ccci_mdinit sysfs_ufs:dir { search };

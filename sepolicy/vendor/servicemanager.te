@@ -1,0 +1,9 @@
+#
+# SPDX-FileCopyrightText: WitAqua
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+allow servicemanager hal_dolby_c2_vision:binder { call };
+allow servicemanager hal_touchfeature:binder { call };
+allow servicemanager xiaomi_misys_core:binder { call };

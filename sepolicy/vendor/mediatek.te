@@ -1,0 +1,102 @@
+#
+# SPDX-FileCopyrightText: WitAqua
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+# MediaTek and Dolby services.
+# Round one: give each service a domain of its own so that it stops running as
+# init. The allow rules follow from the denials these produce while permissive.
+
+# memory binning one shot
+type ddr_freq, domain;
+type ddr_freq_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(ddr_freq)
+
+# GNSS daemon
+type gnss_daemon, domain;
+type gnss_daemon_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(gnss_daemon)
+
+# exception handler HAL
+type mtk_hal_aee, domain;
+type mtk_hal_aee_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(mtk_hal_aee)
+
+# media telemetry HAL; libstagefright_mbrain.so talks to it
+type mtk_hal_mbrain, domain;
+type mtk_hal_mbrain_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(mtk_hal_mbrain)
+
+# sound level adjustment HAL
+type hal_sla, domain;
+type hal_sla_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(hal_sla)
+add_service(hal_sla, hal_sla_service)
+binder_use(hal_sla)
+
+# Dolby media service
+type hal_dolby_dms, domain;
+type hal_dolby_dms_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(hal_dolby_dms)
+add_service(hal_dolby_dms, hal_dolby_dms_service)
+binder_use(hal_dolby_dms)
+
+# Dolby Codec2 service
+type hal_dolby_c2, domain;
+type hal_dolby_c2_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(hal_dolby_c2)
+hal_server_domain(hal_dolby_c2, hal_codec2)
+binder_use(hal_dolby_c2)
+allow hal_dolby_c2 dmabuf_system_heap_device:chr_file { getattr };
+allow hal_dolby_c2 mediaserver:binder { call transfer };
+allow hal_dolby_c2 platform_app:binder { call transfer };
+allow hal_dolby_c2 system_server:binder { transfer };
+
+# Dolby Vision Codec2 service
+type hal_dolby_c2_vision, domain;
+type hal_dolby_c2_vision_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(hal_dolby_c2_vision)
+hal_server_domain(hal_dolby_c2_vision, hal_codec2)
+hal_client_domain(hal_dolby_c2_vision, hal_codec2)
+binder_use(hal_dolby_c2_vision)
+allow hal_dolby_c2_vision dmabuf_system_heap_device:chr_file { getattr };
+allow hal_dolby_c2_vision mediaserver:binder { transfer };
+allow hal_dolby_c2_vision mtk_hal_c2:binder { call transfer };
+allow hal_dolby_c2_vision platform_app:binder { call transfer };
+allow hal_dolby_c2_vision system_server:binder { transfer };
+
+# modem remote file system
+type md_rfs, domain;
+type md_rfs_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(md_rfs)
+
+# PMIC NV restore one shot
+type mt6379_nv_icc, domain;
+type mt6379_nv_icc_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(mt6379_nv_icc)
+allow mt6379_nv_icc sysfs_batteryinfo:dir { search };
+allow mt6379_nv_icc mnt_vendor_file:dir { search };
+allow mt6379_nv_icc nvcfg_file:dir { search };
+allow mt6379_nv_icc nvcfg_file:file { getattr open read };
+allow mt6379_nv_icc sysfs_batteryinfo:file { getattr open read };
+
+# vendor permission check one shot
+type permission_check, domain;
+type permission_check_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(permission_check)
+
+# BT/GNSS UART launcher
+type uart_launcher, domain;
+type uart_launcher_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(uart_launcher)
+allow uart_launcher proc_stpbt:dir { search };
+allow uart_launcher gsi_metadata_file:dir { search };
+allow uart_launcher mnt_vendor_file:dir { search };
+allow uart_launcher nvdata_file:dir { search };
+allow uart_launcher nvdata_file:file { getattr open read };
+allow uart_launcher proc_bootconfig:file { getattr open read };
+allow uart_launcher proc_cmdline:file { getattr open read };
+allow uart_launcher proc_stpbt:file { open read };
+allow uart_launcher sysfs_dt_firmware_android:dir { search };
+allow uart_launcher sysfs_dt_firmware_android:file { getattr open read };
+allow uart_launcher ttyS_device:chr_file { ioctl lock open read write };

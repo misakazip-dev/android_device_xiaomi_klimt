@@ -1,0 +1,10 @@
+#
+# SPDX-FileCopyrightText: WitAqua
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+allow hal_gnss_default mtk_lbs_service:binder call;
+
+allow hal_gnss_default mtk_lbs_service:binder { transfer };
+typeattribute hal_gnss_default hal_mtk_lbs_client;

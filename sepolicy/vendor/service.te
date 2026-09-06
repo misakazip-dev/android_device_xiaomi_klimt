@@ -1,0 +1,37 @@
+#
+# SPDX-FileCopyrightText: WitAqua
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+# AOSP forbids any domain from touching default_android_service, so every
+# service these daemons register needs a type of its own.
+type hal_displayfeature_service, protected_service, hal_service_type, service_manager_type;
+type hal_dolby_dms_service, protected_service, hal_service_type, service_manager_type;
+type hal_sla_service, protected_service, hal_service_type, service_manager_type;
+type hal_touchfeature_service, protected_service, hal_service_type, service_manager_type;
+type felica_service, protected_service, hal_service_type, service_manager_type;
+type mifxtunnel_service, protected_service, hal_service_type, service_manager_type;
+type mihwcextension_service, protected_service, hal_service_type, service_manager_type;
+type mitee_idmanager_service, protected_service, hal_service_type, service_manager_type;
+type mitee_mtdservice_service, protected_service, hal_service_type, service_manager_type;
+type miteetui_service, protected_service, hal_service_type, service_manager_type;
+type minet_service, protected_service, hal_service_type, service_manager_type;
+type mtk_hal_nwk_opt_service, protected_service, hal_service_type, service_manager_type;
+type xiaomi_bgservice_service, protected_service, hal_service_type, service_manager_type;
+type xiaomi_cld_service, protected_service, hal_service_type, service_manager_type;
+type xiaomi_fbo_service, protected_service, hal_service_type, service_manager_type;
+type xiaomi_micharge_service, protected_service, hal_service_type, service_manager_type;
+type xiaomi_mimd_service, protected_service, hal_service_type, service_manager_type;
+type xiaomi_miperf_service, protected_service, hal_service_type, service_manager_type;
+type xiaomi_misys_common_service, protected_service, hal_service_type, service_manager_type;
+type xiaomi_misys_core_service, protected_service, hal_service_type, service_manager_type;
+type xiaomi_videoservice_service, protected_service, hal_service_type, service_manager_type;
+
+type displayfeature_vndservice, vndservice_manager_type;
+type citsensorservice_service, protected_service, hal_service_type, service_manager_type;
+type fingerprint_extension_service, protected_service, hal_service_type, service_manager_type;
+type framemaster_service, protected_service, hal_service_type, service_manager_type;
+type mediaeventgather_service, protected_service, hal_service_type, service_manager_type;
+type mtkblackbox_service, protected_service, hal_service_type, service_manager_type;
+type virtualcamera_service, protected_service, hal_service_type, service_manager_type;

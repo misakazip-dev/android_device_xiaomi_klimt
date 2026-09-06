@@ -1,0 +1,41 @@
+#
+# SPDX-FileCopyrightText: WitAqua
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+# Services this device tree adds.
+# Round one: give each service a domain of its own so that it stops running as
+# init. The allow rules follow from the denials these produce while permissive.
+
+# enables the eSIM secure setting once, see rootdir/bin/init.esim.sh
+type klimt_esim, domain;
+type klimt_esim_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(klimt_esim)
+allow klimt_esim system_file:file rx_file_perms;
+# The script runs /system/bin/cmd, which Treble otherwise forbids a vendor
+# domain from executing.
+typeattribute klimt_esim vendor_executes_system_violators;
+# The script shells out to /system/bin/cmd to reach the settings provider.
+allow klimt_esim vendor_shell_exec:file rx_file_perms;
+binder_use(klimt_esim)
+allow klimt_esim settings_service:service_manager find;
+allow klimt_esim system_server:binder { transfer };
+
+# hides Osaifu-Keitai on non-JP units, see rootdir/bin/init.felica.sh
+type klimt_felica, domain;
+type klimt_felica_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(klimt_felica)
+allow klimt_felica system_file:file rx_file_perms;
+# The script runs /system/bin/cmd, which Treble otherwise forbids a vendor
+# domain from executing.
+typeattribute klimt_felica vendor_executes_system_violators;
+# The script shells out to /system/bin/cmd to reach the settings provider.
+allow klimt_felica vendor_shell_exec:file rx_file_perms;
+binder_use(klimt_felica)
+allow klimt_felica settings_service:service_manager find;
+allow klimt_felica system_server:binder { transfer };
+
+# mounts the pstore block device
+type init_pstore_blk_sh, domain;
+type init_pstore_blk_sh_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(init_pstore_blk_sh)

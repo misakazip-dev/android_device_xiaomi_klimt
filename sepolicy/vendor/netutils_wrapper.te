@@ -1,0 +1,11 @@
+#
+# SPDX-FileCopyrightText: WitAqua
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+allow netutils_wrapper minetd:fd { use };
+allow netutils_wrapper minetd:fifo_file { write };
+allow netutils_wrapper minetd:unix_stream_socket { read write };
+allow netutils_wrapper nvdata_file:file { read };
+allow netutils_wrapper nvram_device:blk_file { read };

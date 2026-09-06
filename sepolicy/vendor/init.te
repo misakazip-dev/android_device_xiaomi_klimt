@@ -1,0 +1,13 @@
+#
+# SPDX-FileCopyrightText: WitAqua
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+allow init debugfs_bootreceiver_tracing:dir { add_name write };
+allow init socket_device:sock_file { create setattr };
+allow init system_lib_file:dir { mounton };
+allow init sysfs_metis:file { open write };
+allow init sysfs_reserve_pool:file { open write };
+allow init sysfs_ufs:file { open write };
+allow init proc_pid_notify:file { open write };

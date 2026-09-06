@@ -1,0 +1,8 @@
+#
+# SPDX-FileCopyrightText: WitAqua
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+binder_use(mtk_hal_nwk_opt)
+add_service(mtk_hal_nwk_opt, mtk_hal_nwk_opt_service)

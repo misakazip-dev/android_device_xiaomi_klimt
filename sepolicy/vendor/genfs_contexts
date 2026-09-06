@@ -1,0 +1,37 @@
+#
+# SPDX-FileCopyrightText: WitAqua
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+genfscon proc /mv                                                            u:object_r:proc_mv:s0
+genfscon proc /stpbt                                                         u:object_r:proc_stpbt:s0
+genfscon proc /tp_fw_version                                                 u:object_r:proc_touch:s0
+genfscon proc /tp_hal_version                                                u:object_r:proc_touch:s0
+genfscon proc /tp_lockdown_info                                              u:object_r:proc_touch:s0
+genfscon proc /tp_selftest                                                   u:object_r:proc_touch:s0
+genfscon proc /tp_selftest_1                                                 u:object_r:proc_touch:s0
+
+genfscon sysfs /bootinfo                                                     u:object_r:sysfs_bootinfo:s0
+genfscon sysfs /devices/platform/1c01a000.spmi/spmi-0/0-0e/1c01a000.spmi:mt6379@e:chg/power_supply  u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/odm/odm:xiaomi_fingerprint/wakeup           u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/120a0000.i2c/i2c-5/5-006e/power_supply  u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/soc/13190000.i2c/i2c-10/10-0055/power_supply u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/soc/13930000.i2c/i2c-1/1-006b               u:object_r:sysfs_vibrator:s0
+genfscon sysfs /devices/platform/soc/16701000.usb0/udc                       u:object_r:sysfs_usb:s0
+genfscon sysfs /devices/platform/soc/16810000.ufshci                         u:object_r:sysfs_ufs:s0
+genfscon sysfs /devices/platform/soc/3ec00000.dp-tx/extcon                   u:object_r:sysfs_extcon:s0
+genfscon sysfs /devices/virtual/mi_display                                   u:object_r:sysfs_display_feature:s0
+genfscon sysfs /devices/virtual/touch                                        u:object_r:sysfs_touch:s0
+genfscon sysfs /devices/virtual/xm_power                                     u:object_r:sysfs_xm_power:s0
+genfscon sysfs /firmware/devicetree/base/logstore                            u:object_r:sysfs_dt_firmware_android:s0
+genfscon sysfs /kernel/hardware_info_to_dump                                 u:object_r:sysfs_hardware_info:s0
+genfscon sysfs /kernel/reserve_pool                                          u:object_r:sysfs_reserve_pool:s0
+genfscon sysfs /module/perf_helper                                           u:object_r:sysfs_perf_helper:s0
+genfscon sysfs /devices/platform/1c01a000.spmi/spmi-0/0-0e/1c01a000.spmi:mt6379@e:mtk-gauge/power_supply  u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/soc/13190000.i2c/i2c-10/10-0055            u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/virtual/gpsmdl-gdlog2                               u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/virtual/mi_memory                                   u:object_r:sysfs_mi_memory:s0
+genfscon sysfs /module/metis/parameters                                     u:object_r:sysfs_metis:s0
+genfscon proc /composer_pid                                                  u:object_r:proc_pid_notify:s0
+genfscon proc /gallocator_pid                                                u:object_r:proc_pid_notify:s0

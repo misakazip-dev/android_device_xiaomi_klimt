@@ -1,0 +1,7 @@
+#
+# SPDX-FileCopyrightText: WitAqua
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+DisplayFeatureControl    u:object_r:displayfeature_vndservice:s0

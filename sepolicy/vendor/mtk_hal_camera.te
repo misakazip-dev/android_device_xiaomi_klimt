@@ -1,0 +1,30 @@
+#
+# SPDX-FileCopyrightText: WitAqua
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+# Thermal throttling and memory pressure feedback for the capture pipeline.
+allow mtk_hal_camera sysfs_therm:dir search;
+allow mtk_hal_camera sysfs_therm:file rw_file_perms;
+allow mtk_hal_camera proc_pressure_mem:file r_file_perms;
+allow mtk_hal_camera vendor_data_file:file r_file_perms;
+
+allow mtk_hal_camera mtk_hal_mali_platform_default_service:service_manager find;
+allow mtk_hal_camera persist_data_file:dir { open read search };
+allow mtk_hal_camera persist_data_file:file { getattr open read };
+allow mtk_hal_camera proc_mv:file { open read };
+allow mtk_hal_camera proc_pressure_mem:file { write };
+allow mtk_hal_camera sysfs_batteryinfo:file { open read };
+allow mtk_hal_camera sysfs_chipid:file { open read };
+allow mtk_hal_camera sysfs_therm:dir { open read };
+allow mtk_hal_camera system_data_file:dir { search };
+allow mtk_hal_camera vendor_data_file:dir { add_name open read remove_name write };
+allow mtk_hal_camera vendor_data_file:file { create unlink write };
+add_service(mtk_hal_camera, xiaomi_bgservice_service)
+add_service(mtk_hal_camera, virtualcamera_service)
+get_prop(mtk_hal_camera, camera_config_prop)
+get_prop(mtk_hal_camera, graphics_config_writable_prop)
+get_prop(mtk_hal_camera, zygote_config_prop)
+get_prop(mtk_hal_camera, graphics_config_prop)
+allow mtk_hal_camera system_data_file:dir search;

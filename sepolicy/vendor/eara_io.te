@@ -1,0 +1,11 @@
+#
+# SPDX-FileCopyrightText: WitAqua
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+allow eara_io proc_earaio:file { ioctl };
+allow eara_io sysfs_ufs:file { open read write };
+allow eara_io sysfs_ufs:dir { search };
+# The ioctl number is restricted by an allowxperm elsewhere in the policy.
+allowxperm eara_io proc_earaio:file ioctl { 0x6704 };

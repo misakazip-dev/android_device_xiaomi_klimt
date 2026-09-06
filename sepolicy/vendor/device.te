@@ -1,0 +1,13 @@
+#
+# SPDX-FileCopyrightText: WitAqua
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+# Character devices the stock policy never labels, so they land on the generic
+# device type and every accessor is denied.
+type gpsmdl_device, dev_type;
+type sipa_device, dev_type;
+type xiaomi_misys_device, dev_type;
+type xiaomi_touch_device, dev_type;
+type audio_hw_socket, file_type;

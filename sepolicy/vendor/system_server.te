@@ -1,0 +1,15 @@
+#
+# SPDX-FileCopyrightText: WitAqua
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+# The touch HAL and the two init scripts are reached from system_server.
+allow system_server hal_touchfeature:binder { call transfer };
+allow system_server klimt_esim:binder call;
+allow system_server klimt_esim:fd use;
+allow system_server klimt_esim:fifo_file write;
+allow system_server klimt_felica:binder call;
+allow system_server klimt_felica:fd use;
+allow system_server klimt_felica:fifo_file write;
+allow system_server mtk_hal_mali_platform_default_service:service_manager find;

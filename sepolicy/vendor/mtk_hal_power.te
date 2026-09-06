@@ -1,0 +1,15 @@
+#
+# SPDX-FileCopyrightText: WitAqua
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+allow mtk_hal_power sysfs_therm:file w_file_perms;
+allow mtk_hal_power proc_easmgr:file ioctl;
+
+allow mtk_hal_power dri_device:chr_file { ioctl open read write };
+allow mtk_hal_power gpu_device:dir { search };
+allow mtk_hal_power proc_easmgr:file { ioctl };
+allow mtk_hal_power thermal_core_data_file:dir { read search watch };
+allow mtk_hal_power sysfs_ufs:file { write };
+allowxperm mtk_hal_power proc_easmgr:file ioctl { 0x673d 0x673e };

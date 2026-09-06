@@ -1,0 +1,21 @@
+#
+# SPDX-FileCopyrightText: WitAqua
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+# sysfs and procfs nodes the kernel exports without a label of their own.
+type proc_mv, fs_type, proc_type;
+type proc_stpbt, fs_type, proc_type;
+type proc_touch, fs_type, proc_type;
+type sysfs_bootinfo, fs_type, sysfs_type;
+type sysfs_display_feature, fs_type, sysfs_type;
+type sysfs_hardware_info, fs_type, sysfs_type;
+type sysfs_perf_helper, fs_type, sysfs_type;
+type sysfs_reserve_pool, fs_type, sysfs_type;
+type sysfs_touch, fs_type, sysfs_type;
+type sysfs_ufs, fs_type, sysfs_type;
+type sysfs_xm_power, fs_type, sysfs_type;
+type sysfs_metis, fs_type, sysfs_type;
+type sysfs_mi_memory, fs_type, sysfs_type;
+type proc_pid_notify, fs_type, proc_type;

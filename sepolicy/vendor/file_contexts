@@ -1,0 +1,75 @@
+#
+# SPDX-FileCopyrightText: WitAqua
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+# Xiaomi and MediaTek services that ship without a domain of their own.
+# Without these they inherit init, which is both wrong and far too privileged.
+
+/odm/bin/hw/android\.hardware\.lights-service\.mediatek                    u:object_r:hal_light_default_exec:s0
+/odm/bin/hw/mfp-daemon                                                     u:object_r:hal_fingerprint_default_exec:s0
+/odm/bin/hw/vendor\.xiaomi\.hardware\.vibratorfeature\.service             u:object_r:hal_vibrator_default_exec:s0
+/vendor/bin/ffu                                                            u:object_r:mmc_ffu_exec:s0
+/vendor/bin/hw/android\.hardware\.bluetooth-service-mediatek               u:object_r:hal_bluetooth_default_exec:s0
+/vendor/bin/hw/android\.hardware\.boot-service\.mtk                        u:object_r:hal_bootctl_default_exec:s0
+/vendor/bin/hw/android\.hardware\.dumpstate-service\.xiaomi                u:object_r:hal_dumpstate_default_exec:s0
+/vendor/bin/hw/android\.hardware\.nqnfc-service\.nxp                       u:object_r:hal_nfc_default_exec:s0
+/vendor/bin/hw/android\.hardware\.usb-aidl-service\.mediatekv1\.0          u:object_r:hal_usb_default_exec:s0
+/vendor/bin/hw/android\.hardware\.usb\.gadget-aidl-service\.mediatekv1\.0  u:object_r:hal_usb_gadget_default_exec:s0
+/vendor/bin/hw/vendor\.mediatek\.hardware\.gnss-service                    u:object_r:hal_gnss_default_exec:s0
+/odm/bin/hw/mifaced                                                        u:object_r:mifaced_exec:s0
+/odm/bin/hw/miteetuid                                                      u:object_r:miteetuid_exec:s0
+/odm/bin/hw/vendor\.xiaomi\.hw\.touchfeature-service                       u:object_r:hal_touchfeature_exec:s0
+/odm/bin/idmanager                                                         u:object_r:mitee_idmanager_exec:s0
+/odm/bin/mpbe_service                                                      u:object_r:mpbe_service_exec:s0
+/odm/bin/mtd_mitee                                                         u:object_r:mitee_mtdservice_exec:s0
+/odm/bin/toucheventcheck                                                   u:object_r:toucheventcheck_exec:s0
+/vendor/bin/MI_IC                                                          u:object_r:mi_ic_exec:s0
+/vendor/bin/MI_RIC                                                         u:object_r:mi_ric_exec:s0
+/vendor/bin/aeev_v2                                                        u:object_r:aeev_exec:s0
+/vendor/bin/batterysecret                                                  u:object_r:batterysecret_exec:s0
+/vendor/bin/ddr_freq                                                       u:object_r:ddr_freq_exec:s0
+/vendor/bin/displayfeature                                                 u:object_r:displayfeature_exec:s0
+/vendor/bin/gnss_daemon                                                    u:object_r:gnss_daemon_exec:s0
+/vendor/bin/hw/mifaced                                                     u:object_r:mifaced_exec:s0
+/vendor/bin/hw/vendor\.dolby\.dms\.service                                 u:object_r:hal_dolby_dms_exec:s0
+/vendor/bin/hw/vendor\.dolby\.media\.c2-default-service-dax                u:object_r:hal_dolby_c2_exec:s0
+/vendor/bin/hw/vendor\.dolby\.media\.c2-service-vision                     u:object_r:hal_dolby_c2_vision_exec:s0
+/vendor/bin/hw/vendor\.mediatek\.hardware\.aee@V1-service                  u:object_r:mtk_hal_aee_exec:s0
+/vendor/bin/hw/vendor\.mediatek\.hardware\.mbrain-service\.mediatek        u:object_r:mtk_hal_mbrain_exec:s0
+/vendor/bin/hw/vendor\.qti\.sla\.service@2\.0-service                      u:object_r:hal_sla_exec:s0
+/vendor/bin/hw/vendor\.xiaomi\.aidl\.minet@1\.0-service                    u:object_r:minet_exec:s0
+/vendor/bin/hw/vendor\.xiaomi\.hardware\.cld_aidl-service                  u:object_r:xiaomi_cld_exec:s0
+/vendor/bin/hw/vendor\.xiaomi\.hardware\.displayfeature_aidl-service       u:object_r:hal_displayfeature_exec:s0
+/vendor/bin/hw/vendor\.xiaomi\.hardware\.fbo-service                       u:object_r:xiaomi_fbo_exec:s0
+/vendor/bin/hw/vendor\.xiaomi\.hardware\.micharge-service                  u:object_r:xiaomi_micharge_exec:s0
+/vendor/bin/hw/vendor\.xiaomi\.hardware\.mimd2-service                     u:object_r:xiaomi_mimd_exec:s0
+/vendor/bin/hw/vendor\.xiaomi\.hardware\.miperf2-service                   u:object_r:xiaomi_miperf_exec:s0
+/vendor/bin/hw/vendor\.xiaomi\.hardware\.misys\.core-service               u:object_r:xiaomi_misys_core_exec:s0
+/vendor/bin/hw/vendor\.xiaomi\.hardware\.videoservice-service              u:object_r:xiaomi_videoservice_exec:s0
+/vendor/bin/hypsys_vendor                                                  u:object_r:xiaomi_misys_common_exec:s0
+/vendor/bin/init\.esim\.sh                                                 u:object_r:klimt_esim_exec:s0
+/vendor/bin/init\.felica\.sh                                               u:object_r:klimt_felica_exec:s0
+/vendor/bin/init\.pstore_blk\.sh                                           u:object_r:init_pstore_blk_sh_exec:s0
+/vendor/bin/md_rfs                                                         u:object_r:md_rfs_exec:s0
+/vendor/bin/minetd                                                         u:object_r:minetd_exec:s0
+/vendor/bin/mt6379_nv_icc                                                  u:object_r:mt6379_nv_icc_exec:s0
+/vendor/bin/permission_check                                               u:object_r:permission_check_exec:s0
+/vendor/bin/slad                                                           u:object_r:slad_exec:s0
+/vendor/bin/uart_launcher                                                  u:object_r:uart_launcher_exec:s0
+/vendor/bin/uart_launcher_ce                                               u:object_r:uart_launcher_exec:s0
+
+# Character devices that otherwise stay on the generic device type.
+/dev/sipa_cmd            u:object_r:sipa_device:s0
+/dev/xiaomi-touch        u:object_r:xiaomi_touch_device:s0
+/dev/xiaomi-touch-knock  u:object_r:xiaomi_touch_device:s0
+/dev/xiaomi-thp          u:object_r:xiaomi_touch_device:s0
+/dev/miev                u:object_r:xiaomi_misys_device:s0
+/dev/migt                u:object_r:xiaomi_misys_device:s0
+/dev/mifp_id             u:object_r:fingerprint_device:s0
+/dev/xiaomi-fp           u:object_r:fingerprint_device:s0
+/dev/sipa_tool           u:object_r:sipa_device:s0
+/dev/socket/audio_hw_socket  u:object_r:audio_hw_socket:s0
+/dev/gpsmdl-[a-z0-9]+     u:object_r:gpsmdl_device:s0
+/dev/gpsstrg-[a-z0-9]+    u:object_r:gpsmdl_device:s0

@@ -1,0 +1,258 @@
+#
+# SPDX-FileCopyrightText: WitAqua
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+# Xiaomi services.
+# Round one: give each service a domain of its own so that it stops running as
+# init. The allow rules follow from the denials these produce while permissive.
+
+# face unlock daemon
+type mifaced, domain;
+type mifaced_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(mifaced)
+hal_server_domain(mifaced, hal_face)
+binder_use(mifaced)
+
+# trusted UI daemon
+type miteetuid, domain;
+type miteetuid_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(miteetuid)
+add_service(miteetuid, miteetui_service)
+binder_use(miteetuid)
+
+# touch panel tuning HAL; its init rc also owns /dev/xiaomi-touch
+type hal_touchfeature, domain;
+type hal_touchfeature_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(hal_touchfeature)
+allow hal_touchfeature sysfs_touch:dir { search };
+add_service(hal_touchfeature, hal_touchfeature_service)
+binder_use(hal_touchfeature)
+allow hal_touchfeature fwk_sensor_service:service_manager find;
+allow hal_touchfeature self:capability { sys_nice };
+allow hal_touchfeature input_device:chr_file { ioctl open read write };
+allow hal_touchfeature input_device:dir { open read search };
+allow hal_touchfeature proc_touch:file { open write };
+allow hal_touchfeature sysfs_therm:dir { search };
+allow hal_touchfeature sysfs_therm:file { read watch };
+allow hal_touchfeature sysfs_touch:file { open read write };
+allow hal_touchfeature system_server:binder { transfer };
+allow hal_touchfeature vendor_data_file:file { getattr open read };
+allow hal_touchfeature xiaomi_touch_device:chr_file { ioctl map open read write };
+
+# touch self test one shot
+type toucheventcheck, domain;
+type toucheventcheck_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(toucheventcheck)
+allow toucheventcheck proc_interrupts:file { getattr open read };
+allow toucheventcheck sysfs_touch:dir { search };
+allow toucheventcheck input_device:chr_file { ioctl open read };
+allow toucheventcheck input_device:dir { open read search };
+allow toucheventcheck proc_touch:file { getattr open read };
+allow toucheventcheck sysfs_touch:file { open read };
+allow toucheventcheck xiaomi_touch_device:chr_file { ioctl open read };
+
+# TEE identity manager
+type mitee_idmanager, domain;
+type mitee_idmanager_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(mitee_idmanager)
+allow mitee_idmanager mitee_client_device:chr_file rw_file_perms;
+binder_call(mitee_idmanager, xiaomi_misys_core)
+add_service(mitee_idmanager, mitee_idmanager_service)
+allow mitee_idmanager xiaomi_misys_core_service:service_manager find;
+hal_client_domain(mitee_idmanager, hal_keymint)
+hal_client_domain(mitee_idmanager, hal_secure_element)
+binder_use(mitee_idmanager)
+
+# TEE trusted data service
+type mitee_mtdservice, domain;
+type mitee_mtdservice_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(mitee_mtdservice)
+allow mitee_mtdservice persist_data_file:dir { getattr search };
+allow mitee_mtdservice mitee_client_device:chr_file rw_file_perms;
+allow mitee_mtdservice mnt_vendor_file:dir search;
+binder_use(mitee_mtdservice)
+add_service(mitee_mtdservice, mitee_mtdservice_service)
+hal_client_domain(mitee_mtdservice, hal_keymint)
+
+# power/battery estimator
+type mpbe_service, domain;
+type mpbe_service_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(mpbe_service)
+
+# IC calibration one shot
+type mi_ic, domain;
+type mi_ic_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(mi_ic)
+
+# regional configuration
+type mi_ric, domain;
+type mi_ric_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(mi_ric)
+allow mi_ric self:capability fsetid;
+allow mi_ric vendor_data_file:dir setattr;
+allow mi_ric proc_uptime:file { open read };
+allow mi_ric sysfs_mi_memory:dir { read };
+allow mi_ric sysfs_mi_memory:file { getattr open read };
+
+# shutdown voltage record one shot
+type aeev, domain;
+type aeev_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(aeev)
+
+# battery authentication
+type batterysecret, domain;
+type batterysecret_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(batterysecret)
+allow batterysecret self:netlink_kobject_uevent_socket { bind create read };
+allow batterysecret sysfs_batteryinfo:file r_file_perms;
+allow batterysecret sysfs_batteryinfo:dir { search };
+allow batterysecret sysfs_batteryinfo:file { open read write };
+allow batterysecret self:capability2 { block_suspend };
+allow batterysecret kmsg_device:chr_file { getattr open write };
+allow batterysecret sysfs_wake_lock:file { open write };
+
+# display tuning daemon
+type displayfeature, domain;
+type displayfeature_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(displayfeature)
+add_service(displayfeature, displayfeature_vndservice)
+vndbinder_use(displayfeature)
+
+# display tuning HAL; hwcomposer.mtk_common.so talks to it
+type hal_displayfeature, domain;
+type hal_displayfeature_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(hal_displayfeature)
+add_service(hal_displayfeature, framemaster_service)
+allow hal_displayfeature sysfs_display_feature:dir { search };
+add_service(hal_displayfeature, hal_displayfeature_service)
+typeattribute hal_displayfeature hal_mtk_composer_ext_client;
+binder_use(hal_displayfeature)
+vndbinder_use(hal_displayfeature)
+allow hal_displayfeature mtk_hal_pq_service:service_manager find;
+allow hal_displayfeature hal_graphics_composer_default:binder { call transfer };
+allow hal_displayfeature mnt_vendor_file:dir { search };
+allow hal_displayfeature mtk_hal_pq:binder { call };
+allow hal_displayfeature persist_data_file:dir { search };
+allow hal_displayfeature persist_data_file:file { getattr open read };
+allow hal_displayfeature sysfs_display_feature:file { getattr open read write };
+allow hal_displayfeature sysfs_leds:dir { search };
+allow hal_displayfeature sysfs_leds:file { open read write };
+allow hal_displayfeature sysfs_therm:dir { search };
+allow hal_displayfeature sysfs_therm:file { read watch };
+allow hal_displayfeature vendor_data_file:dir { add_name write };
+allow hal_displayfeature vendor_data_file:file { create open read write };
+
+# network HAL
+type minet, domain;
+type minet_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(minet)
+add_service(minet, minet_service)
+binder_use(minet)
+
+# network daemon
+type minetd, domain;
+type minetd_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(minetd)
+allow minetd minetd:netlink_generic_socket { bind create getattr read setopt write };
+allow minetd socket_device:dir { add_name remove_name write };
+allow minetd socket_device:sock_file { create setattr unlink };
+
+# cold launch daemon
+type xiaomi_cld, domain;
+type xiaomi_cld_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(xiaomi_cld)
+add_service(xiaomi_cld, xiaomi_cld_service)
+binder_use(xiaomi_cld)
+allow xiaomi_cld self:netlink_kobject_uevent_socket { bind create getopt read setopt };
+
+# file based optimisation
+type xiaomi_fbo, domain;
+type xiaomi_fbo_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(xiaomi_fbo)
+add_service(xiaomi_fbo, xiaomi_fbo_service)
+binder_use(xiaomi_fbo)
+allow xiaomi_fbo self:netlink_kobject_uevent_socket { bind create getopt read setopt };
+
+# charging HAL; its init rc owns the charging sysfs nodes
+type xiaomi_micharge, domain;
+type xiaomi_micharge_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(xiaomi_micharge)
+add_service(xiaomi_micharge, xiaomi_micharge_service)
+binder_use(xiaomi_micharge)
+
+# modem diagnostics
+type xiaomi_mimd, domain;
+type xiaomi_mimd_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(xiaomi_mimd)
+allow xiaomi_mimd sysfs_perf_helper:dir { search };
+add_service(xiaomi_mimd, xiaomi_mimd_service)
+binder_use(xiaomi_mimd)
+allow xiaomi_mimd proc_meminfo:file { getattr open read };
+allow xiaomi_mimd proc_pressure_mem:file { open read write };
+allow xiaomi_mimd sysfs_perf_helper:file { read watch };
+
+# performance HAL
+type xiaomi_miperf, domain;
+type xiaomi_miperf_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(xiaomi_miperf)
+add_service(xiaomi_miperf, xiaomi_miperf_service)
+binder_use(xiaomi_miperf)
+
+# misys core HAL; libsecid.so talks to it
+type xiaomi_misys_core, domain;
+type xiaomi_misys_core_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(xiaomi_misys_core)
+allow xiaomi_misys_core expdb_block_device:blk_file { setattr };
+add_service(xiaomi_misys_core, xiaomi_misys_core_service)
+binder_use(xiaomi_misys_core)
+allow xiaomi_misys_core block_device:dir { search };
+
+# misys common HAL
+type xiaomi_misys_common, domain;
+type xiaomi_misys_common_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(xiaomi_misys_common)
+add_service(xiaomi_misys_common, mtkblackbox_service)
+allow xiaomi_misys_common xiaomi_misys_core_service:service_manager find;
+get_prop(xiaomi_misys_common, boot_status_prop)
+userdebug_or_eng(`allow xiaomi_misys_common aee_exp_vendor_file:dir { add_name remove_name search write };')
+userdebug_or_eng(`allow xiaomi_misys_common aee_exp_vendor_file:file { create getattr read unlink watch };')
+allow xiaomi_misys_common expdb_block_device:blk_file { getattr };
+allow xiaomi_misys_common proc_touch:file { getattr open read };
+allow xiaomi_misys_common sysfs_bootinfo:dir { search };
+allow xiaomi_misys_common sysfs_display_feature:dir { search };
+allow xiaomi_misys_common sysfs_hardware_info:dir { search };
+allow xiaomi_misys_common sysfs_hardware_info:file { open read write };
+allow xiaomi_misys_common sysfs_therm:dir { search };
+allow xiaomi_misys_common sysfs_therm:file { getattr open read };
+allow xiaomi_misys_common sysfs_xm_power:dir { search };
+add_service(xiaomi_misys_common, xiaomi_misys_common_service)
+binder_use(xiaomi_misys_common)
+allow xiaomi_misys_common block_device:dir { search };
+allow xiaomi_misys_common kernel:system { syslog_read };
+allow xiaomi_misys_common kmsg_device:chr_file { getattr open read };
+allow xiaomi_misys_common proc_mv:file { getattr open read };
+allow xiaomi_misys_common sysfs_batteryinfo:dir { search };
+allow xiaomi_misys_common sysfs_batteryinfo:file { getattr open read };
+allow xiaomi_misys_common sysfs_bootinfo:file { getattr open read write };
+allow xiaomi_misys_common sysfs_display_feature:file { getattr open read write };
+allow xiaomi_misys_common sysfs_soc:dir { search };
+allow xiaomi_misys_common sysfs_soc:file { getattr open read };
+allow xiaomi_misys_common sysfs_xm_power:file { getattr open read write };
+allow xiaomi_misys_common vendor_data_file:dir { add_name open read remove_name write };
+allow xiaomi_misys_common vendor_data_file:file { append create getattr open read setattr unlink write };
+allow xiaomi_misys_common self:netlink_kobject_uevent_socket { bind create read };
+allow xiaomi_misys_common xiaomi_misys_core:binder { call };
+
+# video post processing HAL
+type xiaomi_videoservice, domain;
+type xiaomi_videoservice_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(xiaomi_videoservice)
+add_service(xiaomi_videoservice, xiaomi_videoservice_service)
+binder_use(xiaomi_videoservice)
+allow xiaomi_videoservice vendor_data_file:file { getattr open read };
+
+# sensor low power daemon
+type slad, domain;
+type slad_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(slad)

@@ -1,0 +1,9 @@
+#
+# SPDX-FileCopyrightText: WitAqua
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+allow hal_usb_gadget_default sysfs_udc:dir { search };
+allow hal_usb_gadget_default sysfs_usb:file { getattr open read };
+get_prop(hal_usb_gadget_default, usb_control_prop)

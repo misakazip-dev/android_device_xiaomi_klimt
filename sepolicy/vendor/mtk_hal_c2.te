@@ -1,0 +1,11 @@
+#
+# SPDX-FileCopyrightText: WitAqua
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+allow mtk_hal_c2 hal_dolby_c2_vision:binder { call transfer };
+allow mtk_hal_c2 logd:unix_stream_socket { connectto };
+allow mtk_hal_c2 logdr_socket:sock_file { write };
+allow mtk_hal_c2 system_data_file:dir { search };
+allow mtk_hal_c2 system_data_file:dir search;

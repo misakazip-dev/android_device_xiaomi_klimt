@@ -1,0 +1,6 @@
+#
+# SPDX-FileCopyrightText: WitAqua
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+get_prop(mtk_hal_mmlpq, boot_status_prop)

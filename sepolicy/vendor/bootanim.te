@@ -1,0 +1,7 @@
+#
+# SPDX-FileCopyrightText: WitAqua
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+allow bootanim mtk_hal_mali_platform_default_service:service_manager find;

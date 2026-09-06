@@ -1,0 +1,10 @@
+#
+# SPDX-FileCopyrightText: WitAqua
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+allow hal_vibrator_default mnt_vendor_file:dir { search };
+allow hal_vibrator_default persist_data_file:dir { search };
+allow hal_vibrator_default persist_data_file:file { getattr open read };
+allow hal_vibrator_default sysfs_vibrator:file { open read write };

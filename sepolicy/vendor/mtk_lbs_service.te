@@ -1,0 +1,8 @@
+#
+# SPDX-FileCopyrightText: WitAqua
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+allow mtk_lbs_service ccci_device:chr_file { open read write };
+allow mtk_lbs_service hal_gnss_default:binder { call };
