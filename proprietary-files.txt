@@ -1974,17 +1974,17 @@ vendor/lib64/libhwm.so
 vendor/lib64/vendor.mediatek.hardware.nvram-V1-ndk.so
 
 # Overlays
-vendor/overlay/CellbroadcastUIResOverlay/CellbroadcastUIResOverlay.apk:vendor/app/CellbroadcastUIResOverlay/CellbroadcastUIResOverlay.apk;PRESIGNED
-vendor/overlay/FrameworkResOverlay/FrameworkResOverlay.apk:vendor/app/FrameworkResOverlay/FrameworkResOverlay.apk;PRESIGNED
-vendor/overlay/FrameworkResOverlayExt/FrameworkResOverlayExt.apk:vendor/app/FrameworkResOverlayExt/FrameworkResOverlayExt.apk;PRESIGNED
-vendor/overlay/FrameworkResOverlay_klimt.apk:vendor/app/FrameworkResOverlay_klimt/FrameworkResOverlay_klimt.apk;PRESIGNED
-vendor/overlay/MtkSettingsResOverlay/MtkSettingsResOverlay.apk:vendor/app/MtkSettingsResOverlay/MtkSettingsResOverlay.apk;PRESIGNED
-vendor/overlay/MtkTelephonyServiceResOverlay/MtkTelephonyServiceResOverlay.apk:vendor/app/MtkTelephonyServiceResOverlay/MtkTelephonyServiceResOverlay.apk;PRESIGNED
-vendor/overlay/NewCallDcOverlay/NewCallDcOverlay.apk:vendor/app/NewCallDcOverlay/NewCallDcOverlay.apk;PRESIGNED
-vendor/overlay/SecureElementResOverlay/SecureElementResOverlay.apk:vendor/app/SecureElementResOverlay/SecureElementResOverlay.apk;PRESIGNED
-vendor/overlay/SettingsProviderResOverlay/SettingsProviderResOverlay.apk:vendor/app/SettingsProviderResOverlay/SettingsProviderResOverlay.apk;PRESIGNED
-vendor/overlay/WifiResMainlineOverlay/WifiResMainlineOverlay.apk:vendor/app/WifiResMainlineOverlay/WifiResMainlineOverlay.apk;PRESIGNED
-vendor/overlay/WifiResOverlay/WifiResOverlay.apk:vendor/app/WifiResOverlay/WifiResOverlay.apk;PRESIGNED
+vendor/overlay/CellbroadcastUIResOverlay/CellbroadcastUIResOverlay.apk;EXTRACT_ONLY
+vendor/overlay/FrameworkResOverlay/FrameworkResOverlay.apk;EXTRACT_ONLY
+vendor/overlay/FrameworkResOverlayExt/FrameworkResOverlayExt.apk;EXTRACT_ONLY
+vendor/overlay/FrameworkResOverlay_klimt.apk;EXTRACT_ONLY
+vendor/overlay/MtkSettingsResOverlay/MtkSettingsResOverlay.apk;EXTRACT_ONLY
+vendor/overlay/MtkTelephonyServiceResOverlay/MtkTelephonyServiceResOverlay.apk;EXTRACT_ONLY
+vendor/overlay/NewCallDcOverlay/NewCallDcOverlay.apk;EXTRACT_ONLY
+vendor/overlay/SecureElementResOverlay/SecureElementResOverlay.apk;EXTRACT_ONLY
+vendor/overlay/SettingsProviderResOverlay/SettingsProviderResOverlay.apk;EXTRACT_ONLY
+vendor/overlay/WifiResMainlineOverlay/WifiResMainlineOverlay.apk;EXTRACT_ONLY
+vendor/overlay/WifiResOverlay/WifiResOverlay.apk;EXTRACT_ONLY
 
 # Payment (Xiaomi)
 odm/etc/vintf/manifest/manifest_vendor.xiaomi.hardware.mlipay.xml

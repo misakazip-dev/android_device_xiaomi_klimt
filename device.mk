@@ -112,6 +112,20 @@ PRODUCT_COPY_FILES += \
 
 # Overlays
 PRODUCT_ENFORCE_RRO_TARGETS := *
+
+PRODUCT_PACKAGES += \
+    CellbroadcastUIResOverlay \
+    FrameworkResOverlay \
+    FrameworkResOverlayExt \
+    FrameworkResOverlay_klimt \
+    MtkSettingsResOverlay \
+    MtkTelephonyServiceResOverlay \
+    NewCallDcOverlay \
+    SecureElementResOverlay \
+    SettingsProviderResOverlay \
+    WifiResMainlineOverlay \
+    WifiResOverlay
+
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay
 
