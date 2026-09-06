@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: WitAqua
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- /sys/class/leds only holds lcd-backlight and the three camera flash
+         LEDs, so there is no notification or battery light to configure. The
+         default of 8 claims a pulsating notification LED. -->
+    <integer name="config_deviceLightCapabilities">0</integer>
+
+    <!-- The panel is 1280x2772, an aspect ratio of 2.17. -->
+    <bool name="config_haveHigherAspectRatioScreen">true</bool>
+
+    <string-array name="config_restartActionsList">
+        <item>restart</item>
+        <item>restart_recovery</item>
+        <item>restart_bootloader</item>
+        <item>restart_fastboot</item>
+        <item>restart_systemui</item>
+    </string-array>
+</resources>

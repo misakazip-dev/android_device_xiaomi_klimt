@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: WitAqua
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Offer the toggle that keeps NFC off while the screen is locked. Setting
+         this avoids the config_skuSupportsSecureNfc path, which matches against
+         ro.boot.hardware.sku. -->
+    <bool name="enable_secure_nfc_support">true</bool>
+</resources>
