@@ -35,3 +35,4 @@ genfscon sysfs /devices/virtual/mi_memory                                   u:ob
 genfscon sysfs /module/metis/parameters                                     u:object_r:sysfs_metis:s0
 genfscon proc /composer_pid                                                  u:object_r:proc_pid_notify:s0
 genfscon proc /gallocator_pid                                                u:object_r:proc_pid_notify:s0
+genfscon proc /mpbe                                                          u:object_r:proc_mpbe:s0

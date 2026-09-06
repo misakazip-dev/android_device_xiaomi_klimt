@@ -13,3 +13,6 @@ allow mtk_hal_power proc_easmgr:file { ioctl };
 allow mtk_hal_power thermal_core_data_file:dir { read search watch };
 allow mtk_hal_power sysfs_ufs:file { write };
 allowxperm mtk_hal_power proc_easmgr:file ioctl { 0x673d 0x673e };
+# mpbe asks the power HAL for a hint, and it looks the caller up in /proc.
+allow mtk_hal_power mpbe:dir { getattr search };
+allow mtk_hal_power mpbe:file r_file_perms;

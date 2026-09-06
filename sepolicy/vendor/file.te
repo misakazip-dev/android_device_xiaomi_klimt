@@ -19,3 +19,4 @@ type sysfs_xm_power, fs_type, sysfs_type;
 type sysfs_metis, fs_type, sysfs_type;
 type sysfs_mi_memory, fs_type, sysfs_type;
 type proc_pid_notify, fs_type, proc_type;
+type proc_mpbe, fs_type, proc_type;

@@ -9,3 +9,6 @@ allow vendor_init xiaomi_touch_device:chr_file { getattr };
 set_prop(vendor_init, audio_prop)
 set_prop(vendor_init, vendor_mtk_emcamera_prop)
 set_prop(vendor_init, vendor_mtk_mdp_debug_log_prop)
+# The mpbe init rc writes /proc/mpbe/ctrl.
+allow vendor_init proc_mpbe:dir search;
+allow vendor_init proc_mpbe:file w_file_perms;

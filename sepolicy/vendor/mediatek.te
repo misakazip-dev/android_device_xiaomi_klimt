@@ -100,3 +100,17 @@ allow uart_launcher proc_stpbt:file { open read };
 allow uart_launcher sysfs_dt_firmware_android:dir { search };
 allow uart_launcher sysfs_dt_firmware_android:file { getattr open read };
 allow uart_launcher ttyS_device:chr_file { ioctl lock open read write };
+
+# /vendor/bin/ffu, pinned to u:r:ffu:s0 by its init rc.
+type ffu, domain;
+type ffu_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(ffu)
+
+# do_ddr_training is disabled and only started when vendor.ddr_training.is.start
+# is set, and its entrypoint is /system/bin/dd, which Treble forbids a vendor
+# domain from entering. It stays without a domain.
+
+# /odm/etc/init.panel_info.sh, pinned to u:r:vendor_touch_init_shell:s0.
+type vendor_touch_init_shell, domain;
+domain_trans(init, vendor_shell_exec, vendor_touch_init_shell)
+

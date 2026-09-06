@@ -1,0 +1,9 @@
+#
+# SPDX-FileCopyrightText: WitAqua
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+persist.vendor.thermal.   u:object_r:vendor_thermal_prop:s0
+persist.vendor.tracking.  u:object_r:vendor_thermal_prop:s0
+vendor.sys.thermal.       u:object_r:vendor_thermal_prop:s0

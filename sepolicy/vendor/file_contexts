@@ -10,7 +10,7 @@
 /odm/bin/hw/android\.hardware\.lights-service\.mediatek                    u:object_r:hal_light_default_exec:s0
 /odm/bin/hw/mfp-daemon                                                     u:object_r:hal_fingerprint_default_exec:s0
 /odm/bin/hw/vendor\.xiaomi\.hardware\.vibratorfeature\.service             u:object_r:hal_vibrator_default_exec:s0
-/vendor/bin/ffu                                                            u:object_r:mmc_ffu_exec:s0
+/vendor/bin/ffu                                                            u:object_r:ffu_exec:s0
 /vendor/bin/hw/android\.hardware\.bluetooth-service-mediatek               u:object_r:hal_bluetooth_default_exec:s0
 /vendor/bin/hw/android\.hardware\.boot-service\.mtk                        u:object_r:hal_bootctl_default_exec:s0
 /vendor/bin/hw/android\.hardware\.dumpstate-service\.xiaomi                u:object_r:hal_dumpstate_default_exec:s0
@@ -22,7 +22,7 @@
 /odm/bin/hw/miteetuid                                                      u:object_r:miteetuid_exec:s0
 /odm/bin/hw/vendor\.xiaomi\.hw\.touchfeature-service                       u:object_r:hal_touchfeature_exec:s0
 /odm/bin/idmanager                                                         u:object_r:mitee_idmanager_exec:s0
-/odm/bin/mpbe_service                                                      u:object_r:mpbe_service_exec:s0
+/odm/bin/mpbe_service                                                      u:object_r:mpbe_exec:s0
 /odm/bin/mtd_mitee                                                         u:object_r:mitee_mtdservice_exec:s0
 /odm/bin/toucheventcheck                                                   u:object_r:toucheventcheck_exec:s0
 /vendor/bin/MI_IC                                                          u:object_r:mi_ic_exec:s0
@@ -73,3 +73,4 @@
 /dev/socket/audio_hw_socket  u:object_r:audio_hw_socket:s0
 /dev/gpsmdl-[a-z0-9]+     u:object_r:gpsmdl_device:s0
 /dev/gpsstrg-[a-z0-9]+    u:object_r:gpsmdl_device:s0
+/(system/)?vendor/bin/mi_thermald    u:object_r:mi_thermald_exec:s0
