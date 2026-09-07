@@ -1978,11 +1978,7 @@ vendor/overlay/CellbroadcastUIResOverlay/CellbroadcastUIResOverlay.apk;EXTRACT_O
 vendor/overlay/FrameworkResOverlay/FrameworkResOverlay.apk;EXTRACT_ONLY
 vendor/overlay/FrameworkResOverlayExt/FrameworkResOverlayExt.apk;EXTRACT_ONLY
 vendor/overlay/FrameworkResOverlay_klimt.apk;EXTRACT_ONLY
-vendor/overlay/MtkSettingsResOverlay/MtkSettingsResOverlay.apk;EXTRACT_ONLY
-vendor/overlay/MtkTelephonyServiceResOverlay/MtkTelephonyServiceResOverlay.apk;EXTRACT_ONLY
-vendor/overlay/NewCallDcOverlay/NewCallDcOverlay.apk;EXTRACT_ONLY
 vendor/overlay/SecureElementResOverlay/SecureElementResOverlay.apk;EXTRACT_ONLY
-vendor/overlay/SettingsProviderResOverlay/SettingsProviderResOverlay.apk;EXTRACT_ONLY
 vendor/overlay/WifiResMainlineOverlay/WifiResMainlineOverlay.apk;EXTRACT_ONLY
 vendor/overlay/WifiResOverlay/WifiResOverlay.apk;EXTRACT_ONLY
 

@@ -119,11 +119,7 @@ PRODUCT_PACKAGES += \
     FrameworkResOverlay \
     FrameworkResOverlayExt \
     FrameworkResOverlay_klimt \
-    MtkSettingsResOverlay \
-    MtkTelephonyServiceResOverlay \
-    NewCallDcOverlay \
     SecureElementResOverlay \
-    SettingsProviderResOverlay \
     WifiResMainlineOverlay \
     WifiResOverlay
 
