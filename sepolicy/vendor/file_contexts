@@ -74,3 +74,11 @@
 /dev/gpsmdl-[a-z0-9]+     u:object_r:gpsmdl_device:s0
 /dev/gpsstrg-[a-z0-9]+    u:object_r:gpsmdl_device:s0
 /(system/)?vendor/bin/mi_thermald    u:object_r:mi_thermald_exec:s0
+
+/data/vendor/dolby(/.*)?                                                   u:object_r:vendor_dolby_data_file:s0
+
+# MediaTek labels every by-name node except this one, so fsck and mount
+# of /cache land on the generic block_device type.
+/dev/block/by-name/rescue                                                  u:object_r:cache_block_device:s0
+/dev/block/by-name/gsort                                                   u:object_r:gsort_block_device:s0
+/dev/socket/fpsensor_socket                                                u:object_r:fpsensor_socket:s0

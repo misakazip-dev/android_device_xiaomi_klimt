@@ -34,7 +34,7 @@ allow hal_touchfeature input_device:chr_file { ioctl open read write };
 allow hal_touchfeature input_device:dir { open read search };
 allow hal_touchfeature proc_touch:file { open write };
 allow hal_touchfeature sysfs_therm:dir { search };
-allow hal_touchfeature sysfs_therm:file { read watch };
+allow hal_touchfeature sysfs_therm:file { r_file_perms watch };
 allow hal_touchfeature sysfs_touch:file { open read write };
 allow hal_touchfeature system_server:binder { transfer };
 allow hal_touchfeature vendor_data_file:file { getattr open read };
@@ -63,6 +63,9 @@ allow mitee_idmanager xiaomi_misys_core_service:service_manager find;
 hal_client_domain(mitee_idmanager, hal_keymint)
 hal_client_domain(mitee_idmanager, hal_secure_element)
 binder_use(mitee_idmanager)
+allow mitee_idmanager block_device:dir search;
+allow mitee_idmanager block_device:blk_file getattr;
+set_prop(mitee_idmanager, vendor_idmgr_prop)
 
 # TEE trusted data service
 type mitee_mtdservice, domain;
@@ -104,8 +107,26 @@ init_daemon_domain(mi_ric)
 allow mi_ric self:capability fsetid;
 allow mi_ric vendor_data_file:dir setattr;
 allow mi_ric proc_uptime:file { open read };
-allow mi_ric sysfs_mi_memory:dir { read };
+allow mi_ric sysfs_mi_memory:dir r_dir_perms;
+allow mi_ric sysfs_block:dir search;
+allow mi_ric sysfs_bootinfo:dir search;
+allow mi_ric sysfs_bootinfo:file r_file_perms;
+allow mi_ric sysfs_ufs:dir search;
+allow mi_ric sysfs_ufs:file r_file_perms;
+allow mi_ric proc_mv:file r_file_perms;
+# get_nand_vendor() reads the UFS vendor node through popen("cat ..."), which
+# execs the system shell. Treble otherwise forbids that from a vendor domain.
+typeattribute mi_ric vendor_executes_system_violators;
+allow mi_ric system_file:file rx_file_perms;
+allow mi_ric vendor_shell_exec:file rx_file_perms;
+allow mi_ric shell_exec:file rx_file_perms;
+# It logs to /data/vendor/mi_ic, which its own rc creates.
+allow mi_ric vendor_data_file:dir rw_dir_perms;
+allow mi_ric vendor_data_file:file create_file_perms;
 allow mi_ric sysfs_mi_memory:file { getattr open read };
+allow mi_ric block_device:dir search;
+allow mi_ric gsort_block_device:blk_file rw_file_perms;
+allow mi_ric sysfs:dir r_dir_perms;
 
 # shutdown voltage record one shot
 type aeev, domain;
@@ -151,7 +172,7 @@ allow hal_displayfeature sysfs_display_feature:file { getattr open read write };
 allow hal_displayfeature sysfs_leds:dir { search };
 allow hal_displayfeature sysfs_leds:file { open read write };
 allow hal_displayfeature sysfs_therm:dir { search };
-allow hal_displayfeature sysfs_therm:file { read watch };
+allow hal_displayfeature sysfs_therm:file { r_file_perms watch };
 allow hal_displayfeature vendor_data_file:dir { add_name write };
 allow hal_displayfeature vendor_data_file:file { create open read write };
 
@@ -235,6 +256,9 @@ allow xiaomi_misys_common sysfs_bootinfo:dir { search };
 allow xiaomi_misys_common sysfs_display_feature:dir { search };
 allow xiaomi_misys_common sysfs_hardware_info:dir { search };
 allow xiaomi_misys_common sysfs_hardware_info:file { open read write };
+# HardWareInfo stats a partition node to report the storage size.
+allow xiaomi_misys_common block_device:blk_file getattr;
+allow xiaomi_misys_core block_device:blk_file { getattr setattr };
 allow xiaomi_misys_common sysfs_therm:dir { search };
 allow xiaomi_misys_common sysfs_therm:file { getattr open read };
 allow xiaomi_misys_common sysfs_xm_power:dir { search };
@@ -287,8 +311,13 @@ allow mi_thermald sysfs_leds:dir r_dir_perms;
 allow mi_thermald sysfs_leds:file rw_file_perms;
 allow mi_thermald sysfs_display_feature:dir r_dir_perms;
 allow mi_thermald sysfs_display_feature:file rw_file_perms;
+allow mi_thermald sysfs_powersave:dir search;
+allow mi_thermald sysfs_powersave:file rw_file_perms;
 allow mi_thermald sysfs_thermal_sram:dir search;
 allow mi_thermald sysfs_thermal_sram:file r_file_perms;
 # It chowns the files it creates under /data/vendor/thermal.
 allow mi_thermald self:capability chown;
 
+# The fingerprint HAL publishes its module and sensor info here.
+set_prop(hal_fingerprint_default, vendor_fingerprint_prop)
+allow hal_fingerprint_default fpsensor_socket:sock_file { create unlink setattr };

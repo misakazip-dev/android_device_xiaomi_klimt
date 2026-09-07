@@ -20,3 +20,11 @@ type sysfs_metis, fs_type, sysfs_type;
 type sysfs_mi_memory, fs_type, sysfs_type;
 type proc_pid_notify, fs_type, proc_type;
 type proc_mpbe, fs_type, proc_type;
+
+# The dms HAL rc mkdirs /data/vendor/dolby and the HAL writes into it.
+type vendor_dolby_data_file, file_type, data_file_type;
+
+# init.mfp-daemon.aidl.rc declares this socket; without a type of its own it
+# lands on socket_device, which init may not unlink when the service restarts.
+type fpsensor_socket, file_type;
+type sysfs_powersave, fs_type, sysfs_type;

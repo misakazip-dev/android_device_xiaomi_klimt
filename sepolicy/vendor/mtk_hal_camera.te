@@ -28,3 +28,9 @@ get_prop(mtk_hal_camera, graphics_config_writable_prop)
 get_prop(mtk_hal_camera, zygote_config_prop)
 get_prop(mtk_hal_camera, graphics_config_prop)
 allow mtk_hal_camera system_data_file:dir search;
+
+# The camera HAL records the build stamps of the components it loaded.
+set_prop(mtk_hal_camera, vendor_camera_skynet_prop)
+
+# The algo threads statfs() the dmabuf filesystem, which carries no label.
+allow mtk_hal_camera unlabeled:filesystem getattr;

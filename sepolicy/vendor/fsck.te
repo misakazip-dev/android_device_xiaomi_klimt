@@ -1,0 +1,8 @@
+#
+# SPDX-FileCopyrightText: WitAqua
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+# fsck.f2fs walks the UFS host controller node to pick its geometry.
+allow fsck sysfs_ufs:dir search;

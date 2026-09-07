@@ -37,3 +37,4 @@ vendor.xiaomi.hardware.mediaeventgatherservice.IMediaGather/default       u:obje
 vendor.xiaomi.hardware.mtkblackbox.IMtkblackboxImpl/default               u:object_r:mtkblackbox_service:s0
 vendor.xiaomi.sensor.citsensorservice.ICitSensorService/default           u:object_r:citsensorservice_service:s0
 com.fingerprints.extension3.IFingerprintNavigation/default                u:object_r:fingerprint_extension_service:s0
+vendor.xiaomi.hardware.fingerprintextension.IXiaomiFingerprint/default    u:object_r:fingerprint_extension_service:s0

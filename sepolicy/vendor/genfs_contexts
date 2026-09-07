@@ -36,3 +36,12 @@ genfscon sysfs /module/metis/parameters                                     u:ob
 genfscon proc /composer_pid                                                  u:object_r:proc_pid_notify:s0
 genfscon proc /gallocator_pid                                                u:object_r:proc_pid_notify:s0
 genfscon proc /mpbe                                                          u:object_r:proc_mpbe:s0
+# MediaTek only labels blocktag/eara_io; the eara-io rc also toggles this node.
+genfscon proc /blocktag/earaio_ctrl                 u:object_r:proc_earaio:s0
+
+# MediaTek labels the dvfsrc nodes of other SoCs but not this one's, so the
+# power HAL's write to the devfreq userspace governor lands on bare sysfs.
+genfscon sysfs /devices/platform/1c013000.dvfsrc                 u:object_r:sysfs_dvfsrc_dbg:s0
+
+# mi_thermald toggles /sys/powersave/boost, which carries no label of its own.
+genfscon sysfs /powersave                                        u:object_r:sysfs_powersave:s0

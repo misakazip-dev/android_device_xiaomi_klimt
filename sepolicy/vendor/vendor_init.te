@@ -12,3 +12,12 @@ set_prop(vendor_init, vendor_mtk_mdp_debug_log_prop)
 # The mpbe init rc writes /proc/mpbe/ctrl.
 allow vendor_init proc_mpbe:dir search;
 allow vendor_init proc_mpbe:file w_file_perms;
+# The eara-io rc writes /proc/blocktag/earaio_ctrl.
+allow vendor_init proc_earaio:file w_file_perms;
+
+# init.project.rc opens a trace instance. Its sibling write to debugfs
+# migration_cost_ns stays denied: enforce_debugfs_restriction only exempts
+# vendor_init on userdebug and eng, and stock is a user build that also
+# cannot apply it.
+allow vendor_init debugfs_tracing_instances:dir rw_dir_perms;
+allow vendor_init debugfs_tracing_instances:file create_file_perms;

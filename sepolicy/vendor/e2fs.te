@@ -1,0 +1,8 @@
+#
+# SPDX-FileCopyrightText: WitAqua
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+# make_f2fs walks the UFS host controller node to pick its geometry.
+allow e2fs sysfs_ufs:dir search;

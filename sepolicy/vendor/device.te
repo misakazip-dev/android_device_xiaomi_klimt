@@ -11,3 +11,6 @@ type sipa_device, dev_type;
 type xiaomi_misys_device, dev_type;
 type xiaomi_touch_device, dev_type;
 type audio_hw_socket, file_type;
+
+# MI_RIC reads and writes /dev/block/by-name/gsort, which nothing labels.
+type gsort_block_device, dev_type;
