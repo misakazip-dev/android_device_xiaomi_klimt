@@ -13,7 +13,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/vabc_features.m
 PRODUCT_VENDOR_PROPERTIES += \
     ro.virtual_ab.compression.threads=true
 
-PRODUCT_VIRTUAL_AB_COMPRESSION_METHOD := gz
+PRODUCT_VIRTUAL_AB_COMPRESSION_METHOD := lz4
+PRODUCT_VIRTUAL_AB_COMPRESSION_FACTOR := 65536
 
 PRODUCT_PACKAGES += \
     snapuserd.recovery
