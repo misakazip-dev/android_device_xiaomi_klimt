@@ -5,6 +5,9 @@
      SPDX-License-Identifier: Apache-2.0
 -->
 <resources>
+    <!-- Allow ImsManager to enable VoLTE when supported by the carrier. -->
+    <bool name="config_device_volte_available">true</bool>
+
     <!-- The panel reports 60, 90, 120 and 144 Hz and prefers 144. AOSP defaults
          config_defaultRefreshRate to 60, which votes a render frame rate cap of
          60 Hz and pins the display to the slowest mode. Drop the cap and let the

@@ -483,7 +483,8 @@ persist.vendor.mifaced.fastlaunch=1
 persist.vendor.mims_support=2
 persist.vendor.mtk.dch.enable=2
 persist.vendor.mtk.dch.enable.2=2
-persist.vendor.mtk.volte.enable=1
+# Multi-IMS uses one bit per logical phone: enable both DSDS phones by default.
+persist.vendor.mtk.volte.enable=3
 persist.vendor.mtk_ct_volte_support=3
 persist.vendor.mtk_dc_call_capability=2
 persist.vendor.mtk_dynamic_ims_switch=1
