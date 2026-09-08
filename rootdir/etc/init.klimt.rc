@@ -1,0 +1,35 @@
+#
+# SPDX-FileCopyrightText: WitAqua
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+# The TEE was provisioned at the factory with the SKU's own product and model
+# IDs, and key attestation fails outright when what Android reports does not
+# match. PRODUCT_MODEL is the marketing name, so report the real IDs through
+# ro.product.*_for_attestation, which Build.getVendorDeviceIdProperty() prefers.
+#
+# The values come from the SKU files Xiaomi ships in /odm/etc. Stage them in a
+# writable property first so the default can be overridden, then publish the
+# read-only ones once, since a second write to those would be rejected.
+on early-init
+    setprop vendor.klimt.attest.name klimt_global
+    setprop vendor.klimt.attest.model 2506BPN68G
+
+on early-init && property:ro.boot.hwc=JP
+    setprop vendor.klimt.attest.name klimt_jp
+    setprop vendor.klimt.attest.model 2506BPN68R
+
+on early-init && property:ro.boot.hwc=EEA
+    setprop vendor.klimt.attest.name klimt_eea
+
+on early-init && property:ro.boot.hwc=RU
+    setprop vendor.klimt.attest.name klimt_ru
+
+on early-init && property:ro.boot.hwc=TR
+    setprop vendor.klimt.attest.name klimt_tr
+
+on init
+    setprop ro.product.name_for_attestation ${vendor.klimt.attest.name}
+    setprop ro.product.model_for_attestation ${vendor.klimt.attest.model}
+    setprop ro.product.brand_for_attestation Xiaomi

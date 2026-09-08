@@ -11,3 +11,4 @@ ro.vendor.idmgr.          u:object_r:vendor_idmgr_prop:s0
 persist.vendor.sys.idmgr. u:object_r:vendor_idmgr_prop:s0
 persist.vendor.sys.fp.          u:object_r:vendor_fingerprint_prop:s0
 persist.vendor.camera.skynet.   u:object_r:vendor_camera_skynet_prop:s0
+vendor.klimt.attest.        u:object_r:vendor_klimt_attest_prop:s0

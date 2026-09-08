@@ -21,3 +21,9 @@ allow vendor_init proc_earaio:file w_file_perms;
 # cannot apply it.
 allow vendor_init debugfs_tracing_instances:dir rw_dir_perms;
 allow vendor_init debugfs_tracing_instances:file create_file_perms;
+
+# init.klimt.rc stages the attestation IDs here before publishing the
+# read-only ro.product.*_for_attestation properties.
+# build_attestation_prop already grants vendor_init through
+# system_vendor_config_prop(), so only the staging property needs a rule.
+set_prop(vendor_init, vendor_klimt_attest_prop)
