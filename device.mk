@@ -17,6 +17,7 @@ PRODUCT_VIRTUAL_AB_COMPRESSION_METHOD := lz4
 PRODUCT_VIRTUAL_AB_COMPRESSION_FACTOR := 65536
 
 PRODUCT_PACKAGES += \
+    snapuserd_ramdisk \
     snapuserd.recovery
 
 # API levels

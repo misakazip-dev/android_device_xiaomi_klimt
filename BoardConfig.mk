@@ -49,7 +49,7 @@ BOARD_INIT_BOOT_HEADER_VERSION := 4
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2
-BOARD_KERNEL_IMAGE_NAME := Image
+BOARD_KERNEL_IMAGE_NAME := Image.lz4
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_RAMDISK_USE_LZ4 := true
 BOARD_USES_GENERIC_KERNEL_IMAGE := true
@@ -61,33 +61,26 @@ BOARD_MKBOOTIMG_ARGS += --tags_offset 0x87c80000
 BOARD_MKBOOTIMG_ARGS += --dtb_offset 0x87c80000
 BOARD_MKBOOTIMG_INIT_ARGS += --header_version $(BOARD_INIT_BOOT_HEADER_VERSION)
 
-PREBUILT_PATH := kernel/xiaomi/klimt
-TARGET_NO_KERNEL_OVERRIDE := true
+TARGET_KERNEL_SOURCE := kernel/xiaomi/klimt
+TARGET_KERNEL_CONFIG := klimt_defconfig
+TARGET_KERNEL_ADDITIONAL_FLAGS := \
+    LOCALVERSION= \
+    KCFLAGS=-D__ANDROID_COMMON_KERNEL__ \
+    CONFIG_UNUSED_KSYMS_WHITELIST=$(abspath $(TARGET_KERNEL_SOURCE)/android/abi_gki_aarch64_klimt)
+
+PREBUILT_PATH := kernel/xiaomi/klimt-prebuilt
+TARGET_KERNEL_EXT_MODULE_ROOT := kernel/xiaomi
+TARGET_KERNEL_EXT_MODULES := klimt-prebuilt
+TARGET_MODULE_ALIASES := sec.ko:mtk_sec.ko
 BOARD_PREBUILT_DTBOIMAGE := $(PREBUILT_PATH)/dtbo.img
-PRODUCT_COPY_FILES += \
-    $(PREBUILT_PATH)/dtb.img:dtb.img \
-    $(PREBUILT_PATH)/kernel:kernel
+BOARD_PREBUILT_DTBIMAGE_DIR := $(PREBUILT_PATH)/dtb
 
-# Kernel modules required before vendor_dlkm is mounted
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES := \
-    $(wildcard $(PREBUILT_PATH)/modules/*.ko)
-BOARD_DO_NOT_STRIP_VENDOR_RAMDISK_MODULES := true
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := \
-    $(strip $(shell cat $(DEVICE_PATH)/modules.load.vendor_boot))
-BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := \
-    $(strip $(shell cat $(DEVICE_PATH)/modules.load.recovery))
-
-# Modules loaded after vendor_dlkm is mounted
-BOARD_VENDOR_KERNEL_MODULES := \
-    $(wildcard $(PREBUILT_PATH)/vendor_dlkm/modules/*.ko)
-BOARD_VENDOR_KERNEL_MODULES_LOAD := \
-    $(strip $(shell cat $(PREBUILT_PATH)/vendor_dlkm/modules.load))
-
-# Modules loaded after system_dlkm is mounted
-BOARD_SYSTEM_KERNEL_MODULES := \
-    $(wildcard $(PREBUILT_PATH)/system_dlkm/modules/*.ko)
-BOARD_SYSTEM_KERNEL_MODULES_LOAD := \
-    $(strip $(shell cat $(PREBUILT_PATH)/system_dlkm/modules.load))
+SYSTEM_KERNEL_MODULES := $(strip $(shell cat $(TARGET_KERNEL_SOURCE)/android/klimt_gki_modules))
+BOARD_SYSTEM_KERNEL_MODULES_LOAD := $(strip $(shell cat $(DEVICE_PATH)/modules.load.system_dlkm))
+BOOT_KERNEL_MODULES := $(patsubst sec.ko,mtk_sec.ko,$(strip $(shell cat $(PREBUILT_PATH)/modules.boot)))
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat $(DEVICE_PATH)/modules.load.vendor_boot))
+BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := $(strip $(shell cat $(DEVICE_PATH)/modules.load.recovery))
+BOARD_VENDOR_KERNEL_MODULES_LOAD := $(patsubst sec.ko,mtk_sec.ko,$(filter-out $(SYSTEM_KERNEL_MODULES),$(strip $(shell cat $(PREBUILT_PATH)/vendor_dlkm/modules.load))))
 
 # Partitions
 BOARD_ODMIMAGE_FILE_SYSTEM_TYPE := erofs

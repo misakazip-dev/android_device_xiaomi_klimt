@@ -240,7 +240,7 @@ mtk-mbox.ko
 mtk_tinysys_ipi.ko
 miev.ko
 uarthub_drv.ko
-sec.ko
+mtk_sec.ko
 uload_ind.ko
 load_track.ko
 clk-dbg-mt6991.ko
