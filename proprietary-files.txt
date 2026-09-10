@@ -1973,15 +1973,6 @@ vendor/lib64/libfile_op.so
 vendor/lib64/libhwm.so
 vendor/lib64/vendor.mediatek.hardware.nvram-V1-ndk.so
 
-# Overlays
-vendor/overlay/CellbroadcastUIResOverlay/CellbroadcastUIResOverlay.apk;EXTRACT_ONLY
-vendor/overlay/FrameworkResOverlay/FrameworkResOverlay.apk;EXTRACT_ONLY
-vendor/overlay/FrameworkResOverlayExt/FrameworkResOverlayExt.apk;EXTRACT_ONLY
-vendor/overlay/FrameworkResOverlay_klimt.apk;EXTRACT_ONLY
-vendor/overlay/SecureElementResOverlay/SecureElementResOverlay.apk;EXTRACT_ONLY
-vendor/overlay/WifiResMainlineOverlay/WifiResMainlineOverlay.apk;EXTRACT_ONLY
-vendor/overlay/WifiResOverlay/WifiResOverlay.apk;EXTRACT_ONLY
-
 # Payment (Xiaomi)
 odm/etc/vintf/manifest/manifest_vendor.xiaomi.hardware.mlipay.xml
 vendor/lib64/vendor.xiaomi.hardware.mlipay-V1-ndk.so

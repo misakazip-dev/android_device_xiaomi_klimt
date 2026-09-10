@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: WitAqua
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Reproduced from the stock com.mediatek.cellbroadcastuiresoverlay RRO. -->
+    <string-array name="additional_cbs_channels_strings" translatable="false">
+        <item>0x0:rat=gsm, emergency=false</item>
+        <item>0x112C:rat=gsm, emergency=true</item>
+        <item>0x112D:rat=gsm, emergency=true</item>
+    </string-array>
+</resources>

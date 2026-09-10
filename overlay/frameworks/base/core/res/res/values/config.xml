@@ -14,4 +14,54 @@
          peak setting decide instead. -->
     <integer name="config_defaultRefreshRate">0</integer>
     <integer name="config_defaultPeakRefreshRate">144</integer>
+    
+    <!-- Reproduced from the stock com.mediatek.frameworkresoverlay RRO. -->
+    <string-array name="config_globalActionsList" translatable="false">
+        <item>emergency</item>
+        <item>lockdown</item>
+        <item>power</item>
+        <item>restart</item>
+        <item>logout</item>
+        <item>screenshot</item>
+        <item>bugreport</item>
+        <item>standby</item>
+    </string-array>
+
+    <bool name="config_powerDecoupleAutoSuspendModeFromDisplay">true</bool>
+    <bool name="config_powerDecoupleInteractiveModeFromDisplay">true</bool>
+    <bool name="config_showNavigationBar">true</bool>
+    <bool name="config_supportsCamToggle">true</bool>
+    <bool name="config_supportsMicToggle">true</bool>
+
+    <integer name="config_num_physical_slots">2</integer>
+    <integer name="config_screenBrightnessDoze">5</integer>
+    <integer name="config_shortPressOnPowerBehavior">1</integer>
+
+    <string name="config_displayLightSensorType" translatable="false">android.sensor.light</string>
+    <string name="config_dozeComponent" translatable="false">com.android.dreams.alwaysondisplay/.AlwaysOnDisplay</string>
+    <string name="config_mainDisplayShape" translatable="false">M20 0h1040s20 0 20 20v2360s0 20 -20 20h-1040s-20 0 -20 -20v-2360s0 -20 20 -20</string>
+    <!-- Reproduced from the stock com.mediatek.FrameworkResOverlayExt RRO.
+         config_defaultRefreshRate / config_defaultPeakRefreshRate are omitted:
+         the stock values pin the panel to 121 Hz, superseded above.
+         config_hearing_aid_profile_supported is omitted: it lives in the
+         Bluetooth module, not core/res, so the stock entry was inert. -->
+    <bool name="config_automatic_brightness_available">true</bool>
+    <bool name="config_enableWifiDisplay">true</bool>
+    <bool name="config_suspendWhenScreenOffDueToProximity">true</bool>
+
+    <integer-array name="config_autoBrightnessLevels">
+        <item>128</item><item>256</item><item>384</item><item>512</item>
+        <item>640</item><item>768</item><item>896</item><item>1024</item>
+        <item>2048</item><item>4096</item><item>6144</item><item>8192</item>
+        <item>10240</item><item>12288</item><item>14336</item><item>16384</item>
+        <item>18432</item>
+    </integer-array>
+
+    <integer-array name="config_autoBrightnessLcdBacklightValues">
+        <item>8</item><item>64</item><item>98</item><item>104</item>
+        <item>110</item><item>116</item><item>122</item><item>128</item>
+        <item>134</item><item>182</item><item>255</item><item>255</item>
+        <item>255</item><item>255</item><item>255</item><item>255</item>
+        <item>255</item><item>255</item>
+    </integer-array>
 </resources>

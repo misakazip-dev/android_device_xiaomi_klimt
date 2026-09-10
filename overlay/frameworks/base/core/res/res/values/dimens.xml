@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: WitAqua
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Reproduced from the stock com.mediatek.frameworkresoverlay RRO. -->
+    <item name="config_screenBrightnessSettingDefaultFloat" format="float" type="dimen">0.4</item>
+    <item name="config_screenBrightnessSettingMaximumFloat" format="float" type="dimen">1.0</item>
+    <item name="config_screenBrightnessSettingMinimumFloat" format="float" type="dimen">0.00238066</item>
+
+    <dimen name="rounded_corner_radius">20dp</dimen>
+
+    <!-- Inset status bar and navigation bar content out of the rounded
+         corners. The stock overlay leaves this at 0 because MIUI lays the
+         status bar out itself, which clips the clock on the LineageOS one. -->
+    <dimen name="rounded_corner_content_padding">12dp</dimen>
+</resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<irq-device-map>
+    <device name="alarmtimer.0.auto">
+        <subsystem>Alarm</subsystem>
+    </device>
+</irq-device-map>
