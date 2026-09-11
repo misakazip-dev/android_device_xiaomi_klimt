@@ -14,6 +14,10 @@ from extract_utils.main import (
     ExtractUtilsModule,
 )
 
+namespace_imports = [
+    'device/xiaomi/klimt',
+]
+
 
 def aidl_bump(interface: str, from_version: int, to_version: int):
     return blob_fixup().binary_regex_replace(
@@ -29,12 +33,49 @@ lib_fixups = {
     'libsink': lambda *_: 'libsink_system_ext',
 }
 
-namespace_imports = [
-    'device/xiaomi/klimt',
-]
+# Blobs built against the A15 audio AIDL. The platform ships newer versions
+# whose parcelable layouts differ, so the A15 interface libraries and the
+# matching conversion library are installed under a _vendor suffix and the
+# whole stack is pointed at them.
+a15_audio_stack = (
+    'vendor/bin/hw/android.hardware.audio.service-aidl.mediatek',
+    'vendor/lib64/android.hardware.audio.common_v3_vendor.so',
+    'vendor/lib64/android.hardware.audio.core-impl-mediatek.so',
+    'vendor/lib64/android.hardware.audio.core.sounddose_v2_vendor.so',
+    'vendor/lib64/android.hardware.audio.core_v2_vendor.so',
+    'vendor/lib64/android.hardware.audio.effect_v2_vendor.so',
+    'vendor/lib64/android.hardware.bluetooth.audio-impl-mediatek.so',
+    'vendor/lib64/android.hardware.bluetooth.audio_v4_vendor.so',
+    'vendor/lib64/hw/android.hardware.audio.effect.aidl-impl-mediatek.so',
+    'vendor/lib64/hw/android.hardware.soundtrigger3-impl.so',
+    'vendor/lib64/hw/audio.primary.mediatek.so',
+    'vendor/lib64/hw/vendor.mediatek.hardware.bluetooth.audio@2.1-impl.so',
+    'vendor/lib64/hw/vendor.mediatek.hardware.bluetooth.audio@2.2-impl.so',
+    'vendor/lib64/libaudio_aidl_conversion_common_ndk_vendor.so',
+    'vendor/lib64/libaudioprimarydevicehalifclient.so',
+    'vendor/lib64/libbluetooth_audio_session_aidl_mtk.so',
+    'vendor/lib64/libmisoundfx_mtk_aidl_ext.so',
+    'vendor/lib64/libnotifyaudiohal.so',
+    'vendor/lib64/libpowerhal.so',
+    'vendor/lib64/libswspatializer_mtk_aidl_ext.so',
+    'vendor/lib64/soundfx/libaecsw_mtk.so',
+    'vendor/lib64/soundfx/libagc1sw_mtk.so',
+    'vendor/lib64/soundfx/libagc2sw_mtk.so',
+    'vendor/lib64/soundfx/libdlbvolaidl.so',
+    'vendor/lib64/soundfx/libenvreverbsw.so',
+    'vendor/lib64/soundfx/libhwdapaidl.so',
+    'vendor/lib64/soundfx/libnssw_mtk.so',
+    'vendor/lib64/soundfx/libpreprocessingaidl_mtk.so',
+    'vendor/lib64/soundfx/libspatializermtkaidl.so',
+    'vendor/lib64/soundfx/libswdapaidl.so',
+    'vendor/lib64/soundfx/libswgamedapaidl.so',
+    'vendor/lib64/soundfx/libswspatializeraidl.so',
+    'vendor/lib64/vendor.mediatek.hardware.bluetooth.audio-V1-ndk.so',
+)
 
 blob_fixups = {
-    # Libraries renamed in proprietary-files.txt
+    # Libraries renamed in proprietary-files.txt, plus libnotifyaudiohal whose
+    # stock SONAME is libnotifyaudiohal@aidl-2.0.so.
     (
         'odm/lib64/libremosaic_wrapper_odm.so',
         'vendor/lib64/android.hardware.audio.common_v3_vendor.so',
@@ -58,6 +99,68 @@ blob_fixups = {
         'vendor/lib64/libultrahdr_vendor.so',
         'vendor/lib64/libwifi-hal-mtk.so',
     ): blob_fixup().fix_soname(),
+    a15_audio_stack: blob_fixup()
+    .replace_needed('android.hardware.audio.common-V3-ndk.so', 'android.hardware.audio.common_v3_vendor.so')
+    .replace_needed('android.hardware.audio.core-V2-ndk.so', 'android.hardware.audio.core_v2_vendor.so')
+    .replace_needed('android.hardware.audio.core.sounddose-V2-ndk.so', 'android.hardware.audio.core.sounddose_v2_vendor.so')
+    .replace_needed('android.hardware.audio.effect-V2-ndk.so', 'android.hardware.audio.effect_v2_vendor.so')
+    .replace_needed('android.hardware.bluetooth.audio-V4-ndk.so', 'android.hardware.bluetooth.audio_v4_vendor.so')
+    .replace_needed('android.media.audio.common.types-V3-ndk.so', 'android.media.audio.common.types_v3_vendor.so')
+    .replace_needed('android.media.audio.common.types-V5-ndk.so', 'android.media.audio.common.types_v5_vendor.so')
+    .replace_needed('libaudio_aidl_conversion_common_ndk.so', 'libaudio_aidl_conversion_common_ndk_vendor.so'),
+    # The A15 blobs stack-allocate assuming sizeof(tinyxml2::XMLDocument) == 776.
+    # The platform's newer tinyxml2 is larger, so construction walks off the end
+    # and smashes the caller's frame.
+    (
+        'odm/lib64/hw/displayfeature.default.so',
+        'odm/lib64/libmiXmlParser.so',
+        'vendor/bin/hw/vendor.xiaomi.hardware.miperf2-service',
+        'vendor/lib64/hw/android.hardware.audio.effect.aidl-impl-mediatek.so',
+        'vendor/lib64/hw/audio.primary.mediatek.so',
+        'vendor/lib64/hw/hwcomposer.mtk_common.so',
+        'vendor/lib64/hw/mt6991/vendor.mediatek.hardware.pq_aidl-impl.so',
+        'vendor/lib64/libHardwareBacklightcore.so',
+        'vendor/lib64/lib_power_applist.so',
+        'vendor/lib64/libaudiocloudctrl.so',
+        'vendor/lib64/libmicamera_aidl_provider.so',
+        'vendor/lib64/libmicamera_hal_core.so',
+        'vendor/lib64/libpowerhal.so',
+        'vendor/lib64/libpqxmlflagparser.so',
+        'vendor/lib64/libpqxmlparser.so',
+        'vendor/lib64/librt_extamp_intf.so',
+        'vendor/lib64/libsilkybrightnesscore.so',
+        'vendor/lib64/libxlog.so',
+        'vendor/lib64/mt6991/lib3a.custom.ae.flow.so',
+        'vendor/lib64/mt6991/libmmlpqImpl.so',
+    ): blob_fixup().replace_needed('libtinyxml2.so', 'libtinyxml2_vendor.so'),
+    # Other platform libraries the A15 blobs need their own copy of.
+    'vendor/lib64/android.hardware.audio.core-impl-mediatek.so': blob_fixup()
+    .replace_needed('libaudioutils.so', 'libaudioutils_vendor.so'),
+    (
+        'vendor/bin/aee_aedv64_v2',
+        'vendor/bin/aee_dumpstatev_v2',
+    ): blob_fixup().replace_needed('libcrypto.so', 'libcrypto_vendor.so'),
+    'vendor/bin/hw/vendor.xiaomi.hardware.videoservice-service': blob_fixup()
+    .replace_needed('libgui.so', 'libgui_vendor.so'),
+    'vendor/lib64/libpkm.so': blob_fixup()
+    .replace_needed('libpcap.so', 'libpcap_vendor.so'),
+    (
+        'vendor/lib64/libcameraopt.so',
+        'vendor/lib64/mt6991/libmtkcam_taskmgr.so',
+    ): blob_fixup().replace_needed('libprocessgroup.so', 'libprocessgroup_vendor.so'),
+    (
+        'odm/lib64/camera/plugins/capture/com.xiaomi.plugin.gainmap.so',
+        'odm/lib64/camera/plugins/capture/com.xiaomi.plugin.jpegrAggr.so',
+    ): blob_fixup().replace_needed('libultrahdr.so', 'libultrahdr_vendor.so'),
+    'vendor/lib64/libultrahdr_vendor.so': blob_fixup()
+    .replace_needed('libjpegdecoder.so', 'libjpegdecoder_vendor.so')
+    .replace_needed('libjpegencoder.so', 'libjpegencoder_vendor.so'),
+    # Renamed to avoid the platform modules of the same name.
+    'vendor/bin/mnld': blob_fixup()
+    .replace_needed('libmnl.so', 'libmnl_mt6991.so'),
+    'odm/lib64/libmiremosaic.so': blob_fixup()
+    .replace_needed('libremosaic_wrapper.so', 'libremosaic_wrapper_odm.so'),
+    # Camera 3A blobs resolve libc++ symbols without listing the library.
     (
         'odm/lib64/libHISCppAlgos.so',
         'odm/lib64/libarcsoft_turbo_fusion_raw_portrait_super_night.so',
@@ -78,388 +181,7 @@ blob_fixups = {
         'vendor/lib64/mt6991/libaaa_feature.so',
         'vendor/lib64/mt6991/libaaa_toneutil.so',
     ): blob_fixup().add_needed('libc++_shared.so'),
-    (
-        'vendor/lib64/android.hardware.audio.core-V2-ndk.so',
-        'vendor/lib64/android.hardware.audio.core.sounddose-V2-ndk.so',
-        'vendor/lib64/android.hardware.audio.effect-V2-ndk.so',
-        'vendor/lib64/android.hardware.bluetooth.audio-V4-ndk.so',
-        'vendor/lib64/android.media.audio.common.types-V3-ndk.so',
-        'vendor/lib64/vendor.mediatek.hardware.bluetooth.audio-V1-ndk.so',
-        'vendor/lib64/android.hardware.audio.core.sounddose_v2_vendor.so',
-        'vendor/lib64/android.hardware.audio.core_v2_vendor.so',
-        'vendor/lib64/android.hardware.audio.effect_v2_vendor.so',
-        'vendor/lib64/android.hardware.bluetooth.audio_v4_vendor.so',
-        'vendor/lib64/android.media.audio.common.types_v3_vendor.so',
-        'vendor/lib64/android.media.audio.common.types_v5_vendor.so',
-        'vendor/lib64/libaudio_aidl_conversion_common_ndk_vendor.so',
-        'vendor/lib64/libaudio_aidl_conversion_common_ndk_vendor.so',
-    ): blob_fixup().replace_needed('android.hardware.audio.common-V3-ndk.so', 'android.hardware.audio.common_v3_vendor.so'),
-    (
-        'vendor/bin/hw/android.hardware.audio.service-aidl.mediatek',
-        'vendor/lib64/android.hardware.audio.common-V3-ndk.so',
-        'vendor/lib64/android.hardware.audio.core-impl-mediatek.so',
-        'vendor/lib64/android.hardware.audio.core.sounddose-V2-ndk.so',
-        'vendor/lib64/android.hardware.audio.effect-V2-ndk.so',
-        'vendor/lib64/android.hardware.bluetooth.audio-V4-ndk.so',
-        'vendor/lib64/android.media.audio.common.types-V3-ndk.so',
-        'vendor/lib64/libaudioprimarydevicehalifclient.so',
-        'vendor/lib64/libnotifyaudiohal.so',
-        'vendor/lib64/soundfx/libspatializermtkaidl.so',
-        'vendor/lib64/android.hardware.audio.common_v3_vendor.so',
-        'vendor/lib64/android.hardware.audio.core.sounddose_v2_vendor.so',
-        'vendor/lib64/android.hardware.audio.effect_v2_vendor.so',
-        'vendor/lib64/android.hardware.bluetooth.audio_v4_vendor.so',
-        'vendor/lib64/android.media.audio.common.types_v3_vendor.so',
-        'vendor/lib64/android.media.audio.common.types_v5_vendor.so',
-        'vendor/lib64/libaudio_aidl_conversion_common_ndk_vendor.so',
-    ): blob_fixup().replace_needed('android.hardware.audio.core-V2-ndk.so', 'android.hardware.audio.core_v2_vendor.so'),
-    (
-        'vendor/bin/hw/android.hardware.audio.service-aidl.mediatek',
-        'vendor/lib64/android.hardware.audio.common-V3-ndk.so',
-        'vendor/lib64/android.hardware.audio.core-V2-ndk.so',
-        'vendor/lib64/android.hardware.audio.core-impl-mediatek.so',
-        'vendor/lib64/android.hardware.audio.effect-V2-ndk.so',
-        'vendor/lib64/android.hardware.bluetooth.audio-V4-ndk.so',
-        'vendor/lib64/android.media.audio.common.types-V3-ndk.so',
-        'vendor/lib64/android.hardware.audio.common_v3_vendor.so',
-        'vendor/lib64/android.hardware.audio.core_v2_vendor.so',
-        'vendor/lib64/android.hardware.audio.effect_v2_vendor.so',
-        'vendor/lib64/android.hardware.bluetooth.audio_v4_vendor.so',
-        'vendor/lib64/android.media.audio.common.types_v3_vendor.so',
-        'vendor/lib64/android.media.audio.common.types_v5_vendor.so',
-        'vendor/lib64/libaudio_aidl_conversion_common_ndk_vendor.so',
-    ): blob_fixup().replace_needed('android.hardware.audio.core.sounddose-V2-ndk.so', 'android.hardware.audio.core.sounddose_v2_vendor.so'),
-    (
-        'vendor/lib64/android.hardware.audio.common-V3-ndk.so',
-        'vendor/lib64/android.hardware.audio.core-V2-ndk.so',
-        'vendor/lib64/android.hardware.audio.core.sounddose-V2-ndk.so',
-        'vendor/lib64/android.hardware.bluetooth.audio-V4-ndk.so',
-        'vendor/lib64/android.media.audio.common.types-V3-ndk.so',
-        'vendor/lib64/hw/android.hardware.audio.effect.aidl-impl-mediatek.so',
-        'vendor/lib64/hw/audio.primary.mediatek.so',
-        'vendor/lib64/libmisoundfx_mtk_aidl_ext.so',
-        'vendor/lib64/libswspatializer_mtk_aidl_ext.so',
-        'vendor/lib64/soundfx/libaecsw_mtk.so',
-        'vendor/lib64/soundfx/libagc1sw_mtk.so',
-        'vendor/lib64/soundfx/libagc2sw_mtk.so',
-        'vendor/lib64/soundfx/libdlbvolaidl.so',
-        'vendor/lib64/soundfx/libenvreverbsw.so',
-        'vendor/lib64/soundfx/libhwdapaidl.so',
-        'vendor/lib64/soundfx/libnssw_mtk.so',
-        'vendor/lib64/soundfx/libpreprocessingaidl_mtk.so',
-        'vendor/lib64/soundfx/libspatializermtkaidl.so',
-        'vendor/lib64/soundfx/libswdapaidl.so',
-        'vendor/lib64/soundfx/libswgamedapaidl.so',
-        'vendor/lib64/soundfx/libswspatializeraidl.so',
-        'vendor/lib64/android.hardware.audio.common_v3_vendor.so',
-        'vendor/lib64/android.hardware.audio.core.sounddose_v2_vendor.so',
-        'vendor/lib64/android.hardware.audio.core_v2_vendor.so',
-        'vendor/lib64/android.hardware.bluetooth.audio_v4_vendor.so',
-        'vendor/lib64/android.media.audio.common.types_v3_vendor.so',
-        'vendor/lib64/android.media.audio.common.types_v5_vendor.so',
-        'vendor/lib64/libaudio_aidl_conversion_common_ndk_vendor.so',
-    ): blob_fixup().replace_needed('android.hardware.audio.effect-V2-ndk.so', 'android.hardware.audio.effect_v2_vendor.so'),
-    (
-        'vendor/bin/hw/android.hardware.audio.service-aidl.mediatek',
-        'vendor/lib64/android.hardware.audio.common-V3-ndk.so',
-        'vendor/lib64/android.hardware.audio.core-V2-ndk.so',
-        'vendor/lib64/android.hardware.audio.core-impl-mediatek.so',
-        'vendor/lib64/android.hardware.audio.core.sounddose-V2-ndk.so',
-        'vendor/lib64/android.hardware.audio.effect-V2-ndk.so',
-        'vendor/lib64/android.hardware.bluetooth.audio-impl-mediatek.so',
-        'vendor/lib64/android.media.audio.common.types-V3-ndk.so',
-        'vendor/lib64/hw/audio.primary.mediatek.so',
-        'vendor/lib64/hw/vendor.mediatek.hardware.bluetooth.audio@2.1-impl.so',
-        'vendor/lib64/hw/vendor.mediatek.hardware.bluetooth.audio@2.2-impl.so',
-        'vendor/lib64/libbluetooth_audio_session_aidl_mtk.so',
-        'vendor/lib64/libpowerhal.so',
-        'vendor/lib64/android.hardware.audio.common_v3_vendor.so',
-        'vendor/lib64/android.hardware.audio.core.sounddose_v2_vendor.so',
-        'vendor/lib64/android.hardware.audio.core_v2_vendor.so',
-        'vendor/lib64/android.hardware.audio.effect_v2_vendor.so',
-        'vendor/lib64/android.media.audio.common.types_v3_vendor.so',
-        'vendor/lib64/android.media.audio.common.types_v5_vendor.so',
-        'vendor/lib64/libaudio_aidl_conversion_common_ndk_vendor.so',
-    ): blob_fixup().replace_needed('android.hardware.bluetooth.audio-V4-ndk.so', 'android.hardware.bluetooth.audio_v4_vendor.so'),
-    (
-        'vendor/lib64/android.hardware.audio.common-V3-ndk.so',
-        'vendor/lib64/android.hardware.audio.core-V2-ndk.so',
-        'vendor/lib64/android.hardware.audio.core.sounddose-V2-ndk.so',
-        'vendor/lib64/android.hardware.audio.effect-V2-ndk.so',
-        'vendor/lib64/android.hardware.bluetooth.audio-V4-ndk.so',
-        'vendor/lib64/libmisoundfx_mtk_aidl_ext.so',
-        'vendor/lib64/soundfx/libspatializermtkaidl.so',
-        'vendor/lib64/android.hardware.audio.common_v3_vendor.so',
-        'vendor/lib64/android.hardware.audio.core.sounddose_v2_vendor.so',
-        'vendor/lib64/android.hardware.audio.core_v2_vendor.so',
-        'vendor/lib64/android.hardware.audio.effect_v2_vendor.so',
-        'vendor/lib64/android.hardware.bluetooth.audio_v4_vendor.so',
-    ): blob_fixup().replace_needed('android.media.audio.common.types-V3-ndk.so', 'android.media.audio.common.types_v3_vendor.so'),
-    (
-        'vendor/bin/hw/android.hardware.audio.service-aidl.mediatek',
-        'vendor/lib64/android.hardware.audio.common_v3_vendor.so',
-        'vendor/lib64/android.hardware.audio.core-impl-mediatek.so',
-        'vendor/lib64/android.hardware.audio.core.sounddose_v2_vendor.so',
-        'vendor/lib64/android.hardware.audio.core_v2_vendor.so',
-        'vendor/lib64/android.hardware.audio.effect_v2_vendor.so',
-        'vendor/lib64/hw/android.hardware.audio.effect.aidl-impl-mediatek.so',
-        'vendor/lib64/libswspatializer_mtk_aidl_ext.so',
-        'vendor/lib64/soundfx/libaecsw_mtk.so',
-        'vendor/lib64/soundfx/libagc1sw_mtk.so',
-        'vendor/lib64/soundfx/libagc2sw_mtk.so',
-        'vendor/lib64/soundfx/libdlbvolaidl.so',
-        'vendor/lib64/soundfx/libenvreverbsw.so',
-        'vendor/lib64/soundfx/libhwdapaidl.so',
-        'vendor/lib64/soundfx/libnssw_mtk.so',
-        'vendor/lib64/soundfx/libpreprocessingaidl_mtk.so',
-        'vendor/lib64/soundfx/libswdapaidl.so',
-        'vendor/lib64/soundfx/libswgamedapaidl.so',
-        'vendor/lib64/soundfx/libswspatializeraidl.so',
-        'vendor/lib64/libaudio_aidl_conversion_common_ndk_vendor.so',
-    ): blob_fixup().replace_needed('android.media.audio.common.types-V5-ndk.so', 'android.media.audio.common.types_v5_vendor.so'),
-    (
-        'vendor/bin/hw/android.hardware.audio.service-aidl.mediatek',
-        'vendor/lib64/android.hardware.audio.core-impl-mediatek.so',
-        'vendor/lib64/hw/android.hardware.soundtrigger3-impl.so',
-        'vendor/lib64/libmisoundfx_mtk_aidl_ext.so',
-        'vendor/lib64/libswspatializer_mtk_aidl_ext.so',
-        'vendor/lib64/soundfx/libhwdapaidl.so',
-        'vendor/lib64/soundfx/libspatializermtkaidl.so',
-        'vendor/lib64/soundfx/libswdapaidl.so',
-        'vendor/lib64/soundfx/libswgamedapaidl.so',
-        'vendor/lib64/soundfx/libswspatializeraidl.so',
-    ): blob_fixup().replace_needed('libaudio_aidl_conversion_common_ndk.so', 'libaudio_aidl_conversion_common_ndk_vendor.so'),
-    # The A15 blobs stack-allocate assuming sizeof(tinyxml2::XMLDocument) == 776.
-    # The platform's newer tinyxml2 is larger, so construction walks off the end
-    # and smashes the caller's frame.
-    (
-        'odm/bin/hw/vendor.xiaomi.sensor.citsensorservice.aidl',
-        'odm/lib64/hw/displayfeature.default.so',
-        'odm/lib64/libmiXmlParser.so',
-        'vendor/bin/hw/vendor.xiaomi.hardware.miperf2-service',
-        'vendor/lib64/hw/android.hardware.audio.effect.aidl-impl-mediatek.so',
-        'vendor/lib64/hw/audio.primary.mediatek.so',
-        'vendor/lib64/hw/hwcomposer.mtk_common.so',
-        'vendor/lib64/hw/mt6991/vendor.mediatek.hardware.pq_aidl-impl.so',
-        'vendor/lib64/libHardwareBacklightcore.so',
-        'vendor/lib64/lib_power_applist.so',
-        'vendor/lib64/libaudiocloudctrl.so',
-        'vendor/lib64/libmicamera_aidl_provider.so',
-        'vendor/lib64/libmicamera_hal_core.so',
-        'vendor/lib64/libpowerhal.so',
-        'vendor/lib64/libpqxmlflagparser.so',
-        'vendor/lib64/libpqxmlparser.so',
-        'vendor/lib64/librt_extamp_intf.so',
-        'vendor/lib64/libsilkybrightnesscore.so',
-        'vendor/lib64/libxlog.so',
-        'vendor/lib64/mt6991/lib3a.custom.ae.flow.so',
-        'vendor/lib64/mt6991/libmmlpqImpl.so',
-    ): blob_fixup().replace_needed('libtinyxml2.so', 'libtinyxml2_vendor.so'),
-    'vendor/etc/audio_effects_config.xml': blob_fixup()
-    .regex_replace(
-        r'(\s*)<library name="preset_reverbsw" path="libpresetreverbsw.so"/>',
-        r'\1<library name="preset_reverbsw" path="libpresetreverbsw.so"/>'
-        r'\1<library name="env_reverbsw" path="libenvreverbsw.so"/>',
-    )
-    # The A15 blobs build Processing with the V2 layout but link against the V4
-    # ndk library, so teardown follows a wild pointer. Drop the processing
-    # definitions to make queryProcessing return empty.
-    .regex_replace(r'(?s)\s*<postprocess>.*?</postprocess>', '')
-    .regex_replace(r'(?s)\s*<preprocess>.*?</preprocess>', ''),
-    # AUDIO_FORMAT_MIHC is Xiaomi-only and missing from the platform enum, so
-    # AudioPolicyConfigXmlConverter aborts with BAD_VALUE.
-    (
-        'vendor/etc/audio_policy_configuration_a2dp_offload_enable_cg_enable.xml',
-        'vendor/etc/bluetooth_offload_audio_policy_configuration.xml',
-    ): blob_fixup().regex_replace(' AUDIO_FORMAT_MIHC', ''),
-    (
-        'vendor/lib64/android.hardware.audio.core-V2-ndk.so',
-        'vendor/lib64/android.hardware.audio.core.sounddose-V2-ndk.so',
-        'vendor/lib64/android.hardware.audio.effect-V2-ndk.so',
-        'vendor/lib64/android.hardware.bluetooth.audio-V4-ndk.so',
-        'vendor/lib64/android.media.audio.common.types-V3-ndk.so',
-        'vendor/lib64/vendor.mediatek.hardware.bluetooth.audio-V1-ndk.so',
-        'vendor/lib64/libaudio_aidl_conversion_common_ndk_vendor.so',
-    ): blob_fixup().replace_needed('android.hardware.audio.common-V3-ndk.so', 'android.hardware.audio.common_v3_vendor.so'),
-    (
-        'vendor/bin/hw/android.hardware.audio.service-aidl.mediatek',
-        'vendor/lib64/android.hardware.audio.common-V3-ndk.so',
-        'vendor/lib64/android.hardware.audio.core-impl-mediatek.so',
-        'vendor/lib64/android.hardware.audio.core.sounddose-V2-ndk.so',
-        'vendor/lib64/android.hardware.audio.effect-V2-ndk.so',
-        'vendor/lib64/android.hardware.bluetooth.audio-V4-ndk.so',
-        'vendor/lib64/android.media.audio.common.types-V3-ndk.so',
-        'vendor/lib64/libaudioprimarydevicehalifclient.so',
-        'vendor/lib64/libnotifyaudiohal.so',
-        'vendor/lib64/soundfx/libspatializermtkaidl.so',
-    ): blob_fixup().replace_needed('android.hardware.audio.core-V2-ndk.so', 'android.hardware.audio.core_v2_vendor.so'),
-    (
-        'vendor/bin/hw/android.hardware.audio.service-aidl.mediatek',
-        'vendor/lib64/android.hardware.audio.common-V3-ndk.so',
-        'vendor/lib64/android.hardware.audio.core-V2-ndk.so',
-        'vendor/lib64/android.hardware.audio.core-impl-mediatek.so',
-        'vendor/lib64/android.hardware.audio.effect-V2-ndk.so',
-        'vendor/lib64/android.hardware.bluetooth.audio-V4-ndk.so',
-        'vendor/lib64/android.media.audio.common.types-V3-ndk.so',
-    ): blob_fixup().replace_needed('android.hardware.audio.core.sounddose-V2-ndk.so', 'android.hardware.audio.core.sounddose_v2_vendor.so'),
-    (
-        'vendor/lib64/android.hardware.audio.common-V3-ndk.so',
-        'vendor/lib64/android.hardware.audio.core-V2-ndk.so',
-        'vendor/lib64/android.hardware.audio.core.sounddose-V2-ndk.so',
-        'vendor/lib64/android.hardware.bluetooth.audio-V4-ndk.so',
-        'vendor/lib64/android.media.audio.common.types-V3-ndk.so',
-        'vendor/lib64/hw/android.hardware.audio.effect.aidl-impl-mediatek.so',
-        'vendor/lib64/hw/audio.primary.mediatek.so',
-        'vendor/lib64/libmisoundfx_mtk_aidl_ext.so',
-        'vendor/lib64/libswspatializer_mtk_aidl_ext.so',
-        'vendor/lib64/soundfx/libaecsw_mtk.so',
-        'vendor/lib64/soundfx/libagc1sw_mtk.so',
-        'vendor/lib64/soundfx/libagc2sw_mtk.so',
-        'vendor/lib64/soundfx/libdlbvolaidl.so',
-        'vendor/lib64/soundfx/libenvreverbsw.so',
-        'vendor/lib64/soundfx/libhwdapaidl.so',
-        'vendor/lib64/soundfx/libnssw_mtk.so',
-        'vendor/lib64/soundfx/libpreprocessingaidl_mtk.so',
-        'vendor/lib64/soundfx/libspatializermtkaidl.so',
-        'vendor/lib64/soundfx/libswdapaidl.so',
-        'vendor/lib64/soundfx/libswgamedapaidl.so',
-        'vendor/lib64/soundfx/libswspatializeraidl.so',
-    ): blob_fixup().replace_needed('android.hardware.audio.effect-V2-ndk.so', 'android.hardware.audio.effect_v2_vendor.so'),
-    (
-        'vendor/bin/hw/android.hardware.audio.service-aidl.mediatek',
-        'vendor/lib64/android.hardware.audio.common-V3-ndk.so',
-        'vendor/lib64/android.hardware.audio.core-V2-ndk.so',
-        'vendor/lib64/android.hardware.audio.core-impl-mediatek.so',
-        'vendor/lib64/android.hardware.audio.core.sounddose-V2-ndk.so',
-        'vendor/lib64/android.hardware.audio.effect-V2-ndk.so',
-        'vendor/lib64/android.hardware.bluetooth.audio-impl-mediatek.so',
-        'vendor/lib64/android.media.audio.common.types-V3-ndk.so',
-        'vendor/lib64/hw/audio.primary.mediatek.so',
-        'vendor/lib64/hw/vendor.mediatek.hardware.bluetooth.audio@2.1-impl.so',
-        'vendor/lib64/hw/vendor.mediatek.hardware.bluetooth.audio@2.2-impl.so',
-        'vendor/lib64/libbluetooth_audio_session_aidl_mtk.so',
-        'vendor/lib64/libpowerhal.so',
-    ): blob_fixup().replace_needed('android.hardware.bluetooth.audio-V4-ndk.so', 'android.hardware.bluetooth.audio_v4_vendor.so'),
-    (
-        'vendor/lib64/android.hardware.audio.common-V3-ndk.so',
-        'vendor/lib64/android.hardware.audio.core-V2-ndk.so',
-        'vendor/lib64/android.hardware.audio.core.sounddose-V2-ndk.so',
-        'vendor/lib64/android.hardware.audio.effect-V2-ndk.so',
-        'vendor/lib64/android.hardware.bluetooth.audio-V4-ndk.so',
-        'vendor/lib64/libmisoundfx_mtk_aidl_ext.so',
-        'vendor/lib64/soundfx/libspatializermtkaidl.so',
-    ): blob_fixup().replace_needed('android.media.audio.common.types-V3-ndk.so', 'android.media.audio.common.types_v3_vendor.so'),
-    (
-        'vendor/bin/hw/android.hardware.audio.service-aidl.mediatek',
-        'vendor/lib64/android.hardware.audio.common_v3_vendor.so',
-        'vendor/lib64/android.hardware.audio.core-impl-mediatek.so',
-        'vendor/lib64/android.hardware.audio.core.sounddose_v2_vendor.so',
-        'vendor/lib64/android.hardware.audio.core_v2_vendor.so',
-        'vendor/lib64/android.hardware.audio.effect_v2_vendor.so',
-        'vendor/lib64/hw/android.hardware.audio.effect.aidl-impl-mediatek.so',
-        'vendor/lib64/libswspatializer_mtk_aidl_ext.so',
-        'vendor/lib64/soundfx/libaecsw_mtk.so',
-        'vendor/lib64/soundfx/libagc1sw_mtk.so',
-        'vendor/lib64/soundfx/libagc2sw_mtk.so',
-        'vendor/lib64/soundfx/libdlbvolaidl.so',
-        'vendor/lib64/soundfx/libenvreverbsw.so',
-        'vendor/lib64/soundfx/libhwdapaidl.so',
-        'vendor/lib64/soundfx/libnssw_mtk.so',
-        'vendor/lib64/soundfx/libpreprocessingaidl_mtk.so',
-        'vendor/lib64/soundfx/libswdapaidl.so',
-        'vendor/lib64/soundfx/libswgamedapaidl.so',
-        'vendor/lib64/soundfx/libswspatializeraidl.so',
-        'vendor/lib64/libaudio_aidl_conversion_common_ndk_vendor.so',
-    ): blob_fixup().replace_needed('android.media.audio.common.types-V5-ndk.so', 'android.media.audio.common.types_v5_vendor.so'),
-    (
-        'vendor/bin/hw/android.hardware.audio.service-aidl.mediatek',
-        'vendor/lib64/android.hardware.audio.core-impl-mediatek.so',
-        'vendor/lib64/hw/android.hardware.soundtrigger3-impl.so',
-        'vendor/lib64/libmisoundfx_mtk_aidl_ext.so',
-        'vendor/lib64/libswspatializer_mtk_aidl_ext.so',
-        'vendor/lib64/soundfx/libhwdapaidl.so',
-        'vendor/lib64/soundfx/libspatializermtkaidl.so',
-        'vendor/lib64/soundfx/libswdapaidl.so',
-        'vendor/lib64/soundfx/libswgamedapaidl.so',
-        'vendor/lib64/soundfx/libswspatializeraidl.so',
-    ): blob_fixup().replace_needed('libaudio_aidl_conversion_common_ndk.so', 'libaudio_aidl_conversion_common_ndk_vendor.so'),
-    # The A15 blobs stack-allocate assuming sizeof(tinyxml2::XMLDocument) == 776.
-    # The platform's newer tinyxml2 is larger, so construction walks off the end
-    # and smashes the caller's frame.
-    (
-        'odm/bin/hw/vendor.xiaomi.sensor.citsensorservice.aidl',
-        'odm/lib64/hw/displayfeature.default.so',
-        'odm/lib64/libmiXmlParser.so',
-        'vendor/bin/hw/vendor.xiaomi.hardware.miperf2-service',
-        'vendor/lib64/hw/android.hardware.audio.effect.aidl-impl-mediatek.so',
-        'vendor/lib64/hw/audio.primary.mediatek.so',
-        'vendor/lib64/hw/hwcomposer.mtk_common.so',
-        'vendor/lib64/hw/mt6991/vendor.mediatek.hardware.pq_aidl-impl.so',
-        'vendor/lib64/libHardwareBacklightcore.so',
-        'vendor/lib64/lib_power_applist.so',
-        'vendor/lib64/libaudiocloudctrl.so',
-        'vendor/lib64/libmicamera_aidl_provider.so',
-        'vendor/lib64/libmicamera_hal_core.so',
-        'vendor/lib64/libpowerhal.so',
-        'vendor/lib64/libpqxmlflagparser.so',
-        'vendor/lib64/libpqxmlparser.so',
-        'vendor/lib64/librt_extamp_intf.so',
-        'vendor/lib64/libsilkybrightnesscore.so',
-        'vendor/lib64/libxlog.so',
-        'vendor/lib64/mt6991/lib3a.custom.ae.flow.so',
-        'vendor/lib64/mt6991/libmmlpqImpl.so',
-    ): blob_fixup().replace_needed('libtinyxml2.so', 'libtinyxml2_vendor.so'),
-    # The config references env_reverb but never declares the library, so
-    # EffectFactory builds the identifier from a failed lookup.
-    'vendor/etc/audio_effects_config.xml': blob_fixup()
-    .regex_replace(
-        r'(\s*)<library name="preset_reverbsw" path="libpresetreverbsw.so"/>',
-        r'\1<library name="preset_reverbsw" path="libpresetreverbsw.so"/>'
-        r'\1<library name="env_reverbsw" path="libenvreverbsw.so"/>',
-    )
-    # The A15 blobs build Processing with the V2 layout but link against the V4
-    # ndk library, so teardown follows a wild pointer. Drop the processing
-    # definitions to make queryProcessing return empty.
-    .regex_replace(r'(?s)\s*<postprocess>.*?</postprocess>', '')
-    .regex_replace(r'(?s)\s*<preprocess>.*?</preprocess>', ''),
-    # AUDIO_FORMAT_MIHC is Xiaomi-only and missing from the platform enum, so
-    # AudioPolicyConfigXmlConverter aborts with BAD_VALUE.
-    (
-        'vendor/etc/audio_policy_configuration_a2dp_offload_enable_cg_enable.xml',
-        'vendor/etc/bluetooth_offload_audio_policy_configuration.xml',
-    ): blob_fixup().regex_replace(' AUDIO_FORMAT_MIHC', ''),
-    'odm/lib64/libmiremosaic.so': blob_fixup().replace_needed(
-        'libremosaic_wrapper.so', 'libremosaic_wrapper_odm.so'
-    ),
-    'vendor/lib64/libpkm.so': blob_fixup().replace_needed(
-        'libpcap.so', 'libpcap_vendor.so'
-    ),
-    'vendor/lib64/android.hardware.audio.core-impl-mediatek.so': blob_fixup().replace_needed(
-        'libaudioutils.so', 'libaudioutils_vendor.so'
-    ),
-    'vendor/bin/hw/vendor.xiaomi.hardware.videoservice-service': blob_fixup().replace_needed(
-        'libgui.so', 'libgui_vendor.so'
-    ),
-    'vendor/bin/mnld': blob_fixup().replace_needed(
-        'libmnl.so', 'libmnl_mt6991.so'
-    ),
-    'vendor/lib64/libultrahdr_vendor.so': blob_fixup()
-    .replace_needed('libjpegdecoder.so', 'libjpegdecoder_vendor.so')
-    .replace_needed('libjpegencoder.so', 'libjpegencoder_vendor.so'),
-    (
-        'odm/lib64/camera/plugins/capture/com.xiaomi.plugin.gainmap.so',
-        'odm/lib64/camera/plugins/capture/com.xiaomi.plugin.jpegrAggr.so',
-    ): blob_fixup().replace_needed('libultrahdr.so', 'libultrahdr_vendor.so'),
-    (
-        'vendor/lib64/libcameraopt.so',
-        'vendor/lib64/mt6991/libmtkcam_taskmgr.so',
-    ): blob_fixup().replace_needed(
-        'libprocessgroup.so', 'libprocessgroup_vendor.so'
-    ),
-    (
-        'vendor/bin/aee_aedv64_v2',
-        'vendor/bin/aee_dumpstatev_v2',
-    ): blob_fixup().replace_needed('libcrypto.so', 'libcrypto_vendor.so'),
+    # AIDL interfaces the platform only ships at a newer version.
     (
         'odm/lib64/libgoogleid.so',
         'odm/lib64/libmt_mitee.so',
@@ -469,7 +191,6 @@ blob_fixups = {
     (
         'odm/bin/hw/mfp-daemon',
         'odm/bin/hw/vendor.xiaomi.hw.touchfeature-service',
-        'odm/bin/hw/vendor.xiaomi.sensor.citsensorservice.aidl',
         'odm/bin/test-nusensors',
         'odm/lib64/hw/displayfeature.default.so',
         'odm/lib64/libadaptivehdr.so',
@@ -516,6 +237,26 @@ blob_fixups = {
         'vendor/lib64/vendor.xiaomi.hardware.camera.injection-client.so',
         'vendor/lib64/vendor.xiaomi.hardware.camera.injection-service.so',
     ): aidl_bump('android.hardware.camera.device', 1, 2),
+    # The config references env_reverb but never declares the library, so
+    # EffectFactory builds the identifier from a failed lookup.
+    'vendor/etc/audio_effects_config.xml': blob_fixup()
+    .regex_replace(
+        r'(\s*)<library name="preset_reverbsw" path="libpresetreverbsw.so"/>',
+        r'\1<library name="preset_reverbsw" path="libpresetreverbsw.so"/>'
+        r'\1<library name="env_reverbsw" path="libenvreverbsw.so"/>',
+    )
+    # The A15 blobs build Processing with the V2 layout but link against the V4
+    # ndk library, so teardown follows a wild pointer. Drop the processing
+    # definitions to make queryProcessing return empty.
+    .regex_replace(r'(?s)\s*<postprocess>.*?</postprocess>', '')
+    .regex_replace(r'(?s)\s*<preprocess>.*?</preprocess>', ''),
+    # AUDIO_FORMAT_MIHC is Xiaomi-only and missing from the platform enum, so
+    # AudioPolicyConfigXmlConverter aborts with BAD_VALUE.
+    (
+        'vendor/etc/audio_policy_configuration_a2dp_offload_enable_cg_enable.xml',
+        'vendor/etc/bluetooth_offload_audio_policy_configuration.xml',
+    ): blob_fixup().regex_replace(' AUDIO_FORMAT_MIHC', ''),
+    # The stock files are bare property lists without the enclosing element.
     (
         'vendor/etc/camera/mt6899/gma_custom.xml',
         'vendor/etc/camera/mt6991/gma_custom.xml',
