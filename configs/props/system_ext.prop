@@ -2,8 +2,6 @@
 ro.surface_flinger.supports_background_blur=1
 
 # Miscellaneous
-persist.miui.extm.enable=1
-persist.miui.extm.version=4.0
 persist.settings.on_animation_consume.enabled=true
 persist.sys.mcd_config_file=/system_ext/etc/mcd_default.conf
 persist.sys.mi_shadow_supported=true
@@ -44,17 +42,6 @@ persist.wm.extensions.enabled=true
 ro.cp_system_other_odex=0
 ro.fota.oem=Xiaomi
 ro.malloc.impl=jemalloc
-ro.mi.development=
-ro.mi.os.soc.vendor=mtk
-ro.miui.block_device_path=/dev/block/bootdevice/by-name
-ro.miui.enable_cloud_verify=true
-ro.miui.has_cust_partition=true
-ro.miui.pm.install.speedinstall=/data/apk-tmp
-ro.miui.remove_uri_80_flag=1
-ro.miui.support_force_enable=1
-ro.miui.ui.font.global_theme_apply=true
-ro.miui.ui.font.mi_font_path=/system/fonts/MiSansVF.ttf
-ro.miui.ui.font.mi_fonts_customization_xml=/product/etc/mi_fonts_customization.xml
 ro.multiwin.fulldecor_support=true
 ro.nnapi.extensions.deny_on_product=true
 ro.rom.zone=2

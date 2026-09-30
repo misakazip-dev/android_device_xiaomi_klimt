@@ -509,7 +509,6 @@ persist.vendor.vt.camera.rotate=1
 persist.vendor.vt.multi_profile_support=1
 persist.vendor.wifienhancelog=1
 ro.arm64.memtag.bootctl_supported=1
-ro.board.api_frozen=true
 ro.boot.hypervisor.version=GenieZone
 ro.boot.hypervisor.vm.supported=1
 ro.boot.perf_state=1
