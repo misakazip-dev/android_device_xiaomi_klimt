@@ -1969,7 +1969,6 @@ vendor/lib64/libhwm.so
 vendor/lib64/vendor.mediatek.hardware.nvram-V1-ndk.so
 
 # Payment (Xiaomi)
-odm/etc/vintf/manifest/manifest_vendor.xiaomi.hardware.mlipay.xml
 vendor/lib64/vendor.xiaomi.hardware.mlipay-V1-ndk.so
 
 # Permissions
@@ -2537,9 +2536,6 @@ odm/etc/touch/gameturbotool.json
 odm/etc/vintf/manifest/lights-mtk-default.xml
 odm/etc/vintf/manifest/manifest_vendor.xiaomi.hardware.aidl.mtdservice.xml
 odm/etc/vintf/manifest/manifest_vendor.xiaomi.hardware.miteetui.xml
-odm/etc/vintf/manifest/manifest_vendor.xiaomi.hardware.mitrustedui.xml
-odm/etc/vintf/manifest/manifest_vendor.xiaomi.hardware.mpayjoyca.xml
-odm/etc/vintf/manifest/manifest_vendor.xiaomi.hardware.soterservice.xml
 odm/etc/vintf/manifest/vendor.xiaomi.hardware.framemaster_aidl-service.xml
 odm/etc/vintf/manifest/vendor.xiaomi.hardware.idmanager.xml
 odm/etc/vintf/manifest/vendor.xiaomi.hw.touchfeature-service.xml
@@ -3107,7 +3103,6 @@ vendor/etc/security/cacerts_supl/ed39abd0.0
 vendor/etc/security/cacerts_supl/f336e3d1.0
 vendor/etc/sla/slad.conf
 vendor/etc/vintf/manifest/CommandService.xml
-vendor/etc/vintf/manifest/FastSwitch.xml
 vendor/etc/vintf/manifest/dms-service.xml
 vendor/etc/vintf/manifest/dumpstate-xiaomi.xml
 vendor/etc/vintf/manifest/gnss-mtk.xml
@@ -3125,7 +3120,6 @@ vendor/etc/vintf/manifest/manifest_mtkgpuserv.xml
 vendor/etc/vintf/manifest/manifest_uievent.xml
 vendor/etc/vintf/manifest/manifest_vendor.xiaomi.hardware.cld_aidl.xml
 vendor/etc/vintf/manifest/manifest_vendor.xiaomi.hardware.fbo.xml
-vendor/etc/vintf/manifest/manifest_vendor.xiaomi.hardware.swap.xml
 vendor/etc/vintf/manifest/mapper.mediatek.xml
 vendor/etc/vintf/manifest/memtrack-mediatek.xml
 vendor/etc/vintf/manifest/mtk_lbs_service.xml

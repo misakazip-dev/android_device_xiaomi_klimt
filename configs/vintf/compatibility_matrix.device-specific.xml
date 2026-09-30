@@ -73,26 +73,10 @@
     </interface>
   </hal>
   <hal format="aidl" optional="true">
-    <name>vendor.xiaomi.aidl.miwill</name>
-    <version>1</version>
-    <interface>
-      <name>IMiwillAIDLService</name>
-      <instance>default</instance>
-    </interface>
-  </hal>
-  <hal format="aidl" optional="true">
     <name>vendor.xiaomi.hardware.aidl.mtdservice</name>
     <version>1</version>
     <interface>
       <name>IMTService</name>
-      <instance>default</instance>
-    </interface>
-  </hal>
-  <hal format="aidl" optional="true">
-    <name>vendor.xiaomi.hardware.batteryantiaging</name>
-    <version>1</version>
-    <interface>
-      <name>IBatteryAntiAging</name>
       <instance>default</instance>
     </interface>
   </hal>
@@ -161,30 +145,6 @@
     <version>1</version>
     <interface>
       <name>IPayjoyService</name>
-      <instance>default</instance>
-    </interface>
-  </hal>
-  <hal format="aidl" optional="true">
-    <name>vendor.xiaomi.hardware.mrm</name>
-    <version>1</version>
-    <interface>
-      <name>IMiCertificate</name>
-      <instance>default</instance>
-    </interface>
-    <interface>
-      <name>IMrm</name>
-      <instance>default</instance>
-    </interface>
-    <interface>
-      <name>IMrmRemoteAuth</name>
-      <instance>default</instance>
-    </interface>
-  </hal>
-  <hal format="aidl" optional="true">
-    <name>vendor.xiaomi.hardware.seaaudio</name>
-    <version>1</version>
-    <interface>
-      <name>ISeaAudio</name>
       <instance>default</instance>
     </interface>
   </hal>

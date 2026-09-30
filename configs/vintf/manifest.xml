@@ -87,10 +87,6 @@
         <fqname>IAee/AEE</fqname>
     </hal>
     <hal format="aidl">
-        <name>vendor.mediatek.hardware.apmonitor</name>
-        <fqname>IApmService/default</fqname>
-    </hal>
-    <hal format="aidl">
         <name>vendor.mediatek.hardware.atci</name>
         <fqname>IAtcid/default</fqname>
     </hal>
@@ -109,10 +105,6 @@
     <hal format="aidl">
         <name>vendor.mediatek.hardware.composer_ext</name>
         <fqname>IComposerExt/default</fqname>
-    </hal>
-    <hal format="aidl">
-        <name>vendor.mediatek.hardware.dmc</name>
-        <fqname>IDmcService/default</fqname>
     </hal>
     <hal format="aidl">
         <name>vendor.mediatek.hardware.log</name>
@@ -213,9 +205,5 @@
     <hal format="aidl">
         <name>vendor.xiaomi.aidl.minet</name>
         <fqname>IMiNetAIDLService/default</fqname>
-    </hal>
-    <hal format="aidl">
-        <name>vendor.xiaomi.aidl.miwill</name>
-        <fqname>IMiwillAIDLService/default</fqname>
     </hal>
 </manifest>
