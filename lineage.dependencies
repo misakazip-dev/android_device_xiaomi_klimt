@@ -1,7 +1,12 @@
 [
     {
+        "repository": "android_device_mediatek_sepolicy_vndr",
+        "target_path": "device/mediatek/sepolicy_vndr",
+        "branch": "lineage-24.0"
+    },
+    {
         "repository": "android_hardware_xiaomi",
         "target_path": "hardware/xiaomi",
-        "branch": "lineage-23.2"
+        "branch": "lineage-24.0"
     }
 ]
