@@ -1,8 +1,5 @@
 # Unpinned blobs from klimt_global-user 15 AP3A.240905.015.A2 OS3.0.335.0.XOSMIXM release-keys
 
-# ADSP modules
-odm/lib/rfsa/adsp/libaisupernight_ellc_cdsp_skel.so
-
 # Audio
 system_ext/bin/hw/android.hardware.audio.parameter_parser.service
 system_ext/etc/init/android.hardware.audio.parameter_parser.service.rc
@@ -388,10 +385,6 @@ odm/lib64/libremosaiclib.so
 odm/lib64/libsupermoon.so
 odm/lib64/libwa_opticalzoom_fusion.so
 odm/lib64/libwa_widelens_undistort.so;DISABLE_CHECKELF
-system_ext/lib/vendor.mediatek.hardware.camera.atms-V1-ndk.so;MODULE_SUFFIX=_system_ext
-system_ext/lib/vendor.mediatek.hardware.camera.atms@1.0.so;MODULE_SUFFIX=_system_ext
-system_ext/lib/vendor.mediatek.hardware.camera.isphal-V1-ndk.so;MODULE_SUFFIX=_system_ext
-system_ext/lib/vendor.mediatek.hardware.camera.isphal@1.0.so;MODULE_SUFFIX=_system_ext
 system_ext/lib64/vendor.mediatek.hardware.camera.atms-V1-ndk.so;MODULE_SUFFIX=_system_ext
 system_ext/lib64/vendor.mediatek.hardware.camera.atms@1.0.so;MODULE_SUFFIX=_system_ext
 system_ext/lib64/vendor.mediatek.hardware.camera.isphal-V1-ndk.so;MODULE_SUFFIX=_system_ext
@@ -1582,43 +1575,23 @@ odm/lib64/libsre.so
 odm/lib64/libtruetone.so
 odm/lib64/libvideomode.so
 odm/lib64/vendor.xiaomi.hardware.framemaster-V1-ndk.so
-system_ext/lib/vendor.mediatek.hardware.composer_ext-V1-ndk.so;MODULE_SUFFIX=_system_ext
-system_ext/lib/vendor.mediatek.hardware.composer_ext@1.0.so;MODULE_SUFFIX=_system_ext
-system_ext/lib/vendor.mediatek.hardware.mms@1.0.so
 system_ext/lib/vendor.mediatek.hardware.mms@1.0.so.hbtf
-system_ext/lib/vendor.mediatek.hardware.mms@1.1.so
 system_ext/lib/vendor.mediatek.hardware.mms@1.1.so.hbtf
-system_ext/lib/vendor.mediatek.hardware.mms@1.2.so
 system_ext/lib/vendor.mediatek.hardware.mms@1.2.so.hbtf
-system_ext/lib/vendor.mediatek.hardware.mms@1.3.so
 system_ext/lib/vendor.mediatek.hardware.mms@1.3.so.hbtf
-system_ext/lib/vendor.mediatek.hardware.pq@2.0.so;MODULE_SUFFIX=_system_ext
 system_ext/lib/vendor.mediatek.hardware.pq@2.0.so.hbtf
-system_ext/lib/vendor.mediatek.hardware.pq@2.1.so;MODULE_SUFFIX=_system_ext
 system_ext/lib/vendor.mediatek.hardware.pq@2.1.so.hbtf
-system_ext/lib/vendor.mediatek.hardware.pq@2.10.so;MODULE_SUFFIX=_system_ext
 system_ext/lib/vendor.mediatek.hardware.pq@2.10.so.hbtf
-system_ext/lib/vendor.mediatek.hardware.pq@2.11.so;MODULE_SUFFIX=_system_ext
 system_ext/lib/vendor.mediatek.hardware.pq@2.11.so.hbtf
-system_ext/lib/vendor.mediatek.hardware.pq@2.12.so
 system_ext/lib/vendor.mediatek.hardware.pq@2.12.so.hbtf
-system_ext/lib/vendor.mediatek.hardware.pq@2.13.so
 system_ext/lib/vendor.mediatek.hardware.pq@2.13.so.hbtf
-system_ext/lib/vendor.mediatek.hardware.pq@2.2.so;MODULE_SUFFIX=_system_ext
 system_ext/lib/vendor.mediatek.hardware.pq@2.2.so.hbtf
-system_ext/lib/vendor.mediatek.hardware.pq@2.3.so;MODULE_SUFFIX=_system_ext
 system_ext/lib/vendor.mediatek.hardware.pq@2.3.so.hbtf
-system_ext/lib/vendor.mediatek.hardware.pq@2.4.so;MODULE_SUFFIX=_system_ext
 system_ext/lib/vendor.mediatek.hardware.pq@2.4.so.hbtf
-system_ext/lib/vendor.mediatek.hardware.pq@2.5.so;MODULE_SUFFIX=_system_ext
 system_ext/lib/vendor.mediatek.hardware.pq@2.5.so.hbtf
-system_ext/lib/vendor.mediatek.hardware.pq@2.6.so;MODULE_SUFFIX=_system_ext
 system_ext/lib/vendor.mediatek.hardware.pq@2.6.so.hbtf
-system_ext/lib/vendor.mediatek.hardware.pq@2.7.so;MODULE_SUFFIX=_system_ext
 system_ext/lib/vendor.mediatek.hardware.pq@2.7.so.hbtf
-system_ext/lib/vendor.mediatek.hardware.pq@2.8.so;MODULE_SUFFIX=_system_ext
 system_ext/lib/vendor.mediatek.hardware.pq@2.8.so.hbtf
-system_ext/lib/vendor.mediatek.hardware.pq@2.9.so;MODULE_SUFFIX=_system_ext
 system_ext/lib/vendor.mediatek.hardware.pq@2.9.so.hbtf
 system_ext/lib64/vendor.mediatek.hardware.composer_ext-V1-ndk.so;MODULE_SUFFIX=_system_ext
 system_ext/lib64/vendor.mediatek.hardware.composer_ext@1.0.so;MODULE_SUFFIX=_system_ext
@@ -1653,7 +1626,6 @@ vendor/etc/init/vendor.mediatek.hardware.mms-service.rc
 vendor/etc/init/vendor.mediatek.hardware.pq_aidl-service.rc
 vendor/etc/init/vendor.xiaomi.hardware.displayfeature_aidl-service.rc
 vendor/etc/vintf/manifest/vendor.xiaomi.hardware.displayfeature_aidl-service.xml
-vendor/lib/egl/egl.cfg
 vendor/lib64/egl/mt6991/libGLES_mali.so;SYMLINK=vendor/lib64/egl/libGLES_mali.so
 vendor/lib64/egl/libGLES_meow.so
 vendor/lib64/egl/libMEOW_data.so
@@ -1707,11 +1679,6 @@ vendor/lib64/vendor.xiaomi.hardware.display.mihwcextension-V1-ndk.so
 vendor/lib64/vendor.xiaomi.hardware.displayfeature_aidl-V2-ndk.so
 
 # Display (Pixelworks)
-system_ext/lib/vendor.pixelworks.hardware.display@1.0.so
-system_ext/lib/vendor.pixelworks.hardware.display@1.1.so
-system_ext/lib/vendor.pixelworks.hardware.display@1.2.so
-system_ext/lib/vendor.pixelworks.hardware.feature@1.0.so
-system_ext/lib/vendor.pixelworks.hardware.feature@1.1.so
 system_ext/lib64/vendor.pixelworks.hardware.display@1.0.so
 system_ext/lib64/vendor.pixelworks.hardware.display@1.1.so
 system_ext/lib64/vendor.pixelworks.hardware.display@1.2.so
@@ -1749,7 +1716,6 @@ product/etc/felica/mfs.cfg
 # Fingerprint
 odm/lib64/hw/fingerprint.goodix_fod.so:odm/lib64/hw/fingerprint.goodix_fod.default.so
 odm/lib64/libgf_hal.so
-system_ext/lib/vendor.xiaomi.hardware.fingerprintextension-V1-ndk.so;MODULE_SUFFIX=_system_ext
 system_ext/lib64/vendor.xiaomi.hardware.fingerprintextension-V1-ndk.so;MODULE_SUFFIX=_system_ext
 vendor/lib64/vendor.xiaomi.hardware.fingerprintextension-V1-ndk.so
 
@@ -1847,12 +1813,6 @@ odm/bin/hw/android.hardware.lights-service.mediatek
 vendor/lib64/hw/local_time.default.so
 
 # Media
-system_ext/lib/libged_sys.so
-system_ext/lib/libgralloc_extra_sys.so
-system_ext/lib/libsf_cpupolicy.so
-system_ext/lib/libstagefright_mbrain.so
-system_ext/lib/libstagefright_wfd_mtk.so
-system_ext/lib/vendor.mediatek.hardware.graphics-V1-ndk.so
 system_ext/lib64/libged_sys.so
 system_ext/lib64/libgralloc_extra_sys.so
 system_ext/lib64/libsf_cpupolicy.so
@@ -1882,7 +1842,6 @@ vendor/lib64/libopencv_core.so
 vendor/lib64/libopencv_imgproc.so
 
 # Media (Dolby)
-system_ext/lib/libdolbyeffect.so
 system_ext/lib64/libacse.so
 system_ext/lib64/libdolbyacse_jni.so
 system_ext/lib64/libdolbyeffect.so
@@ -1982,11 +1941,6 @@ vendor/etc/permissions/com.mediatek.hardware.vow_dsp.xml
 vendor/etc/permissions/com.xiaomi.sensor.xml
 
 # Power
-system_ext/lib/vendor.mediatek.hardware.mtkpower-V2-ndk.so;MODULE_SUFFIX=_system_ext
-system_ext/lib/vendor.mediatek.hardware.mtkpower-V3-ndk.so
-system_ext/lib/vendor.mediatek.hardware.mtkpower@1.0.so;MODULE_SUFFIX=_system_ext
-system_ext/lib/vendor.mediatek.hardware.mtkpower@1.1.so;MODULE_SUFFIX=_system_ext
-system_ext/lib/vendor.mediatek.hardware.mtkpower@1.2.so;MODULE_SUFFIX=_system_ext
 system_ext/lib64/vendor.mediatek.hardware.mtkpower-V1-ndk.so;MODULE_SUFFIX=_system_ext
 system_ext/lib64/vendor.mediatek.hardware.mtkpower-V2-ndk.so;MODULE_SUFFIX=_system_ext
 system_ext/lib64/vendor.mediatek.hardware.mtkpower-V3-ndk.so
@@ -2009,7 +1963,6 @@ vendor/lib64/vendor.mediatek.hardware.mtkpower@1.2.so
 vendor/lib64/vendor.mediatek.hardware.mtkpower_applist-V2-ndk.so
 
 # Radio
-system_ext/lib/vendor.mediatek.hardware.mtkradioex@3.0.so
 system_ext/lib64/vendor.mediatek.hardware.mtkradioex@3.0.so
 vendor/bin/hw/mtkfusionrild
 vendor/bin/hw/vendor.mediatek.hardware.nwk_opt@1.0-service
@@ -2053,8 +2006,6 @@ vendor/lib64/vendor.mediatek.hardware.mtkradioex.voice-V1-ndk.so
 vendor/lib64/vendor.mediatek.hardware.nwk_opt_new-V1-ndk.so
 
 # Radio (IMS)
-system_ext/lib/vendor.mediatek.hardware.videotelephony-V1-ndk.so;MODULE_SUFFIX=_system_ext
-system_ext/lib/vendor.mediatek.hardware.videotelephony@1.0.so
 system_ext/lib64/vendor.mediatek.hardware.videotelephony-V1-ndk.so;MODULE_SUFFIX=_system_ext
 system_ext/lib64/vendor.mediatek.hardware.videotelephony@1.0.so
 vendor/bin/ipsec_mon
@@ -2604,7 +2555,6 @@ odm/lib64/libaachaptics.so
 odm/lib64/libabnormal_img_dectect.so
 odm/lib64/libanc_dc_plugin_xiaomi_v3_mtk.so
 odm/lib64/libarc_aisp_plugin.so
-odm/lib64/libarc_htp_driver_skel.so
 odm/lib64/libclient2slpi.notifier.so
 odm/lib64/libgoogleid.so;DISABLE_DEPS
 odm/lib64/libmiSATTranslate.so
@@ -4315,12 +4265,6 @@ vendor/firmware/v1_fac_fld_coef.bin
 vendor/firmware/v1_fac_fld_config.bin
 vendor/firmware/wifi.cfg
 vendor/framework/androidx.camera.extensions.impl.jar
-vendor/lib/libANS.so
-vendor/lib/libfcsam.so
-vendor/lib/libfvaudio.so
-vendor/lib/libmisoundcrossfade.so
-vendor/lib/libmisoundfpsop.so
-vendor/lib/libmisoundparser.so
 vendor/lib64/android.hardware.light@2.0.so
 vendor/lib64/android.system.suspend@1.0.so
 vendor/lib64/hw/mt6991/mapper.mediatek.so;SYMLINK=vendor/lib64/hw/mapper.mediatek.so
