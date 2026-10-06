@@ -48,6 +48,10 @@ PRODUCT_PACKAGES += \
     libvisualizeraidl \
     libvolumesw
 
+# Dolby Atmos
+PRODUCT_PACKAGES += \
+    DolbyAtmos
+
 # Boot control
 PRODUCT_PACKAGES += \
     android.hardware.boot-service.default_recovery
