@@ -244,12 +244,6 @@ blob_fixups = {
         'vendor/lib64/mt6991/libaaa_feature.so',
         'vendor/lib64/mt6991/libaaa_toneutil.so',
     ): blob_fixup().add_needed('libc++_shared.so'),
-    # AIDL interfaces the platform only ships at a newer version.
-    (
-        'odm/lib64/libgoogleid.so',
-        'odm/lib64/libmt_mitee.so',
-        'vendor/bin/hw/android.hardware.security.keymint@3.0-service.mitee',
-    ): aidl_bump('android.hardware.security.keymint', 3, 4),
     (
         'odm/bin/hw/vendor.xiaomi.hw.touchfeature-service',
         'odm/bin/test-nusensors',
@@ -353,7 +347,8 @@ for name in strongbox_libraries:
     strongbox_fixup.replace_needed(f'{name}.so', f'{name}_strongbox.so')
 strongbox_fixup.replace_needed('libcrypto.so', 'libcrypto_vendor.so')
 
-# Apply both the private C++ dependencies and the KeyMint AIDL adaptation.
+# Keep the stock KeyMint V3 dependency: replacing it with V4 changes the
+# generated Bn service ABI. The platform still builds the frozen V3 interface.
 for file in (
     'vendor/bin/hw/android.hardware.security.keymint-service.strongbox.nxp',
     'vendor/lib64/libjc_keymint.nxp.so',
@@ -364,10 +359,6 @@ for file in (
     fixup.merge(strongbox_fixup)
     if file in strongbox_private_paths:
         fixup.fix_soname()
-    if file not in strongbox_private_paths or file.endswith(
-        '/lib_android_keymaster_keymint_utils_strongbox.so'
-    ):
-        fixup.merge(aidl_bump('android.hardware.security.keymint', 3, 4))
     blob_fixups[file] = fixup
 
 module = ExtractUtilsModule(

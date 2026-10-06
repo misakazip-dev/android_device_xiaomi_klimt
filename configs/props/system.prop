@@ -162,7 +162,8 @@ ro.vendor.mtk_telephony_add_on_policy=0
 ro.vendor.system.mtk_mapi_support=1
 ro.zygote.preload.enable=0
 security.perf_harden=1
-# Stock KeyMint does not implement setAdditionalAttestationInfo.
+# Retain until the published V4-patched vendor blobs are regenerated from stock
+# with KeyMint V3. keystore2 skips this KM4-only call once the HAL reports V3.
 keystore.module_hash.sent=true
 sys.dfcservice.compress.prog=0
 sys.dfcservice.ctrl=false
