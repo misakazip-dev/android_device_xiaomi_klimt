@@ -70,10 +70,15 @@ BOARD_MKBOOTIMG_INIT_ARGS += --header_version $(BOARD_INIT_BOOT_HEADER_VERSION)
 
 TARGET_KERNEL_SOURCE := kernel/xiaomi/klimt
 TARGET_KERNEL_CONFIG := klimt_defconfig
+# scripts/gen_gki_modules_headers.sh runs sed -i on CONFIG_UNUSED_KSYMS_WHITELIST. The build sandbox mounts
+# the source tree read-only, so hand the kernel a copy of the symbol list that lives in OUT_DIR.
+KLIMT_KMI_SYMBOL_LIST := $(abspath $(OUT_DIR)/target/product/klimt/obj/KERNEL_KMI/abi_gki_aarch64_klimt)
+$(shell mkdir -p $(dir $(KLIMT_KMI_SYMBOL_LIST)) && cp -f $(TARGET_KERNEL_SOURCE)/android/abi_gki_aarch64_klimt $(KLIMT_KMI_SYMBOL_LIST))
+
 TARGET_KERNEL_ADDITIONAL_FLAGS := \
     LOCALVERSION= \
     KCFLAGS=-D__ANDROID_COMMON_KERNEL__ \
-    CONFIG_UNUSED_KSYMS_WHITELIST=$(abspath $(TARGET_KERNEL_SOURCE)/android/abi_gki_aarch64_klimt)
+    CONFIG_UNUSED_KSYMS_WHITELIST=$(KLIMT_KMI_SYMBOL_LIST)
 
 PREBUILT_PATH := kernel/xiaomi/klimt-prebuilt
 TARGET_KERNEL_EXT_MODULE_ROOT := kernel/xiaomi
