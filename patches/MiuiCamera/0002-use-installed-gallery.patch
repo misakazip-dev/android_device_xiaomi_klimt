@@ -1,0 +1,58 @@
+From: misakazip <git@misaka.zip>
+Subject: [PATCH] Open captures with an installed gallery
+
+Use a generic VIEW intent and grant read access to the capture URI.
+Keep the existing camera and keyguard checks at the call sites.
+
+diff --git a/smali/B1/H2.smali b/smali/B1/H2.smali
+index 129e982..45bc0b2 100644
+--- a/smali/B1/H2.smali
++++ b/smali/B1/H2.smali
+@@ -87,7 +87,7 @@
+ 
+     const-string v4, "GalleryHelper"
+ 
+-    const-string v5, "com.android.camera.action.REVIEW"
++    const-string v5, "android.intent.action.VIEW"
+ 
+     if-eqz v1, :cond_1
+ 
+@@ -125,9 +125,6 @@
+ 
+     invoke-direct {v1, v5, p2}, Landroid/content/Intent;-><init>(Ljava/lang/String;Landroid/net/Uri;)V
+ 
+-    const-string p2, "com.google.android.apps.photos"
+-
+-    invoke-virtual {v1, p2}, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;
+ 
+     goto :goto_2
+ 
+@@ -142,7 +139,7 @@
+ 
+     new-instance v1, Landroid/content/Intent;
+ 
+-    const-string v5, "com.android.camera.action.SPILIT_SCREEN_REVIEW"
++    const-string v5, "android.intent.action.VIEW"
+ 
+     invoke-direct {v1, v5, p2}, Landroid/content/Intent;-><init>(Ljava/lang/String;Landroid/net/Uri;)V
+ 
+@@ -164,15 +161,16 @@
+     invoke-direct {v1, v5, p2}, Landroid/content/Intent;-><init>(Ljava/lang/String;Landroid/net/Uri;)V
+ 
+     :goto_1
+-    const-string p2, "com.miui.gallery"
+-
+-    invoke-virtual {v1, p2}, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;
+ 
+     const-string p2, "from_MiuiCamera"
+ 
+     invoke-virtual {v1, p2, v3}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Z)Landroid/content/Intent;
+ 
+     :goto_2
++    const/4 v5, 0x1
++
++    invoke-virtual {v1, v5}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
++
+     invoke-virtual {v0}, Lra/b;->a()Z
+ 
+     move-result p2

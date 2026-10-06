@@ -854,6 +854,18 @@ vendor/lib64/vendor.xiaomi.hardware.camera.injection-service.so
 vendor/lib64/vendor.xiaomi.hardware.camera.synthetic-V1-ndk.so
 vendor/lib64/vendor.xiaomi.hardware.camera.synthetic-impl.so
 
+# Camera (application)
+# MiuiCamera 6.5.000250.0 from klimt OS3.0.335.0.XOSMIXM.
+# APK compatibility patches are applied during extraction; sign with platform.
+product/priv-app/MiuiCamera/MiuiCamera.apk
+system_ext/lib64/libcamera_algoup_jni.xiaomi.so:system/lib64/libcamera_algoup_jni.xiaomi.so;MODULE_SUFFIX=_miuicamera
+system_ext/lib64/libcamera_ispinterface_jni.xiaomi.so:system/lib64/libcamera_ispinterface_jni.xiaomi.so;MODULE_SUFFIX=_miuicamera
+system_ext/lib64/libcamera_mianode_jni.xiaomi.so:system/lib64/libcamera_mianode_jni.xiaomi.so;MODULE_SUFFIX=_miuicamera
+system_ext/lib64/libmtkisp_metadata_sys.so:system/lib64/libmtkisp_metadata_sys.so;MODULE_SUFFIX=_miuicamera
+system_ext/lib64/vendor.mediatek.hardware.camera.isphal-V1-ndk.so:system/lib64/vendor.mediatek.hardware.camera.isphal-V1-ndk.so;MODULE_SUFFIX=_miuicamera
+system_ext/lib64/vendor.mediatek.hardware.camera.isphal@1.0.so:system/lib64/vendor.mediatek.hardware.camera.isphal@1.0.so;MODULE_SUFFIX=_miuicamera
+
+
 # Camera configs
 odm/etc/camera/AIGesture/buling_1s.png
 odm/etc/camera/AIGesture/buling_2s.png

@@ -1,0 +1,9 @@
+#
+# SPDX-FileCopyrightText: WitAqua
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+libcamera_algoup_jni.xiaomi.so
+libcamera_ispinterface_jni.xiaomi.so
+libcamera_mianode_jni.xiaomi.so

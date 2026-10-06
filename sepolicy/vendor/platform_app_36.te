@@ -1,0 +1,26 @@
+#
+# SPDX-FileCopyrightText: WitAqua
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+# MiuiCamera targets API 36 and uses the camera HAL's background service.
+allow platform_app_36 xiaomi_bgservice_service:service_manager find;
+binder_call(platform_app_36, mtk_hal_camera)
+binder_call(mtk_hal_camera, platform_app_36)
+
+# Xiaomi watermark resources are supplied by MiSys.
+allow platform_app_36 xiaomi_misys_common_service:service_manager find;
+binder_call(platform_app_36, xiaomi_misys_common)
+
+# MiSys consumes the shared-memory watermark buffers passed by the app.
+allow xiaomi_misys_common platform_app_36:fd use;
+allow xiaomi_misys_common appdomain_tmpfs:file read;
+
+# Capture monitoring reads pressure and board-temperature information.
+allow platform_app_36 { proc_pressure_mem proc_pressure_cpu proc_pressure_io }:file r_file_perms;
+allow platform_app_36 sysfs_therm:dir search;
+allow platform_app_36 sysfs_therm:file r_file_perms;
+
+# The preview renderer checks the dmabuf filesystem capacity.
+allow platform_app_36 unlabeled:filesystem getattr;

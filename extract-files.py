@@ -5,10 +5,14 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+import os
 import re
+from zipfile import ZipFile
 
 from extract_utils.fixups_blob import blob_fixup
 from extract_utils.fixups_lib import lib_fixups
+from extract_utils.tools import apktool_path, java_path
+from extract_utils.utils import run_cmd
 from extract_utils.main import (
     ExtractUtils,
     ExtractUtilsModule,
@@ -20,6 +24,47 @@ namespace_imports = [
     'hardware/mediatek/libmtkperf_client',
     'hardware/xiaomi',
 ]
+
+
+def camera_resource(name):
+    return name == 'resources.arsc' or name.startswith(('res/', 'assets/obfu_res/'))
+
+
+def unpack_miuicamera(ctx, file, file_path, *args, tmp_dir=None, **kwargs):
+    assert tmp_dir is not None
+    run_cmd([
+        java_path, '-jar', apktool_path, 'd',
+        file_path, '-o', tmp_dir, '-f',
+    ])
+    # Save resources outside the decoded res/ directory for restoration.
+    with ZipFile(file_path) as source, ZipFile(
+        os.path.join(tmp_dir, 'original', 'camera-resources.zip'), 'w'
+    ) as saved:
+        for entry in source.infolist():
+            if camera_resource(entry.filename):
+                saved.writestr(entry, source.read(entry.filename))
+
+
+def pack_miuicamera(ctx, file, file_path, *args, tmp_dir=None, **kwargs):
+    assert tmp_dir is not None
+    run_cmd([
+        java_path, '-jar', apktool_path, 'b', tmp_dir, '-o', file_path,
+    ])
+    # Keep the rebuilt binary manifest and dex, but restore ResGuard paths.
+    # The decoded public.xml preserves the original resource IDs.
+    rebuilt_path = file_path + '.rebuilt'
+    with ZipFile(file_path) as rebuilt, ZipFile(
+        os.path.join(tmp_dir, 'original', 'camera-resources.zip')
+    ) as saved, ZipFile(rebuilt_path, 'w') as output:
+        assert 'AndroidManifest.xml' in rebuilt.namelist()
+        for entry in rebuilt.infolist():
+            if not camera_resource(entry.filename):
+                output.writestr(entry, rebuilt.read(entry.filename))
+        for entry in saved.infolist():
+            # Drop stock ZIP extra fields unsupported by stripzip.
+            entry.extra = b''
+            output.writestr(entry, saved.read(entry.filename))
+    os.replace(rebuilt_path, file_path)
 
 
 def aidl_bump(interface: str, from_version: int, to_version: int):
@@ -34,6 +79,12 @@ lib_fixups = {
     'libformatter': lambda *_: 'libformatter_vendor',
     'libmnl': lambda *_: 'libmnl_mt6991',
     'libsink': lambda *_: 'libsink_system_ext',
+    # Camera JNI dependencies use system modules, preserving their ELF names.
+    (
+        'libmtkisp_metadata_sys',
+        'vendor.mediatek.hardware.camera.isphal-V1-ndk',
+        'vendor.mediatek.hardware.camera.isphal@1.0',
+    ): lambda lib, partition: f'{lib}_miuicamera' if partition == 'system' else None,
 }
 
 # Blobs built against the A15 audio AIDL. The platform ships newer versions
@@ -77,6 +128,11 @@ a15_audio_stack = (
 )
 
 blob_fixups = {
+    'product/priv-app/MiuiCamera/MiuiCamera.apk': blob_fixup()
+    .call(unpack_miuicamera)
+    .patch_dir('patches/MiuiCamera')
+    .call(pack_miuicamera)
+    .stripzip(),
     # Libraries renamed in proprietary-files.txt, plus libnotifyaudiohal whose
     # stock SONAME is libnotifyaudiohal@aidl-2.0.so.
     (

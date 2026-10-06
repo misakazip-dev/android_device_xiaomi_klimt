@@ -34,3 +34,11 @@ set_prop(mtk_hal_camera, vendor_camera_skynet_prop)
 
 # The algo threads statfs() the dmabuf filesystem, which carries no label.
 allow mtk_hal_camera unlabeled:filesystem getattr;
+
+# Capture checks the available UFS write-booster buffer space.
+allow mtk_hal_camera sysfs_ufs:dir search;
+allow mtk_hal_camera sysfs_ufs:file r_file_perms;
+
+# The capture algorithms synchronize allocator shared-memory buffers.
+allow mtk_hal_camera hal_graphics_allocator_default_tmpfs:file ioctl;
+allowxperm mtk_hal_camera hal_graphics_allocator_default_tmpfs:file ioctl 0x6201;

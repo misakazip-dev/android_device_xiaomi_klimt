@@ -23,7 +23,7 @@ bluetooth.profile.pbap.server.enabled=true
 bluetooth.profile.sap.server.enabled=true
 
 # Camera
-vendor.camera.aux.packagelist=com.xiaomi.cameratest,com.xiaomi.factory.mmi,com.xiaomi.runin
+vendor.camera.aux.packagelist=com.android.camera,com.xiaomi.cameratest,com.xiaomi.factory.mmi,com.xiaomi.runin
 
 # Display
 debug.sf.early.app.duration=20000000

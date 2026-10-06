@@ -1,0 +1,27 @@
+From: misakazip <git@misaka.zip>
+Subject: [PATCH] Declare the camera JNI libraries
+
+Allow the target-SDK 36 app classloader to load the Xiaomi public JNI libraries.
+
+diff --git a/AndroidManifest.xml b/AndroidManifest.xml
+index aca93a5..b1f48a7 100644
+--- a/AndroidManifest.xml
++++ b/AndroidManifest.xml
+@@ -357,8 +357,8 @@
+         <uses-native-library android:name="libxmi_slow_motion_mein.so" android:required="false"/>
+         <uses-native-library android:name="libmialgo_utils.so" android:required="false"/>
+         <uses-native-library android:name="libmiocr.so" android:required="false"/>
+-        <uses-native-library android:name="libcamera_ispinterface_jni.xiaomi.so" android:required="false"/>
+-        <uses-native-library android:name="libcamera_algoup_jni.xiaomi.so" android:required="false"/>
++        <uses-native-library android:name="libcamera_ispinterface_jni.xiaomi.so" android:required="true"/>
++        <uses-native-library android:name="libcamera_algoup_jni.xiaomi.so" android:required="true"/>
+         <uses-native-library android:name="libcamera_imagecodec_jni.xiaomi.so" android:required="false"/>
+         <uses-native-library android:name="libneuron_adapter_mgvi.so" android:required="false"/>
+         <uses-native-library android:name="libneuron_adapter.so" android:required="false"/>
+@@ -574,5 +574,6 @@
+         <meta-data android:name="com.xiaomi.continuity.sdk.VERSION_CODE" android:value="4000280"/>
+         <meta-data android:name="com.xiaomi.continuity.sdk.VERSION_NAME" android:value="4.0.280.10.0305162"/>
+         <provider android:authorities="com.android.camera.continuity-startup" android:exported="false" android:name="com.xiaomi.continuity.InitializationProvider"/>
++        <uses-native-library android:name="libcamera_mianode_jni.xiaomi.so" android:required="true"/>
+     </application>
+ </manifest>
