@@ -1,0 +1,36 @@
+#
+# SPDX-FileCopyrightText: WitAqua
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+# Follow the mt6897-common service contract used by degas.
+# MediaTek's modem bridge switches the shared physical SIM/eUICC slot.
+service vendor.esim_enable /vendor/bin/init.esim.sh enable
+    disabled
+    oneshot
+    user root
+    group root radio system
+
+service vendor.esim_disable /vendor/bin/init.esim.sh disable
+    disabled
+    oneshot
+    user root
+    group root radio system
+
+service vendor.esim_state /vendor/bin/init.esim.sh
+    disabled
+    oneshot
+    user root
+    group root radio system
+
+# Refresh the cached state after either switch operation completes.
+on property:init.svc.vendor.esim_enable=stopped
+    start vendor.esim_state
+
+on property:init.svc.vendor.esim_disable=stopped
+    start vendor.esim_state
+
+# Expose the vendor result through the switcher's system property contract.
+on property:vendor.esim.state=*
+    setprop sys.esim.state ${vendor.esim.state}

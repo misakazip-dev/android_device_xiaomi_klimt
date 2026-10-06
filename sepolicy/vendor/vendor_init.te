@@ -21,3 +21,6 @@ allow vendor_init proc_earaio:file w_file_perms;
 # cannot apply it.
 allow vendor_init debugfs_tracing_instances:dir rw_dir_perms;
 allow vendor_init debugfs_tracing_instances:file create_file_perms;
+
+# Read the modem state when mirroring it to the switcher's system property.
+get_prop(vendor_init, vendor_esim_state_prop)

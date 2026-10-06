@@ -82,3 +82,6 @@
 /dev/block/by-name/rescue                                                  u:object_r:cache_block_device:s0
 /dev/block/by-name/gsort                                                   u:object_r:gsort_block_device:s0
 /dev/socket/fpsensor_socket                                                u:object_r:fpsensor_socket:s0
+
+/vendor/bin/mtkmtb u:object_r:vendor_mtkmtb_exec:s0
+/vendor/bin/init\.esim\.sh u:object_r:vendor_esim_init_shell_exec:s0

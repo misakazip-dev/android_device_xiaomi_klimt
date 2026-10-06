@@ -11,3 +11,5 @@ ro.vendor.idmgr.          u:object_r:vendor_idmgr_prop:s0
 persist.vendor.sys.idmgr. u:object_r:vendor_idmgr_prop:s0
 persist.vendor.sys.fp.          u:object_r:vendor_fingerprint_prop:s0
 persist.vendor.camera.skynet.   u:object_r:vendor_camera_skynet_prop:s0
+
+vendor.esim.state u:object_r:vendor_esim_state_prop:s0 exact enum enabled disabled

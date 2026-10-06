@@ -1,0 +1,7 @@
+#
+# SPDX-FileCopyrightText: WitAqua
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+user=system seinfo=platform isPrivApp=true name=org.lineageos.esimswitcher domain=esimswitcher_app type=system_app_data_file

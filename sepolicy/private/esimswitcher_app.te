@@ -1,0 +1,17 @@
+#
+# SPDX-FileCopyrightText: WitAqua
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+type esimswitcher_app, domain;
+typeattribute esimswitcher_app coredomain, mlstrustedsubject;
+app_domain(esimswitcher_app)
+
+allow esimswitcher_app { activity_service activity_task_service audio_service netstats_service radio_service voiceinteraction_service }:service_manager find;
+allow esimswitcher_app system_app_data_file:dir create_dir_perms;
+allow esimswitcher_app system_app_data_file:{ file lnk_file } create_file_perms;
+
+# Only the three eSIM services may be started by this app.
+set_prop(esimswitcher_app, ctl_esim_prop)
+get_prop(esimswitcher_app, sys_esim_state_prop)

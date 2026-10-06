@@ -1,0 +1,10 @@
+#
+# SPDX-FileCopyrightText: WitAqua
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+sys.esim.state                 u:object_r:sys_esim_state_prop:s0 exact enum enabled disabled
+ctl.start$vendor.esim_enable    u:object_r:ctl_esim_prop:s0 exact string
+ctl.start$vendor.esim_disable   u:object_r:ctl_esim_prop:s0 exact string
+ctl.start$vendor.esim_state     u:object_r:ctl_esim_prop:s0 exact string

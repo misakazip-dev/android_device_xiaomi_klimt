@@ -212,3 +212,17 @@ install_symlink {
     installed_location: "etc/mdota",
     symlink_target: "/mnt/vendor/mdota",
 }
+
+// Automatically loaded from /vendor/etc/init.
+prebuilt_etc {
+    name: "init.esim.rc",
+    src: "etc/init.esim.rc",
+    sub_dir: "init",
+    vendor: true,
+}
+
+sh_binary {
+    name: "init.esim.sh",
+    src: "bin/init.esim.sh",
+    vendor: true,
+}

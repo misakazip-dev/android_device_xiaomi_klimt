@@ -27,6 +27,10 @@ void override_property(const char* name, const char* value) {
 void vendor_load_properties() {
     // Match the SKU files in stock /odm/etc. TW and ID use the global IDs.
     const auto hwc = android::base::GetProperty("ro.boot.hwc", "");
+    // SystemConfig loads vendor/etc/permissions/sku_<vendor SKU> at boot.
+    // Derive this selector from the same hardware region used for FeliCa.
+    override_property("ro.boot.product.vendor.sku", hwc == "JP" ? "klimt_jp" : "klimt");
+
     const char* product = "klimt_global";
     const char* model = "2506BPN68G";
     if (hwc == "JP") {

@@ -60,16 +60,17 @@ PRODUCT_PACKAGES += \
 PRODUCT_VENDOR_LINKER_CONFIG_FRAGMENTS += \
     $(LOCAL_PATH)/configs/linker/linker.config.json
 
-# eSIM
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/permissions/privapp-permissions-com.miui.euicc.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-com.miui.euicc.xml
-
-PRODUCT_BOOT_JARS_EXTRA += \
-    miui-framework-stub
-
+# eUICC (Japanese hardware SKU only; selected by libinit)
 PRODUCT_PACKAGES += \
-    KlimtEuiccController \
-    miui-framework-stub
+    XiaomiEuicc \
+    EuiccPolicyResKlimt \
+    FrameworksResKlimtEsim
+
+# MediaTek slot switcher and its vendor modem bridge.
+PRODUCT_PACKAGES += \
+    EsimSwitcher \
+    init.esim.rc \
+    init.esim.sh
 
 # fastbootd
 PRODUCT_PACKAGES += \
@@ -183,7 +184,8 @@ PRODUCT_PACKAGES += \
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
-    $(LOCAL_PATH)
+    $(LOCAL_PATH) \
+    hardware/mediatek
 
 PRODUCT_SOURCE_ROOT_DIRS += \
     -vendor/qcom/opensource/interfaces/qacs
@@ -228,8 +230,8 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.sensor.proximity.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.proximity.xml \
     frameworks/native/data/etc/android.hardware.sensor.stepcounter.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.stepcounter.xml \
     frameworks/native/data/etc/android.hardware.sensor.stepdetector.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.stepdetector.xml \
-    frameworks/native/data/etc/android.hardware.telephony.euicc.mep.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.euicc.mep.xml \
-    frameworks/native/data/etc/android.hardware.telephony.euicc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.euicc.xml \
+    frameworks/native/data/etc/android.hardware.telephony.euicc.mep.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/sku_klimt_jp/android.hardware.telephony.euicc.mep.xml \
+    frameworks/native/data/etc/android.hardware.telephony.euicc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/sku_klimt_jp/android.hardware.telephony.euicc.xml \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.gsm.xml \
     frameworks/native/data/etc/android.hardware.telephony.ims.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.ims.xml \
     frameworks/native/data/etc/android.hardware.telephony.satellite.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.satellite.xml \

@@ -16,6 +16,7 @@ from extract_utils.main import (
 
 namespace_imports = [
     'device/xiaomi/klimt',
+    'hardware/mediatek',
     'hardware/xiaomi',
 ]
 

@@ -1730,8 +1730,13 @@ vendor/lib64/libteecli.so
 vendor/bin/hw/android.hardware.dumpstate-service.xiaomi
 vendor/lib64/vendor.xiaomi.hardware.blackbox-V1-ndk.so
 
-# eSIM
-mi_ext/product/priv-app/MIUIEsimLPA/MIUIEsimLPA.apk:product/priv-app/MIUIEsimLPA/MIUIEsimLPA.apk;PRESIGNED;SKIPAPKCHECKS
+# Euicc
+# Google LPA and permission allowlist shared with degas and diting.
+# Source: xiaomi-sm7435/android_vendor_xiaomi_garnet at
+# ade07bb99a448a3d077435ecef3760c31bf402c8 (OnePlus 11 CPH2449 origin).
+# Preserve the original APK signature and pin both files for re-extraction.
+product/priv-app/EuiccGoogle/EuiccGoogle.apk;PRESIGNED|4fb8d8ab0e1dbda1582361f48395f819367edb0a
+product/etc/permissions/privapp-permissions-euiccgoogle.xml|58ddaa5bbff62eefd2d5c39900b7b29fd177def1
 
 # Face
 odm/etc/vintf/manifest/android.hardware.biometrics.face-v4.xml

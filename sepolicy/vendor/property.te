@@ -7,3 +7,5 @@
 vendor_internal_prop(vendor_idmgr_prop)
 vendor_internal_prop(vendor_fingerprint_prop)
 vendor_internal_prop(vendor_camera_skynet_prop)
+
+vendor_internal_prop(vendor_esim_state_prop)

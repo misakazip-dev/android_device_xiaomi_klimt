@@ -160,6 +160,8 @@ BOOT_SECURITY_PATCH := $(VENDOR_SECURITY_PATCH)
 include device/mediatek/sepolicy_vndr/SEPolicy.mk
 
 BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
+SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/public
+SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/private
 
 # Shipping API level
 BOARD_SHIPPING_API_LEVEL := 202404

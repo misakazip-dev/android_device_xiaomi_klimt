@@ -4,9 +4,8 @@
 // SPDX-License-Identifier: Apache-2.0
 //
 
-soong_namespace {
-    imports: [
-        "hardware/mediatek",
-        "hardware/xiaomi",
-    ],
+runtime_resource_overlay {
+    name: "FrameworksResKlimtEsim",
+    certificate: "platform",
+    product_specific: true,
 }
