@@ -24,6 +24,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_SHIPPING_API_LEVEL := 35
 
 # Audio
+# The stock MediaTek V1 methods, parcel order and virtual slots match this API.
+PRODUCT_PACKAGES += \
+    vendor.mediatek.hardware.audio-V1-ndk.vendor
+
 PRODUCT_PACKAGES += \
     android.hardware.bluetooth.audio-impl \
     android.hardware.bluetooth.audio@2.0-impl \
@@ -52,6 +56,16 @@ PRODUCT_PACKAGES += \
     update_engine \
     update_engine_sideload \
     update_verifier
+
+# Common MediaTek diagnostics and SoC information
+PRODUCT_PACKAGES += \
+    chipinfo \
+    libaedv \
+    libladder
+
+# Display memory accounting
+PRODUCT_PACKAGES += \
+    android.hardware.memtrack-service.mediatek
 
 # DRM
 PRODUCT_PACKAGES += \
@@ -82,6 +96,13 @@ PRODUCT_PACKAGES += \
     android.hardware.health-service.example \
     android.hardware.health-service.example_recovery
 
+# MediaTek framework compatibility
+PRODUCT_PACKAGES += \
+    mediatek-common
+
+PRODUCT_BOOT_JARS += \
+    system_ext:mediatek-common
+
 # IMS
 PRODUCT_PACKAGES += \
     KlimtProtectedBroadcasts
@@ -93,8 +114,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint-service.xiaomi \
     libudfpshandler
-
-PRODUCT_SOONG_NAMESPACES += hardware/xiaomi
 
 # IR
 PRODUCT_PACKAGES += \
@@ -108,6 +127,15 @@ PRODUCT_PACKAGES += \
     libkeymaster4support.vendor \
     libkeymint_remote_prov_support.vendor \
     libkeymint_support.vendor
+
+# MediaTek power clients and versioned interfaces
+PRODUCT_PACKAGES += \
+    libmtkperf_client_vendor \
+    libperfctl_vendor \
+    libpowerhalwrap_vendor \
+    vendor.mediatek.hardware.mtkpower@1.0 \
+    vendor.mediatek.hardware.mtkpower@1.1 \
+    vendor.mediatek.hardware.mtkpower@1.2
 
 # NFC
 PRODUCT_COPY_FILES += \
@@ -148,7 +176,7 @@ PRODUCT_PACKAGES += \
     init.felica.sh \
     init.insmod.sh \
     init.pstore_blk.sh \
-    vendor_mdota_symlink
+    mdota_symlink
 
 PRODUCT_PACKAGES += \
     fstab.mt6991 \
@@ -156,7 +184,6 @@ PRODUCT_PACKAGES += \
     factory_init.connectivity.rc \
     factory_init.project.rc \
     factory_init.rc \
-    init.aee.rc \
     init.batterysecret.rc \
     init.cgroup.rc \
     init.connectivity.common.rc \
@@ -185,10 +212,27 @@ PRODUCT_PACKAGES += \
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
-    hardware/mediatek
+    hardware/google/interfaces \
+    hardware/google/pixel/pixelstats \
+    hardware/mediatek \
+    hardware/mediatek/libmtkperf_client \
+    hardware/xiaomi
 
 PRODUCT_SOURCE_ROOT_DIRS += \
     -vendor/qcom/opensource/interfaces/qacs
+
+# Thermal HAL reporting; vendor thermal engines retain cooling control.
+PRODUCT_PACKAGES += \
+    android.hardware.thermal-service.mediatek
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/thermal_info_config.json:$(TARGET_COPY_OUT_VENDOR)/etc/thermal_info_config.json
+
+# Vendor ABI compatibility
+PRODUCT_PACKAGES += \
+    libprocessgroup \
+    libprocessgroup_shim \
+    libtinyxml2-v34
 
 # Vendor service manager
 PRODUCT_PACKAGES += \
@@ -197,14 +241,18 @@ PRODUCT_PACKAGES += \
 # Wi-Fi
 PRODUCT_PACKAGES += \
     android.hardware.wifi-service-lazy \
+    wlan_assistant \
     wpa_cli \
     wpa_supplicant
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/wifi/mediatek.xml:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/vendor_hals/mediatek.xml
+# The Android 15 blob predates the two 11az v4 function pointers.
+# Keep the init configuration paired with the stock USB gadget HAL.
+$(call soong_config_set_bool,mediatek_gadget,use_custom_usb_gadget_rc,true)
+
+$(call soong_config_set_bool,mediatek_wifi_hal,use_pre_baklava_qpr0_struct,true)
 
 PRODUCT_PACKAGES += \
-    libwifi-hal-mtk-shim
+    libwifi-hal-wrapper
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.audio.low_latency.xml \

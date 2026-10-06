@@ -1,0 +1,8 @@
+#
+# SPDX-FileCopyrightText: WitAqua
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+# Battery temperature is exposed in tenths of a degree by power_supply.
+r_dir_file(hal_thermal_default, sysfs_batteryinfo)

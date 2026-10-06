@@ -1,0 +1,275 @@
+{
+    "Sensors": [
+        {
+            "Name": "soc_max",
+            "Type": "SOC",
+            "ZoneName": "soc_max",
+            "HotThreshold": [
+                "NaN",
+                "NaN",
+                "NaN",
+                "NaN",
+                "NaN",
+                "NaN",
+                118.8
+            ],
+            "VrThreshold": "NaN",
+            "Multiplier": 0.001,
+            "Monitor": true,
+            "PollingDelay": 2000,
+            "PassiveDelay": 2000,
+            "HotHysteresis": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                2.0
+            ]
+        },
+        {
+            "Name": "CPU",
+            "Type": "CPU",
+            "HotThreshold": [
+                "NaN",
+                "NaN",
+                "NaN",
+                "NaN",
+                "NaN",
+                "NaN",
+                118.8
+            ],
+            "VrThreshold": "NaN",
+            "Multiplier": 0.001,
+            "Monitor": true,
+            "PollingDelay": 2000,
+            "PassiveDelay": 2000,
+            "VirtualSensor": true,
+            "Combination": [
+                "soc_max"
+            ],
+            "Coefficient": [
+                "1.0"
+            ],
+            "Formula": "WEIGHTED_AVG",
+            "TriggerSensor": [
+                "soc_max"
+            ],
+            "HotHysteresis": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                2.0
+            ]
+        },
+        {
+            "Name": "GPU",
+            "Type": "GPU",
+            "HotThreshold": [
+                "NaN",
+                "NaN",
+                "NaN",
+                "NaN",
+                "NaN",
+                "NaN",
+                118.8
+            ],
+            "VrThreshold": "NaN",
+            "Multiplier": 0.001,
+            "Monitor": true,
+            "PollingDelay": 2000,
+            "PassiveDelay": 2000,
+            "VirtualSensor": true,
+            "Combination": [
+                "soc_max"
+            ],
+            "Coefficient": [
+                "1.0"
+            ],
+            "Formula": "WEIGHTED_AVG",
+            "TriggerSensor": [
+                "soc_max"
+            ],
+            "HotHysteresis": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                2.0
+            ]
+        },
+        {
+            "Name": "battery",
+            "Type": "BATTERY",
+            "HotThreshold": [
+                "NaN",
+                "NaN",
+                "NaN",
+                "NaN",
+                "NaN",
+                "NaN",
+                "NaN"
+            ],
+            "VrThreshold": "NaN",
+            "Multiplier": 0.1,
+            "TempPath": "/sys/class/power_supply/battery/temp",
+            "Monitor": false,
+            "PollingDelay": 2000,
+            "PassiveDelay": 2000
+        },
+        {
+            "Name": "mtktsAP",
+            "Type": "SKIN",
+            "HotThreshold": [
+                "NaN",
+                "NaN",
+                "NaN",
+                "NaN",
+                "NaN",
+                "NaN",
+                "NaN"
+            ],
+            "VrThreshold": "NaN",
+            "Multiplier": 0.001,
+            "Monitor": false,
+            "PollingDelay": 2000,
+            "PassiveDelay": 2000,
+            "isDisabled": true
+        },
+        {
+            "Name": "mtktsbtsnrpa",
+            "Type": "POWER_AMPLIFIER",
+            "HotThreshold": [
+                "NaN",
+                "NaN",
+                "NaN",
+                "NaN",
+                "NaN",
+                "NaN",
+                "NaN"
+            ],
+            "VrThreshold": "NaN",
+            "Multiplier": 0.001,
+            "Monitor": false,
+            "PollingDelay": 2000,
+            "PassiveDelay": 2000,
+            "isDisabled": true
+        },
+        {
+            "Name": "mtktsbtsmdpa",
+            "Type": "POWER_AMPLIFIER",
+            "HotThreshold": [
+                "NaN",
+                "NaN",
+                "NaN",
+                "NaN",
+                "NaN",
+                "NaN",
+                "NaN"
+            ],
+            "VrThreshold": "NaN",
+            "Multiplier": 0.001,
+            "Monitor": false,
+            "PollingDelay": 2000,
+            "PassiveDelay": 2000,
+            "isDisabled": true
+        },
+        {
+            "Name": "NPU",
+            "Type": "NPU",
+            "HotThreshold": [
+                "NaN",
+                "NaN",
+                "NaN",
+                "NaN",
+                "NaN",
+                "NaN",
+                118.8
+            ],
+            "VrThreshold": "NaN",
+            "Multiplier": 0.001,
+            "Monitor": true,
+            "PollingDelay": 2000,
+            "PassiveDelay": 2000,
+            "VirtualSensor": true,
+            "Combination": [
+                "soc_max"
+            ],
+            "Coefficient": [
+                "1.0"
+            ],
+            "Formula": "WEIGHTED_AVG",
+            "TriggerSensor": [
+                "soc_max"
+            ],
+            "HotHysteresis": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                2.0
+            ]
+        },
+        {
+            "Name": "TPU",
+            "Type": "TPU",
+            "HotThreshold": [
+                "NaN",
+                "NaN",
+                "NaN",
+                "NaN",
+                "NaN",
+                "NaN",
+                118.8
+            ],
+            "VrThreshold": "NaN",
+            "Multiplier": 0.001,
+            "Monitor": true,
+            "PollingDelay": 2000,
+            "PassiveDelay": 2000,
+            "VirtualSensor": true,
+            "Combination": [
+                "soc_max"
+            ],
+            "Coefficient": [
+                "1.0"
+            ],
+            "Formula": "WEIGHTED_AVG",
+            "TriggerSensor": [
+                "soc_max"
+            ],
+            "HotHysteresis": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                2.0
+            ]
+        }
+    ],
+    "CoolingDevices": [
+        {
+            "Name": "devfreq-48000000.mali",
+            "Type": "GPU",
+            "isDisabled": true
+        },
+        {
+            "Name": "battery",
+            "Type": "BATTERY"
+        },
+        {
+            "Name": "brightness0-clone",
+            "Type": "COMPONENT"
+        }
+    ]
+}

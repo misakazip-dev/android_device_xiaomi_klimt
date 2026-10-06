@@ -53,13 +53,6 @@ prebuilt_etc {
 }
 
 prebuilt_etc {
-    name: "init.aee.rc",
-    src: "etc/init.aee.rc",
-    sub_dir: "init/hw",
-    vendor: true,
-}
-
-prebuilt_etc {
     name: "init.batterysecret.rc",
     src: "etc/init.batterysecret.rc",
     sub_dir: "init/hw",
@@ -206,12 +199,6 @@ prebuilt_etc {
     vendor: true,
 }
 
-install_symlink {
-    name: "vendor_mdota_symlink",
-    soc_specific: true,
-    installed_location: "etc/mdota",
-    symlink_target: "/mnt/vendor/mdota",
-}
 
 // Automatically loaded from /vendor/etc/init.
 prebuilt_etc {

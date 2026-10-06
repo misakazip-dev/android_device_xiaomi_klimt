@@ -27,7 +27,6 @@
 /odm/bin/toucheventcheck                                                   u:object_r:toucheventcheck_exec:s0
 /vendor/bin/MI_IC                                                          u:object_r:mi_ic_exec:s0
 /vendor/bin/MI_RIC                                                         u:object_r:mi_ric_exec:s0
-/vendor/bin/aeev_v2                                                        u:object_r:aeev_exec:s0
 /vendor/bin/batterysecret                                                  u:object_r:batterysecret_exec:s0
 /vendor/bin/ddr_freq                                                       u:object_r:ddr_freq_exec:s0
 /vendor/bin/displayfeature                                                 u:object_r:displayfeature_exec:s0

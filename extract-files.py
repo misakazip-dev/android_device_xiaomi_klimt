@@ -17,6 +17,7 @@ from extract_utils.main import (
 namespace_imports = [
     'device/xiaomi/klimt',
     'hardware/mediatek',
+    'hardware/mediatek/libmtkperf_client',
     'hardware/xiaomi',
 ]
 
@@ -96,8 +97,7 @@ blob_fixups = {
         'vendor/lib64/libmnl_mt6991.so',
         'vendor/lib64/libnotifyaudiohal.so',
         'vendor/lib64/libpcap_vendor.so',
-        'vendor/lib64/libprocessgroup_vendor.so',
-        'vendor/lib64/libtinyxml2_vendor.so',
+        'vendor/lib64/libperfctl_stock.so',
         'vendor/lib64/libultrahdr_vendor.so',
         'vendor/lib64/libwifi-hal-mtk.so',
     ): blob_fixup().fix_soname(),
@@ -110,9 +110,13 @@ blob_fixups = {
     .replace_needed('android.media.audio.common.types-V3-ndk.so', 'android.media.audio.common.types_v3_vendor.so')
     .replace_needed('android.media.audio.common.types-V5-ndk.so', 'android.media.audio.common.types_v5_vendor.so')
     .replace_needed('libaudio_aidl_conversion_common_ndk.so', 'libaudio_aidl_conversion_common_ndk_vendor.so'),
-    # The A15 blobs stack-allocate assuming sizeof(tinyxml2::XMLDocument) == 776.
-    # The platform's newer tinyxml2 is larger, so construction walks off the end
-    # and smashes the caller's frame.
+    # FPSGO expects xgfGetCmd to return a 40-byte struct through the AArch64
+    # indirect-result register. The shared perfctl stub has a different ABI.
+    'vendor/bin/fpsgo': blob_fixup().binary_regex_replace(
+        re.escape(b'libperfctl_vendor.so\x00'), b'libperfctl_stock.so\x00\x00'
+    ),
+    # VNDK v34 preserves the XMLDocument/XMLPrinter layout used by these blobs.
+    # The platform's newer tinyxml2 does not fit their inlined allocations.
     (
         'odm/lib64/hw/displayfeature.default.so',
         'odm/lib64/libmiXmlParser.so',
@@ -134,22 +138,23 @@ blob_fixups = {
         'vendor/lib64/libxlog.so',
         'vendor/lib64/mt6991/lib3a.custom.ae.flow.so',
         'vendor/lib64/mt6991/libmmlpqImpl.so',
-    ): blob_fixup().replace_needed('libtinyxml2.so', 'libtinyxml2_vendor.so'),
+    ): blob_fixup()
+    .replace_needed('libtinyxml2.so', 'libtinyxml2-v34.so')
+    .replace_needed('libtinyxml2_vendor.so', 'libtinyxml2-v34.so'),
     # Other platform libraries the A15 blobs need their own copy of.
     'vendor/lib64/android.hardware.audio.core-impl-mediatek.so': blob_fixup()
     .replace_needed('libaudioutils.so', 'libaudioutils_vendor.so'),
-    (
-        'vendor/bin/aee_aedv64_v2',
-        'vendor/bin/aee_dumpstatev_v2',
-    ): blob_fixup().replace_needed('libcrypto.so', 'libcrypto_vendor.so'),
     'vendor/bin/hw/vendor.xiaomi.hardware.videoservice-service': blob_fixup()
     .replace_needed('libgui.so', 'libgui_vendor.so'),
     'vendor/lib64/libpkm.so': blob_fixup()
     .replace_needed('libpcap.so', 'libpcap_vendor.so'),
+    # The shim restores the old C SetTaskProfiles entry point and delegates
+    # to the platform implementation; keep libprocessgroup for get_sched_policy.
     (
         'vendor/lib64/libcameraopt.so',
         'vendor/lib64/mt6991/libmtkcam_taskmgr.so',
-    ): blob_fixup().replace_needed('libprocessgroup.so', 'libprocessgroup_vendor.so'),
+    ): blob_fixup()
+    .add_needed('libprocessgroup_shim.so'),
     (
         'odm/lib64/camera/plugins/capture/com.xiaomi.plugin.gainmap.so',
         'odm/lib64/camera/plugins/capture/com.xiaomi.plugin.jpegrAggr.so',
