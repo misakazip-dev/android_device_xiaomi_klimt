@@ -47,7 +47,10 @@ void vendor_load_properties() {
     // Mobile FeliCa sends Build.MODEL to its server. Publish the hardware model
     // before init derives product properties and before zygote starts.
     override_property("ro.product.model", model);
-    override_property("ro.product.name", product);
+
+    // Derive ro.product.name from the build's partition properties. The build
+    // description and vendor-style fingerprint use klimt_global. Keep
+    // SKU-specific product IDs for attestation.
 
     // These IDs must match the values provisioned in the TEE for this SKU.
     override_property("ro.product.model_for_attestation", model);
