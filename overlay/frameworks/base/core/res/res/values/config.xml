@@ -39,7 +39,12 @@
 
     <string name="config_displayLightSensorType" translatable="false">android.sensor.light</string>
     <string name="config_dozeComponent" translatable="false">com.android.dreams.alwaysondisplay/.AlwaysOnDisplay</string>
-    <string name="config_mainDisplayShape" translatable="false">M20 0h1040s20 0 20 20v2360s0 20 -20 20h-1040s-20 0 -20 -20v-2360s0 -20 20 -20</string>
+    <!-- Centre punch-hole safe region, from the OS3.0.335.0.XOSMIXM
+         com.miui.systemui.overlay.devices.android RRO. -->
+    <string name="config_mainBuiltInDisplayCutout" translatable="false">M 0,0 H -33 V 152 H 33 V 0 H 0 Z</string>
+    <!-- The stock MediaTek RRO ships a generic 1080x2400 outline. Describe the
+         1280x2772 panel with the stock 156px corner radius instead. -->
+    <string name="config_mainDisplayShape" translatable="false">M156 0h968s156 0 156 156v2460s0 156 -156 156h-968s-156 0 -156 -156v-2460s0 -156 156 -156</string>
     <!-- Reproduced from the stock com.mediatek.FrameworkResOverlayExt RRO.
          config_defaultRefreshRate / config_defaultPeakRefreshRate are omitted:
          the stock values pin the panel to 121 Hz, superseded above.

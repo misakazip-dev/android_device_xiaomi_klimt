@@ -10,10 +10,16 @@
     <item name="config_screenBrightnessSettingMaximumFloat" format="float" type="dimen">1.0</item>
     <item name="config_screenBrightnessSettingMinimumFloat" format="float" type="dimen">0.00238066</item>
 
-    <dimen name="rounded_corner_radius">20dp</dimen>
+    <!-- Panel geometry from the stock com.miui.systemui.overlay.devices.android
+         OS3.0.335.0.XOSMIXM RRO (product/overlay/DevicesAndroidOverlay.apk). It overrides the
+         generic MediaTek values (20dp corners) on stock. -->
+    <dimen name="rounded_corner_radius">156px</dimen>
+    <dimen name="rounded_corner_radius_top">156px</dimen>
+    <dimen name="rounded_corner_radius_bottom">156px</dimen>
+    <dimen name="status_bar_height_default">152px</dimen>
+    <dimen name="status_bar_height_portrait">152px</dimen>
 
-    <!-- Inset status bar and navigation bar content out of the rounded
-         corners. The stock overlay leaves this at 0 because MIUI lays the
-         status bar out itself, which clips the clock on the LineageOS one. -->
-    <dimen name="rounded_corner_content_padding">12dp</dimen>
+    <!-- Stock OS3.0.335.0.XOSMIXM SystemUI DevicesOverlay.apk uses 84px.
+         SystemUI aliases this framework resource for its minimum content inset. -->
+    <dimen name="rounded_corner_content_padding">84px</dimen>
 </resources>
